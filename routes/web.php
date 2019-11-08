@@ -16,3 +16,5 @@ Auth::routes();
 Route::get('/', function () {
     return view('index');
 });
+
+Route::post('/', 'HomeController@index');

@@ -245,6 +245,31 @@ fieldset legend {
     margin: 100px auto;
 }
 
+h1.section-title {
+    position: relative;
+    flex-grow: 1;
+    margin: 0;
+}
+
+h1.section-title:before {
+    content: "";
+    display: block;
+    border-top: solid 2px #231e16;
+    width: 100%;
+    height: 1px;
+    position: absolute;
+    top: 50%;
+    z-index: 1;
+}
+
+h1.section-title span {
+    background: #fff;
+    left: 0%;
+    padding: 0 35px;
+    position: relative;
+    z-index: 5;
+}
+
 @-webkit-keyframes spin {
     0% { -webkit-transform: rotate(0deg); }
     100% { -webkit-transform: rotate(360deg); }
@@ -277,15 +302,8 @@ fieldset legend {
         left: 13.5%;
     }
 
-    #addt_service_transition {
-        background-repeat: no-repeat !important;
-        background-position: 100% 100% !important;
-        background-size: 100% 100% !important;
-        background-attachment: initial;
-    }
-
-    .propertyList h1, .contactList h1, .fileList h1 {
-        font-size: 200%;
+    .separtator.jumbotron {
+        padding: 8em 2em;
     }
 }
 
@@ -296,10 +314,6 @@ fieldset legend {
 
     .waves-input-wrapper {
         width: 100%;
-    }
-
-    .contactUsJumbotron, .aboutUsJumbotron, .propertiesJumbotron, .contactsJumbotron {
-        max-height: 350px;
     }
 
     .jumbotron h2 {
@@ -344,11 +358,6 @@ fieldset legend {
         max-height: auto;
     }
 
-    .deletePropImages, .deletePropVideos {
-        position: relative;
-        margin: 15px 0px;
-    }
-
     .view img, .view video {
         position: relative;
         display: block;
@@ -381,9 +390,8 @@ fieldset legend {
         width: 100% !important;
     }
 
-    .loginJumbotron {
-        max-height: initial;
-        min-height: 82vh;
+    .separtator.jumbotron {
+        padding: 4em 2em;
     }
 }
 
