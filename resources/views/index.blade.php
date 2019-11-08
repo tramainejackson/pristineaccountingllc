@@ -137,7 +137,7 @@
             </div>
 
             <!-- Grid column -->
-            <div class="col-12">
+            <div class="col-12 col-sm-auto mx-auto">
                 <ul class="contact-icons">
                     <li><i class="fa fa-map-marker fa-2x"></i>
                         <p>Philadelphia, PA 19102, USA</p>
