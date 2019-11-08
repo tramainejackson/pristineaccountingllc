@@ -18,3 +18,5 @@ Route::get('/', function () {
 });
 
 Route::post('/', 'HomeController@index');
+
+Route::resource('administrator', 'AdminController');
