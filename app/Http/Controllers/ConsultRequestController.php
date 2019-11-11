@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 
-class AdminController extends Controller
+class ConsultRequestController extends Controller
 {
 	public function __construct() {
 		$this->middleware(['auth']);
@@ -31,7 +31,7 @@ class AdminController extends Controller
 	    // Create Carbon Date if there is an open consult
 	    $open_consults !== 0 ? $consult_created = new Carbon($open_consults->first()->created_at) : null;
 
-        return view('admin.index', compact('admin', 'consults', 'open_consults', 'consult_created', 'today'));
+        return view('admin.consult_request.index', compact('admin', 'consults', 'open_consults', 'consult_created', 'today'));
     }
 
     /**

@@ -13,10 +13,10 @@
 
 Auth::routes();
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', 'HomeController@index');
 
-Route::post('/', 'HomeController@index');
+Route::post('/', 'HomeController@consult_request');
 
 Route::resource('administrator', 'AdminController');
+
+Route::resource('consults', 'ConsultRequestController');

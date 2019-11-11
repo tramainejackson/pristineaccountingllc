@@ -1,7 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-
+@if(session('status'))
+    <div class="alert alert-success">
+        {{ session('status') }}
+    </div>
+    @endif
     <!-- Jumbotron -->
     <div class="jumbotron card card-image" style="background-image: url({{ asset('images/accounting_image2.jpg') }});">
 
@@ -87,38 +91,38 @@
 
                     <div class="" id="">
 
-                        {!! Form::open(['action' => 'HomeController@index', 'method' => 'POST']) !!}
+                        {!! Form::open(['action' => 'HomeController@consult_request', 'method' => 'POST']) !!}
 
-                        <div class="form-row">
+                            <div class="form-row">
 
-                            <div class="form-group col-6">
-                                {{ Form::text('first_name', '', ['class' => 'form-control', 'placeholder' => 'Enter A Fistname']) }}
+                                <div class="form-group col-6">
+                                    {{ Form::text('first_name', '', ['class' => 'form-control', 'placeholder' => 'Enter A Fistname']) }}
 
-                                @if ($errors->has('first_name'))
-                                    <span class="text-danger">First Name cannot be empty</span>
-                                @endif
+                                    @if ($errors->has('first_name'))
+                                        <span class="text-danger">First Name cannot be empty</span>
+                                    @endif
+                                </div>
+
+                                <div class="form-group col-6">
+                                    {{ Form::text('last_name', '', ['class' => 'form-control', 'placeholder' => 'Enter A Lastname']) }}
+
+                                    @if ($errors->has('last_name'))
+                                        <span class="text-danger">Last Name cannot be empty</span>
+                                    @endif
+                                </div>
+
+                                <div class="form-group col-12">
+                                    {{ Form::text('email', '', ['class' => 'form-control', 'placeholder' => 'Enter An Email']) }}
+
+                                    @if ($errors->has('email'))
+                                        <span class="text-danger">Email Address cannot be empty</span>
+                                    @endif
+                                </div>
+
+                                <div class="form-group col-12">
+                                    {{ Form::submit('Send Consult Request', ['class' => 'btn btn-primary btn-rounded']) }}
+                                </div>
                             </div>
-
-                            <div class="form-group col-6">
-                                {{ Form::text('last_name', '', ['class' => 'form-control', 'placeholder' => 'Enter A Lastname']) }}
-
-                                @if ($errors->has('last_name'))
-                                    <span class="text-danger">Last Name cannot be empty</span>
-                                @endif
-                            </div>
-
-                            <div class="form-group col-12">
-                                {{ Form::text('email', '', ['class' => 'form-control', 'placeholder' => 'Enter An Email']) }}
-
-                                @if ($errors->has('email'))
-                                    <span class="text-danger">Email Name cannot be empty</span>
-                                @endif
-                            </div>
-
-                            <div class="form-group col-12">
-                                {{ Form::submit('Send Consult Request', ['class' => 'btn btn-primary btn-rounded']) }}
-                            </div>
-                        </div>
                         {!! Form::close() !!}
                     </div>
                 </div>
