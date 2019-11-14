@@ -13,10 +13,10 @@
 
             <div class="rgba-white-strong py-3">
 
-                <h2 class="card-title h1-responsive pt-3 mb-5 font-bold"><strong><span class="d-block d-sm-inline-block">Pristing</span><span class="d-block d-sm-inline-block">Accounting</span><span class="d-block d-sm-inline-block dark-grey-text">LLC</span></strong></h2>
+                <h1 class="card-title h1 pt-3 mb-5 font-bold coolText6 display-3"><strong><span class="d-block d-sm-inline-block">Pristine</span><span class="d-block d-sm-inline-block">Accounting</span><span class="d-block d-sm-inline-block dark-grey-text">LLC</span></strong></h1>
 
-                <p class="mx-5 mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat fugiat, laboriosam, voluptatem,
-                    optio vero odio nam sit officia accusamus minus error nisi architecto nulla ipsum dignissimos. Odit sed qui, dolorum!
+                <p class="mx-5 mb-5">The vision at Pristine Accounting is to enrich its client’s one person at a time to help
+                    build up a financially savvy community, while striving to be the best financial company.
                 </p>
             </div>
         </div>
@@ -30,37 +30,185 @@
             <div class="col-12 mb-4">
 
                 <div class="d-flex flex-row align-items-center">
-                    <h1 class="section-title text-center"><span> Services </span></h1>
+                    <h1 class="section-title text-center coolText6"><span>Services</span></h1>
                 </div>
 
             </div>
 
-            <div class="col-12">
+            <div class="col-9 mx-auto">
+                <!-- Grid row -->
+                <div class="row">
 
-                <div class="card-deck">
+                    <!-- Grid column -->
+                    <div class="col-lg-4">
 
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Public Accounting</h5>
-                            <p class="card-text">Processes involved in public accounting are preparation, review, and audit of financial statements, tax preparation, and consultation or advisory services.</p>
+                        <!-- Grid row -->
+                        <div class="row mb-3">
+
+                            <!-- Grid column -->
+                            <div class="col-2">
+                                <i class="fas fa-2x fa-book-open deep-purple-text"></i>
+                            </div>
+                            <!-- Grid column -->
+
+                            <!-- Grid column -->
+                            <div class="col-10">
+                                <h2 class="font-weight-bold mb-3 h2 coolText6">Bookkeeping</h2>
+                                <p class="grey-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores
+                                    nam, aperiam minima assumenda deleniti hic.</p>
+                            </div>
+                            <!-- Grid column -->
+
                         </div>
-                    </div>
+                        <!-- Grid row -->
 
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Management Accounting</h5>
-                            <p class="card-text">Management accounting is a process wherein accounting professionals analyze past and present accounting data to synthesize an effective and efficient business model for their client. Some of the processes under management accounting include budgeting, asset management, cost management, and performance evaluation.</p>
-                        </div>
-                    </div>
+                        <!-- Grid row -->
+                        <div class="row mb-3">
 
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Bookkeeping</h5>
-                            <p class="card-text">Bookkeeping is the recording of financial transactions, and is part of the process of accounting in business. Transactions include purchases, sales, receipts, and payments by an individual person or an organization/corporation. There are several standard methods of bookkeeping, including the single-entry and double-entry bookkeeping systems.</p>
+                            <!-- Grid column -->
+                            <div class="col-2">
+                                <i class="fas fa-2x fa-file-invoice deep-purple-text"></i>
+                            </div>
+                            <!-- Grid column -->
+
+                            <!-- Grid column -->
+                            <div class="col-10">
+                                <h2 class="font-weight-bold mb-3 h2 coolText6">Tax Preparation</h2>
+                                <p class="grey-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores
+                                    nam, aperiam minima assumenda deleniti hic.</p>
+                            </div>
+                            <!-- Grid column -->
+
                         </div>
+                        <!-- Grid row -->
+
+                        <!-- Grid row -->
+                        <div class="row mb-md-0 mb-3">
+
+                            <!-- Grid column -->
+                            <div class="col-2">
+                                <i class="far fa-2x fa-chart-bar deep-purple-text"></i>
+                            </div>
+                            <!-- Grid column -->
+
+                            <!-- Grid column -->
+                            <div class="col-10">
+                                <h2 class="font-weight-bold mb-3 h2 coolText6">Budgeting/Forecasting</h2>
+                                <p class="grey-text mb-md-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit
+                                    maiores nam, aperiam minima assumenda deleniti hic.</p>
+                            </div>
+                            <!-- Grid column -->
+
+                        </div>
+                        <!-- Grid row -->
+
                     </div>
+                    <!-- Grid column -->
+
+                    <!-- Grid column -->
+                    <div class="col-lg-4 text-center d-none d-lg-flex">
+                        <img class="img-fluid" src="{{ asset('images/accounting_image5.png') }}"
+                             alt="Sample image">
+                    </div>
+                    <!-- Grid column -->
+
+                    <!-- Grid column -->
+                    <div class="col-lg-4">
+
+                        <!-- Grid row -->
+                        <div class="row mb-3">
+
+                            <!-- Grid column -->
+                            <div class="col-2">
+                                <i class="fas fa-2x fa-chart-line deep-purple-text"></i>
+                            </div>
+                            <!-- Grid column -->
+
+                            <!-- Grid column -->
+                            <div class="col-10">
+                                <h2 class="font-weight-bold mb-3 h2 coolText6">Financial Analysis</h2>
+                                <p class="grey-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores
+                                    nam, aperiam minima assumenda deleniti hic.</p>
+                            </div>
+                            <!-- Grid column -->
+
+                        </div>
+                        <!-- Grid row -->
+
+                        <!-- Grid row -->
+                        <div class="row mb-3">
+
+                            <!-- Grid column -->
+                            <div class="col-2">
+                                <i class="fas fa-2x fa-tasks deep-purple-text"></i>
+                            </div>
+                            <!-- Grid column -->
+
+                            <!-- Grid column -->
+                            <div class="col-10">
+                                <h2 class="font-weight-bold mb-3 h2 coolText6">Consulting</h2>
+                                <p class="grey-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores
+                                    nam, aperiam minima assumenda deleniti hic.</p>
+                            </div>
+                            <!-- Grid column -->
+
+                        </div>
+                        <!-- Grid row -->
+
+                    </div>
+                    <!-- Grid column -->
+
                 </div>
+                <!-- Grid row -->
+
+                {{--<div class="card-deck">--}}
+
+                    {{--<div class="card">--}}
+                        {{--<div class="card-body">--}}
+                            {{--<h1 class="card-title coolText6">Public Accounting</h1>--}}
+                            {{--<p class="card-text">Processes involved in public accounting are preparation, review, and audit of financial statements, tax preparation, and consultation or advisory services.</p>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+
+                    {{--<div class="card">--}}
+                        {{--<div class="card-body">--}}
+                            {{--<h1 class="card-title coolText6">Management Accounting</h1>--}}
+                            {{--<p class="card-text">Management accounting is a process wherein accounting professionals analyze past and present accounting data to synthesize an effective and efficient business model for their client. Some of the processes under management accounting include budgeting, asset management, cost management, and performance evaluation.</p>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+
+                    {{--<div class="card">--}}
+                        {{--<div class="card-body">--}}
+                            {{--<h1 class="card-title coolText6">Bookkeeping</h1>--}}
+                            {{--<p class="card-text">Bookkeeping is the recording of financial transactions, and is part of the process of accounting in business. Transactions include purchases, sales, receipts, and payments by an individual person or an organization/corporation. There are several standard methods of bookkeeping, including the single-entry and double-entry bookkeeping systems.</p>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
             </div>
+        </div>
+
+        <div class="row">
+
+            <div class="col-12 mb-4">
+
+                <div class="d-flex flex-row align-items-center">
+                    <h1 class="section-title text-center coolText6"><span>Mission</span></h1>
+                </div>
+
+            </div>
+
+            <!--Grid column-->
+            <div class="col-8 text-center z-depth-1 mx-auto mb-4">
+
+                <p class="p-5">The mission at Pristine Accounting is to provide affordable professional financial services
+                    to the community. While doing so we also focus on educating and enriching those about
+                    financial decisions so that they can achieve their financial potential; not just short term,
+                    but long term.
+                </p>
+
+            </div>
+            <!--Grid column-->
+
         </div>
 
         <div class="row">
@@ -82,7 +230,7 @@
                 <div class="mask waves-effect waves-light rgba-indigo-light white-text text-center d-flex align-items-center flex-column justify-content-center px-2">
 
                     <div class="pt-3" id="">
-                        <h3 class="">Consultation</h3>
+                        <h1 class="h1 coolText6">Consultation</h1>
                     </div>
 
                     <div class="" id="">
@@ -135,7 +283,7 @@
             <div class="col-12 mb-4">
 
                 <div class="d-flex flex-row align-items-center">
-                    <h1 class="section-title text-center"><span> Contact </span></h1>
+                    <h1 class="section-title text-center coolText6"><span>Contact</span></h1>
                 </div>
 
             </div>

@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Allerta+Stencil|Artifika|Cinzel+Decorative|Fanwood+Text|Fredericka+the+Great|Fugaz+One|Germania+One|Graduate|Grand+Hotel|IM+Fell+Double+Pica|Montserrat|Slabo+27px|Source+Sans+Pro);
+@import url(https://fonts.googleapis.com/css?family=Allerta+Stencil|Artifika|Sacramento|Cinzel+Decorative|Fanwood+Text|Fredericka+the+Great|Fugaz+One|Germania+One|Graduate|Grand+Hotel|IM+Fell+Double+Pica|Montserrat|Slabo+27px|Source+Sans+Pro);
 
 html, body {
     font-family: 'Artifika', serif !important;
@@ -36,6 +36,10 @@ html, body {
     font-family: 'Germania One', cursive;
 }
 
+.coolText6{
+    font-family: 'Sacramento', cursive;
+}
+
 .text-underline{
     text-decoration: underline;
 }
@@ -56,6 +60,17 @@ html, body {
     top: -150px;
     left: 40%;
     width: 25%;
+}
+
+.navbar {
+    z-index: 1040;
+}
+.side-nav {
+    margin-top: 49px !important;
+}
+
+.double-nav .breadcrumb-dn p {
+    color: #fff;
 }
 
 .aboutUsBlurb {
@@ -180,7 +195,7 @@ video {
 
 nav {
     background: white;
-    /* height: 100px; */
+    height: 100px;
     min-height: 100px;
     /* margin:0px -15px; */
     padding: 0 15px;
@@ -416,9 +431,13 @@ h1.section-title span {
 }
 
 @media (min-width: 992px) {
-    .loginJumbotron {
-        max-height: initial;
-        min-height: 100vh;
+    nav {
+        background: white;
+        height: 60px;
+        min-height: 60px;
+        /* margin:0px -15px; */
+        padding: 0 15px;
+        width: -webkit-fill-available;
     }
 }
 

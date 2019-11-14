@@ -11,6 +11,12 @@ $(document).ready(function() {
     var screenHeight = screen.availHeight;
     var screenWidth = screen.availWidth;
 
+    // SideNav Button Initialization
+    $(".button-collapse").sideNav();
+    // SideNav Scrollbar Initialization
+    var sideNavScrollbar = document.querySelector('.custom-scrollbar');
+    var ps = new PerfectScrollbar(sideNavScrollbar);
+
     // Since fixed height for nav, add nav height to container
     $('#content_container').css({'margin-top':$('nav').height() + 'px'});
 
