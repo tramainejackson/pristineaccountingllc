@@ -1,11 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-@if(session('status'))
-    <div class="alert alert-success">
-        {{ session('status') }}
-    </div>
+
+    @if(session('status'))
+        <div class="alert alert-success">
+            {{ session('status') }}
+        </div>
     @endif
+
     <!-- Jumbotron -->
     <div class="jumbotron card card-image" style="background-image: url({{ asset('images/accounting_image2.jpg') }});">
 
@@ -23,7 +25,7 @@
     </div>
     <!-- Jumbotron -->
 
-    <div class="container-fluid">
+    <div class="container-fluid" id="services">
 
         <div class="row mt-3 mb-5">
 
@@ -222,7 +224,7 @@
             </div>
         </div>
 
-        <div class="row" id="">
+        <div class="row" id="consultation">
 
             <!-- Jumbotron -->
             <div class="jumbotron card card-image p-0 rounded-0" style="background-image: url({{ asset('images/accounting_image.jpg') }});">
@@ -268,6 +270,33 @@
                                 </div>
 
                                 <div class="form-group col-12">
+                                    <select name="service" class="form-control browser-default custom-select" style="font-family:inherit;">
+                                        <option value="" selected>Select A Service</option>
+                                        <option value="bookkeeping">Bookkeeping</option>
+                                        <option value="tax_prep">Tax Preparation</option>
+                                        <option value="financial_ananlysis">Financial Analysis</option>
+                                        <option value="budget">Budgeting/Forecasting</option>
+                                        <option value="consulting">Consulting</option>
+                                    </select>
+
+                                    @if ($errors->has('email'))
+                                        <span class="text-danger">Select A Type of Service</span>
+                                    @endif
+                                </div>
+
+                                <div class="form-group col-12">
+                                    <select name="type" class="form-control browser-default custom-select" style="font-family:inherit;">
+                                        <option value="" selected>Select A Type</option>
+                                        <option value="B">Business</option>
+                                        <option value="P">Personal</option>
+                                    </select>
+
+                                    @if ($errors->has('email'))
+                                        <span class="text-danger">Select A Type of Consultation</span>
+                                    @endif
+                                </div>
+
+                                <div class="form-group col-12">
                                     {{ Form::submit('Send Consult Request', ['class' => 'btn btn-primary btn-rounded']) }}
                                 </div>
                             </div>
@@ -278,9 +307,9 @@
             <!-- Jumbotron -->
         </div>
 
-        <div class="row">
+        <div class="row mb-5">
 
-            <div class="col-12 mb-4">
+            <div class="col-12 mb-4" id="contact">
 
                 <div class="d-flex flex-row align-items-center">
                     <h1 class="section-title text-center coolText6"><span>Contact</span></h1>

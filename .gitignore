@@ -1,5 +1,6 @@
 /node_modules
 /public/hot
+/public/todo/
 /public/images/*
 /public/files/*
 /public/uploads/*

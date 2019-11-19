@@ -13,9 +13,11 @@
 
 Auth::routes();
 
-Route::get('/', 'HomeController@index');
+Route::get('/', 'HomeController@index')->name('home_index');
 
 Route::post('/', 'HomeController@consult_request');
+
+Route::get('/about', 'HomeController@about')->name('about');
 
 Route::resource('administrator', 'AdminController');
 

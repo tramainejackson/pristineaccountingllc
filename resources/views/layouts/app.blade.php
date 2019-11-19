@@ -39,18 +39,17 @@
                     <li>
                         <ul class="social">
                             <li><a href="#" class="icons-sm fb-ic"><i class="fab fa-facebook"> </i></a></li>
-                            <li><a href="#" class="icons-sm pin-ic"><i class="fab fa-pinterest"> </i></a></li>
-                            <li><a href="#" class="icons-sm gplus-ic"><i class="fab fa-google-plus"> </i></a></li>
-                            <li><a href="#" class="icons-sm tw-ic"><i class="fab fa-twitter"> </i></a></li>
+                            <li><a href="#" class="icons-sm ins-ic"><i class="fab fa-instagram"> </i></a></li>
                         </ul>
                     </li>
                     <!--/Social-->
                     <!-- Side navigation links -->
                     <li>
                         <ul class="collapsible collapsible-accordion">
-                            <li><a class="collapsible-header waves-effect" href="#"><i class="fas fa-pencil-alt"></i>About Me</a></li>
-                            <li><a class="collapsible-header waves-effect" href="#"><i class="fas fa-newspaper"></i>Services</a></li>
-                            <li><a class="collapsible-header waves-effect" href="#"><i class="fas fa-desktop"></i>Consultation Request</a></li>
+                            <li><a class="collapsible-header waves-effect" href="{{ route('home_index') }}"><i class="fas fa-home"></i>Home</a></li>
+                            <li><a class="collapsible-header waves-effect" href="{{ route('about') }}"><i class="fas fa-pencil-alt"></i>About Me</a></li>
+                            <li><a class="collapsible-header waves-effect" href="{{ url()->current() == route('home_index') ? '#services' : route('home_index') . '#services' }}"><i class="fas fa-clipboard-check"></i>Services</a></li>
+                            <li><a class="collapsible-header waves-effect" href="{{ url()->current() == route('home_index') ? '#consultation' : route('home_index') . '#consultation' }}"><i class="fas fa-desktop"></i>Consultation Request</a></li>
                         </ul>
                     </li>
                     <!--/. Side navigation links -->
@@ -65,12 +64,12 @@
                     <a href="#" data-activates="slide-out" class="button-collapse"><i class="fa fa-bars"></i></a>
                 </div>
                 <!-- Breadcrumb-->
-                <div class="breadcrumb-dn mr-auto">
+                <div class="breadcrumb-dn mr-auto" style="display: block;">
                     <p>Pristine Accounting LLC</p>
                 </div>
                 <ul class="nav navbar-nav nav-flex-icons ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link"><i class="fa fa-envelope"></i> <span class="clearfix d-none d-sm-inline-block">Contact</span></a>
+                        <a href="{{ url()->current() == route('home_index') ? '#contact' : route('home_index') . '#contact' }}" class="nav-link"><i class="fa fa-envelope"></i> <span class="clearfix d-none d-sm-inline-block">Contact</span></a>
                     </li>
                     {{--<li class="nav-item">--}}
                         {{--<a class="nav-link"><i class="fa fa-comments-o"></i> <span class="clearfix d-none d-sm-inline-block">Support</span></a>--}}
@@ -95,15 +94,15 @@
         </header>
         <!--/.Double navigation-->
 
-        <!--************************************************
-         ******************* Main Content ******************
-         ************************************************-->
+        <!--***********************************************
+        ******************* Main Content ******************
+        ************************************************-->
         @yield('content')
 
     </div>
 
     <!-- Footer -->
-    <footer class="page-footer font-small unique-color-dark p-0">
+    <footer class="page-footer font-small unique-color-dark p-0 fixed-bottom">
 
         <!-- Footer Text -->
         <div class="container-fluid text-center text-md-left d-none">
