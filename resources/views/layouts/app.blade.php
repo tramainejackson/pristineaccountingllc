@@ -21,7 +21,7 @@
 </head>
 <body class="hidden-sn deep-purple-skin">
 
-    <div id="app" class="">
+    <div id="app" class="mt-5 pt-5">
 
         <!--Double navigation-->
         <header>
@@ -48,8 +48,24 @@
                         <ul class="collapsible collapsible-accordion">
                             <li><a class="collapsible-header waves-effect" href="{{ route('home_index') }}"><i class="fas fa-home"></i>Home</a></li>
                             <li><a class="collapsible-header waves-effect" href="{{ route('about') }}"><i class="fas fa-pencil-alt"></i>About Me</a></li>
-                            <li><a class="collapsible-header waves-effect" href="{{ url()->current() == route('home_index') ? '#services' : route('home_index') . '#services' }}"><i class="fas fa-clipboard-check"></i>Services</a></li>
-                            <li><a class="collapsible-header waves-effect" href="{{ url()->current() == route('home_index') ? '#consultation' : route('home_index') . '#consultation' }}"><i class="fas fa-desktop"></i>Consultation Request</a></li>
+                            <li><a class="collapsible-header waves-effect" href="{{ route('home_index') . '#services' }}"><i class="fas fa-clipboard-check"></i>Services</a></li>
+                            <li><a class="collapsible-header waves-effect" href="{{ route('home_index') . '#consultation' }}"><i class="fas fa-desktop"></i>Consultation Request</a></li>
+
+                            @if(!Auth::user())
+                                <li class="d-sm-none d-flex">
+                                    <a class="collapsible-header waves-effect" href="{{ url()->current() == route('home_index') ? '#contact' : route('home_index') . '#contact' }}" class="collapsible-header waves-effect"><i class="fa fa-envelope"></i> <span class="clearfix d-none d-sm-inline-block">Contact</span></a>
+                                </li>
+                            @else
+                                <li class="d-sm-none d-flex">
+                                    <a class="collapsible-header waves-effect" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                        <i class="fas fa-sign-out-alt"></i> Logout
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        {{ csrf_field() }}
+                                    </form>
+                                </li>
+                            @endif
                         </ul>
                     </li>
                     <!--/. Side navigation links -->
@@ -58,7 +74,7 @@
             </div>
             <!--/. Sidebar navigation -->
             <!-- Navbar -->
-            <nav class="navbar fixed-top navbar-toggleable-md navbar-expand-lg double-nav">
+            <nav class="navbar fixed-top navbar-toggleable-md navbar-expand-lg double-nav w-100">
                 <!-- SideNav slide-out button -->
                 <div class="float-left">
                     <a href="#" data-activates="slide-out" class="button-collapse"><i class="fa fa-bars"></i></a>
@@ -68,9 +84,23 @@
                     <p>Pristine Accounting LLC</p>
                 </div>
                 <ul class="nav navbar-nav nav-flex-icons ml-auto">
-                    <li class="nav-item">
-                        <a href="{{ url()->current() == route('home_index') ? '#contact' : route('home_index') . '#contact' }}" class="nav-link"><i class="fa fa-envelope"></i> <span class="clearfix d-none d-sm-inline-block">Contact</span></a>
-                    </li>
+
+                    @if(!Auth::user())
+                        <li class="nav-item d-none d-sm-flex">
+                            <a href="{{ url()->current() == route('home_index') ? '#contact' : route('home_index') . '#contact' }}" class="nav-link"><i class="fa fa-envelope"></i> <span class="clearfix d-none d-sm-inline-block">Contact</span></a>
+                        </li>
+                    @else
+                        <li class="nav-item d-none d-sm-flex">
+                            <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                <i class="fas fa-sign-out-alt"></i> Logout
+                            </a>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                {{ csrf_field() }}
+                            </form>
+                        </li>
+                    @endif
+
                     {{--<li class="nav-item">--}}
                         {{--<a class="nav-link"><i class="fa fa-comments-o"></i> <span class="clearfix d-none d-sm-inline-block">Support</span></a>--}}
                     {{--</li>--}}

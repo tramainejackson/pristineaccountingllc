@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div class="container mt-5 pt-5">
+    <div class="container">
 
         <!--Section: Content-->
         <section class="text-center dark-grey-text">

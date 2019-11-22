@@ -9,7 +9,7 @@
     @endif
 
     <!-- Jumbotron -->
-    <div class="jumbotron card card-image" style="background-image: url({{ asset('images/accounting_image2.jpg') }});">
+    <div class="jumbotron card card-image mt-n5" style="background-image: url({{ asset('images/accounting_image2.jpg') }});">
 
         <div class="text-center py-5 px-4">
 
@@ -37,7 +37,7 @@
 
             </div>
 
-            <div class="col-9 mx-auto">
+            <div class="col-12 col-xl-10 mx-auto">
                 <!-- Grid row -->
                 <div class="row">
 
@@ -108,7 +108,7 @@
                     <!-- Grid column -->
 
                     <!-- Grid column -->
-                    <div class="col-lg-4 text-center d-none d-lg-flex">
+                    <div class="col-lg-4 text-center d-none d-lg-flex align-items-center justify-content-center">
                         <img class="img-fluid" src="{{ asset('images/accounting_image5.png') }}"
                              alt="Sample image">
                     </div>

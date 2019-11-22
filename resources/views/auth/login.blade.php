@@ -22,7 +22,7 @@
 
         <div class="row">
 
-            <div class="col-md-8 col-md-offset-2 ml-auto">
+            <div class="col-md-8 col-md-offset-2 ml-auto mb-5">
 
                 <div class="panel panel-default">
                     <div class="panel-heading">Login</div>

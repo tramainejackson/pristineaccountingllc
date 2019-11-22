@@ -22,3 +22,5 @@ Route::get('/about', 'HomeController@about')->name('about');
 Route::resource('administrator', 'AdminController');
 
 Route::resource('consults', 'ConsultRequestController');
+
+Route::resource('consult_responses', 'ConsultResponseController');

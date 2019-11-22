@@ -22,7 +22,7 @@ class AdminController extends Controller
     public function index() {
 	    $admin = Auth::user();
 	    $consults = ConsultRequest::all();
-	    $open_consults = ConsultRequest::mostRecent();
+	    $open_consults = ConsultRequest::leastRecent();
 	    $today = Carbon::now();
 	    $consult_created = null;
 

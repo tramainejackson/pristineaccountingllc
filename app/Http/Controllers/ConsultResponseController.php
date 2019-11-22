@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 
-class ConsultRequestController extends Controller
+class ConsultResponseController extends Controller
 {
 	public function __construct() {
 		$this->middleware(['auth']);
@@ -23,7 +23,6 @@ class ConsultRequestController extends Controller
     public function index() {
 	    $admin = Auth::user();
 	    $consults = ConsultRequest::all();
-	    $consults_responses = ConsultResponse::all();
 	    $open_consults = ConsultRequest::leastRecent();
 	    $today = Carbon::now();
 	    $consult_created = null;
@@ -33,7 +32,7 @@ class ConsultRequestController extends Controller
 	    // Create Carbon Date if there is an open consult
 	    $open_consults !== 0 ? $consult_created = new Carbon($open_consults->first()->created_at) : null;
 
-        return view('admin.consult_request.index', compact('admin', 'consults', 'open_consults', 'consult_created', 'today', 'consults_responses'));
+        return view('admin.consult_request.index', compact('admin', 'consults', 'open_consults', 'consult_created', 'today'));
     }
 
     /**
@@ -53,7 +52,13 @@ class ConsultRequestController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $consult_request = ConsultRequest::find($request->consult_request);
+        $consult_request->responded = 'Y';
+
+        $consult_response =  $consult_request->consultResponse()->create([
+        	'response' => 'This is working'
+        ]);
+
     }
 
     /**

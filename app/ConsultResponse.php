@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class ConsultRequest extends Model
+class ConsultResponse extends Model
 {
 	use SoftDeletes;
 
@@ -15,6 +15,13 @@ class ConsultRequest extends Model
 	 * @var array
 	 */
 	protected $dates = ['deleted_at'];
+
+	/**
+	 * The attributes that are mass assignable.
+	 *
+	 * @var array
+	 */
+	protected $fillable = ['response'];
 
 	/**
 	 * Create full name accessor
@@ -28,9 +35,9 @@ class ConsultRequest extends Model
 
 	/**
 	 * Get the consult request record associated with the user.
-	 */
-	public function consultResponse()	{
-		return $this->hasOne('App\ConsultResponse');
+	*/
+	public function consultRequest()	{
+		return $this->belongsTo('App\ConsultRequest');
 	}
 
 	/**

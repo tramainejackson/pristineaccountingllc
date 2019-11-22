@@ -2,16 +2,6 @@
 
 @section('content')
 
-    <a href="{{ route('logout') }}"
-       onclick="event.preventDefault();
-        document.getElementById('logout-form').submit();">
-        Logout
-    </a>
-
-    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-        {{ csrf_field() }}
-    </form>
-
     <div class="container-fluid">
 
         <div class="row" id="">
@@ -26,7 +16,7 @@
             <div class="col-12" id="">
 
                 <!-- Card deck -->
-                <div class="card-deck flex-md-column flex-lg-row">
+                <div class="card-deck flex-column flex-lg-row">
 
                     <!-- Card -->
                     <div class="card mb-4">
@@ -64,6 +54,51 @@
                             <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
 
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" id="">
+
+            <div class="col-12 col-lg-8" id="">
+
+                <div class="card" id="">
+
+                    <div class="card-body" id="">
+
+                        <h2 class="h2">Rates</h2>
+
+                        {!! Form::open(['action' => 'HomeController@consult_request', 'method' => 'POST']) !!}
+
+                            <div class="md-form input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text md-addon" id="material-addon1">$</span>
+                                </div>
+
+                                <input name="bookkeeping_rate" type="number" class="form-control" value="" placeholder="Accounting/Bookkeping Rate">
+
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text md-addon" id="material-addon1">per hour</span>
+                                </div>
+
+                                <label for="bookkeeping_rate">Accounting/Bookkeping Rate</label>
+                            </div>
+
+                            <div class="md-form input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text md-addon" id="material-addon1">$</span>
+                                </div>
+
+                                <input name="budgeting_rate" type="number" class="form-control" value="" placeholder="Personal Budgeting Rate">
+
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text md-addon" id="material-addon1">per hour</span>
+                                </div>
+                                <label for="budgeting_rate">Personal Budgeting Rate</label>
+                            </div>
+
+                        {!! Form::close() !!}
                     </div>
                 </div>
             </div>
