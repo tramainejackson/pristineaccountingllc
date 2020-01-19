@@ -74,8 +74,8 @@
 
                             <!-- Grid column -->
                             <div class="col-10">
-                                <h2 class="font-weight-bold mb-3 h2 coolText6">Tax Preparation</h2>
-                                <p class="grey-text">Yearly individual and commercial tax preparation can be extremely complex. Records and submissions must be prepared carefully in order to minimize your risk of unforeseen tax liabilities, fees, or audits. We can help prepare your taxes with easy from 1040s to 990s and everything in between.</p>
+                                <h2 class="font-weight-bold mb-3 h2 coolText6">Consulting</h2>
+                                <p class="grey-text">We can provides clients, such as companies and individuals, with services that help them analyze financial information so that they can make important business decisions.</p>
                             </div>
                             <!-- Grid column -->
 
@@ -93,8 +93,8 @@
 
                             <!-- Grid column -->
                             <div class="col-10">
-                                <h2 class="font-weight-bold mb-3 h2 coolText6">Consulting</h2>
-                                <p class="grey-text">We can provides clients, such as companies and individuals, with services that help them analyze financial information so that they can make important business decisions.</p>
+                                <h2 class="font-weight-bold mb-3 h2 coolText6">Financial Analysis</h2>
+                                <p class="grey-text"> It is wise to conduct periodic review and analysis of your company’s financial performance. These reviews are typically called audits, and are an important part of regulatory compliance. Additionally, financial analysis can provide valuable insight into your company’s financial health which can help you make sound decisions for the future.</p>
                             </div>
                             <!-- Grid column -->
 
@@ -125,8 +125,8 @@
 
                             <!-- Grid column -->
                             <div class="col-10">
-                                <h2 class="font-weight-bold mb-3 h2 coolText6">Financial Analysis</h2>
-                                <p class="grey-text"> It is wise to conduct periodic review and analysis of your company’s financial performance. These reviews are typically called audits, and are an important part of regulatory compliance. Additionally, financial analysis can provide valuable insight into your company’s financial health which can help you make sound decisions for the future.</p>
+                                <h2 class="font-weight-bold mb-3 h2 coolText6">Tax Preparation</h2>
+                                <p class="grey-text">Yearly individual and commercial tax preparation can be extremely complex. Records and submissions must be prepared carefully in order to minimize your risk of unforeseen tax liabilities, fees, or audits. We can help prepare your taxes with easy from 1040s to 990s and everything in between.</p>
                             </div>
                             <!-- Grid column -->
 
@@ -157,14 +157,32 @@
 
                             <!-- Grid column -->
                             <div class="col-2">
+                                <i class="fas fa-2x fa-tasks deep-purple-text"></i>
+                            </div>
+                            <!-- Grid column -->
+
+                            <!-- Grid column -->
+                            <div class="col-10">
+                                <h2 class="font-weight-bold mb-3 h2 coolText6">Personal Budgeting/Money Management</h2>
+                                <p class="grey-text">Helping individuals prepare monthly budgets to maintain their personal expenses and monthly income
+                            </div>
+                            <!-- Grid column -->
+                        </div>
+                        <!-- Grid row -->
+
+                        <!-- Grid row -->
+                        <div class="row mb-3">
+
+                            <!-- Grid column -->
+                            <div class="col-2">
                                 <i class="fas fa-2x fa-file-contract deep-purple-text"></i>
                             </div>
                             <!-- Grid column -->
 
                             <!-- Grid column -->
                             <div class="col-10">
-                                <h2 class="font-weight-bold mb-3 h2 coolText6">Form Creation</h2>
-                                <p class="grey-text">Contract and receipt creation.</p>
+                                <h2 class="font-weight-bold mb-3 h2 coolText6">Invoice/Contract Managing</h2>
+                                <p class="grey-text">Prepare monthly invoicing and contract preparation.</p>
                             </div>
                             <!-- Grid column -->
 
