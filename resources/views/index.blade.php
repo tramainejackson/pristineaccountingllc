@@ -56,8 +56,7 @@
                             <!-- Grid column -->
                             <div class="col-10">
                                 <h2 class="font-weight-bold mb-3 h2 coolText6">Bookkeeping</h2>
-                                <p class="grey-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores
-                                    nam, aperiam minima assumenda deleniti hic.</p>
+                                <p class="grey-text">Bookkeeping is the most basic of all accounting functions. Bookkeeping involves maintaining accurate and updated records of all of your company’s financial activity. This includes bank records, tax filings, payroll records, and purchase and sale records. These records are essential to regulatory compliance. Proper bookkeeping makes other accounting functions, such as audits, payroll, and tax preparation, much simpler and less time consuming.</p>
                             </div>
                             <!-- Grid column -->
 
@@ -76,8 +75,7 @@
                             <!-- Grid column -->
                             <div class="col-10">
                                 <h2 class="font-weight-bold mb-3 h2 coolText6">Tax Preparation</h2>
-                                <p class="grey-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores
-                                    nam, aperiam minima assumenda deleniti hic.</p>
+                                <p class="grey-text">Yearly individual and commercial tax preparation can be extremely complex. Records and submissions must be prepared carefully in order to minimize your risk of unforeseen tax liabilities, fees, or audits. We can help prepare your taxes with easy from 1040s to 990s and everything in between.</p>
                             </div>
                             <!-- Grid column -->
 
@@ -95,9 +93,8 @@
 
                             <!-- Grid column -->
                             <div class="col-10">
-                                <h2 class="font-weight-bold mb-3 h2 coolText6">Budgeting/Forecasting</h2>
-                                <p class="grey-text mb-md-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit
-                                    maiores nam, aperiam minima assumenda deleniti hic.</p>
+                                <h2 class="font-weight-bold mb-3 h2 coolText6">Consulting</h2>
+                                <p class="grey-text">We can provides clients, such as companies and individuals, with services that help them analyze financial information so that they can make important business decisions.</p>
                             </div>
                             <!-- Grid column -->
 
@@ -129,8 +126,7 @@
                             <!-- Grid column -->
                             <div class="col-10">
                                 <h2 class="font-weight-bold mb-3 h2 coolText6">Financial Analysis</h2>
-                                <p class="grey-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores
-                                    nam, aperiam minima assumenda deleniti hic.</p>
+                                <p class="grey-text"> It is wise to conduct periodic review and analysis of your company’s financial performance. These reviews are typically called audits, and are an important part of regulatory compliance. Additionally, financial analysis can provide valuable insight into your company’s financial health which can help you make sound decisions for the future.</p>
                             </div>
                             <!-- Grid column -->
 
@@ -148,9 +144,8 @@
 
                             <!-- Grid column -->
                             <div class="col-10">
-                                <h2 class="font-weight-bold mb-3 h2 coolText6">Consulting</h2>
-                                <p class="grey-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores
-                                    nam, aperiam minima assumenda deleniti hic.</p>
+                                <h2 class="font-weight-bold mb-3 h2 coolText6">Budgeting/Forecasting</h2>
+                                <p class="grey-text mb-md-0">Budgeting can be essential to making sure an individual or company stays on the right track with expenses and revenue. Budgeting quantifies the expectation of revenue and expenses that a business wants to achieve for a future period. Forecasting estimates the number of revenue that will be achieved in future periods. </p>
                             </div>
                             <!-- Grid column -->
 
@@ -182,29 +177,6 @@
                 </div>
                 <!-- Grid row -->
 
-                {{--<div class="card-deck">--}}
-
-                    {{--<div class="card">--}}
-                        {{--<div class="card-body">--}}
-                            {{--<h1 class="card-title coolText6">Public Accounting</h1>--}}
-                            {{--<p class="card-text">Processes involved in public accounting are preparation, review, and audit of financial statements, tax preparation, and consultation or advisory services.</p>--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
-
-                    {{--<div class="card">--}}
-                        {{--<div class="card-body">--}}
-                            {{--<h1 class="card-title coolText6">Management Accounting</h1>--}}
-                            {{--<p class="card-text">Management accounting is a process wherein accounting professionals analyze past and present accounting data to synthesize an effective and efficient business model for their client. Some of the processes under management accounting include budgeting, asset management, cost management, and performance evaluation.</p>--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
-
-                    {{--<div class="card">--}}
-                        {{--<div class="card-body">--}}
-                            {{--<h1 class="card-title coolText6">Bookkeeping</h1>--}}
-                            {{--<p class="card-text">Bookkeeping is the recording of financial transactions, and is part of the process of accounting in business. Transactions include purchases, sales, receipts, and payments by an individual person or an organization/corporation. There are several standard methods of bookkeeping, including the single-entry and double-entry bookkeeping systems.</p>--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
             </div>
         </div>
 
@@ -348,7 +320,7 @@
                     </li>
 
                     <li><i class="fa fa-envelope fa-2x"></i>
-                        <p>adc0426@gmail.com</p>
+                        <p>pristineaccting@gmail.com</p>
                     </li>
                 </ul>
             </div>

@@ -22,7 +22,7 @@
                     build a foundation to help their unique financial situation. Our clients are greeted with
                     professionalism, understanding, and personal interaction.
                     Pristine Accounting consists of trained staff with over 11 years of accounting experience
-                    with education in Accounting, Fraud and Forensic Accounting, and Economic Crime.
+                    with education in Accounting, Fraud and Forensic Accounting, and Economic Crime.<i class="fas fa-quote-right"></i>
                 </p>
 
                 <h4 class="font-weight-bold py-lg-3">Ashley Clark-Jackson</h4>
