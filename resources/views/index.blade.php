@@ -145,7 +145,7 @@
                             <!-- Grid column -->
                             <div class="col-10">
                                 <h2 class="font-weight-bold mb-3 h2 coolText6">Budgeting/Forecasting</h2>
-                                <p class="grey-text mb-md-0">Budgeting can be essential to making sure an individual or company stays on the right track with expenses and revenue. Budgeting quantifies the expectation of revenue and expenses that a business wants to achieve for a future period. Forecasting estimates the number of revenue that will be achieved in future periods. </p>
+                                <p class="grey-text mb-md-0">Budgeting can be essential to making sure an individual or company stays on the right track with expenses and revenue. Budgeting quantifies the expectation of revenue and expenses that a business wants to achieve for a future period. Forecasting estimates the number of revenue that will be achieved in future periods.</p>
                             </div>
                             <!-- Grid column -->
 
@@ -164,7 +164,7 @@
                             <!-- Grid column -->
                             <div class="col-10">
                                 <h2 class="font-weight-bold mb-3 h2 coolText6">Personal Budgeting/Money Management</h2>
-                                <p class="grey-text">Helping individuals prepare monthly budgets to maintain their personal expenses and monthly income
+                                <p class="grey-text">Helping individuals prepare monthly budgets to maintain their personal expenses and monthly income.</p>
                             </div>
                             <!-- Grid column -->
                         </div>
@@ -280,11 +280,13 @@
 
                                 <div class="form-group col-12">
                                     <select name="service" class="form-control browser-default custom-select" style="font-family:inherit;">
-                                        <option value="" selected>Select A Service</option>
+                                        <option value="" selected disabled>Select A Service</option>
                                         <option value="bookkeeping">Bookkeeping</option>
                                         <option value="tax_prep">Tax Preparation</option>
                                         <option value="financial_ananlysis">Financial Analysis</option>
                                         <option value="budget">Budgeting/Forecasting</option>
+                                        <option value="budget">Personal Budgeting/Money Management</option>
+                                        <option value="invoicing">Invoice/Contract Management</option>
                                         <option value="consulting">Consulting</option>
                                     </select>
 
