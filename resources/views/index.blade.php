@@ -157,6 +157,25 @@
                         </div>
                         <!-- Grid row -->
 
+                        <!-- Grid row -->
+                        <div class="row mb-3">
+
+                            <!-- Grid column -->
+                            <div class="col-2">
+                                <i class="fas fa-2x fa-file-contract deep-purple-text"></i>
+                            </div>
+                            <!-- Grid column -->
+
+                            <!-- Grid column -->
+                            <div class="col-10">
+                                <h2 class="font-weight-bold mb-3 h2 coolText6">Form Creation</h2>
+                                <p class="grey-text">Contract and receipt creation.</p>
+                            </div>
+                            <!-- Grid column -->
+
+                        </div>
+                        <!-- Grid row -->
+
                     </div>
                     <!-- Grid column -->
 

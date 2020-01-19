@@ -21,17 +21,17 @@ class AdminController extends Controller
      */
     public function index() {
 	    $admin = Auth::user();
+	    $setting = Admin::first();
 	    $consults = ConsultRequest::all();
 	    $open_consults = ConsultRequest::leastRecent();
 	    $today = Carbon::now();
 	    $consult_created = null;
-
 	    $open_consults->isNotEmpty() ? $open_consults->count() : 0;
 
 	    // Create Carbon Date if there is an open consult
 	    $open_consults !== 0 ? $consult_created = new Carbon($open_consults->first()->created_at) : null;
 
-        return view('admin.index', compact('admin', 'consults', 'open_consults', 'consult_created', 'today'));
+        return view('admin.index', compact('admin', 'consults', 'open_consults', 'consult_created', 'today', 'setting'));
     }
 
     /**
@@ -83,9 +83,19 @@ class AdminController extends Controller
      * @param  \App\Admin  $admin
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Admin $admin)
+    public function update(Request $request)
     {
-        //
+        $admin = Admin::first();
+        $admin->accounting_rate = $request->accounting_rate;
+        $admin->tax_prep_rate = $request->tax_prep_rate;
+        $admin->budgeting_rate = $request->budgeting_rate;
+
+        if($admin->save()) {
+	        return redirect()->back()->with('status', 'Pricing Updated!');
+        } else {
+	        return redirect()->back()->with('status', 'Pricing Not Updated, Please Try Again.');
+        }
+
     }
 
     /**

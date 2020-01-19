@@ -2,6 +2,12 @@
 
 @section('content')
 
+    @if (session('status'))
+        <script type="text/javascript">
+            toastr.success("Calendar showing updated", "Success", {showMethod: 'slideDown'});
+        </script>
+    @endif
+
     <div class="container-fluid">
 
         <div class="row" id="">
@@ -67,22 +73,12 @@
 
                     <div class="card-body" id="">
 
-                        <h2 class="h2">Rates</h2>
+                        {!! Form::open(['action' => ['AdminController@update', $setting->id], 'method' => 'PATCH']) !!}
 
-                        {!! Form::open(['action' => 'HomeController@consult_request', 'method' => 'POST']) !!}
+                            <div class="d-flex align-items-center justify-content-between" id="">
+                                <h2 class="h2">Rates</h2>
 
-                            <div class="md-form input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text md-addon" id="material-addon1">$</span>
-                                </div>
-
-                                <input name="bookkeeping_rate" type="number" class="form-control" value="" placeholder="Accounting/Bookkeping Rate">
-
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text md-addon" id="material-addon1">per hour</span>
-                                </div>
-
-                                <label for="bookkeeping_rate">Accounting/Bookkeping Rate</label>
+                                <button type="submit" class="btn btn-sm btn-mdb-color" value="update_pricing_btn">Update Pricing Options</button>
                             </div>
 
                             <div class="md-form input-group">
@@ -90,12 +86,39 @@
                                     <span class="input-group-text md-addon" id="material-addon1">$</span>
                                 </div>
 
-                                <input name="budgeting_rate" type="number" class="form-control" value="" placeholder="Personal Budgeting Rate">
+                                <input name="accounting_rate" type="number" class="form-control" value="{{ $setting->accounting_rate }}" placeholder="Accounting/Bookkeping Rate" step="0.01">
+
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text md-addon" id="material-addon1">per hour</span>
+                                </div>
+
+                                <label for="accounting_rate">Accounting/Bookkeping Rate</label>
+                            </div>
+
+                            <div class="md-form input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text md-addon" id="material-addon1">$</span>
+                                </div>
+
+                                <input name="budgeting_rate" type="number" class="form-control" value="{{ $setting->budgeting_rate }}" placeholder="Personal Budgeting Rate" step="0.01">
 
                                 <div class="input-group-prepend">
                                     <span class="input-group-text md-addon" id="material-addon1">per hour</span>
                                 </div>
                                 <label for="budgeting_rate">Personal Budgeting Rate</label>
+                            </div>
+
+                            <div class="md-form input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text md-addon" id="material-addon1">$</span>
+                                </div>
+
+                                <input name="tax_prep_rate" type="number" class="form-control" value="{{ $setting->tax_prep_rate }}" placeholder="Tax Preparation Rate" step="0.01">
+
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text md-addon" id="material-addon1">per hour</span>
+                                </div>
+                                <label for="tax_prep_rate">Tax Preparation Rate</label>
                             </div>
 
                         {!! Form::close() !!}

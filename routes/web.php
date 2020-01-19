@@ -19,6 +19,8 @@ Route::post('/', 'HomeController@consult_request');
 
 Route::get('/about', 'HomeController@about')->name('about');
 
+Route::get('/pricing', 'HomeController@pricing')->name('pricing');
+
 Route::resource('administrator', 'AdminController');
 
 Route::resource('consults', 'ConsultRequestController');
