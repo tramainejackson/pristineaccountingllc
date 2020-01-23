@@ -12,7 +12,7 @@ use Carbon\Carbon;
 class ConsultResponseController extends Controller
 {
 	public function __construct() {
-		$this->middleware(['auth']);
+		$this->middleware(['auth'])->except('store');
 	}
 
     /**
@@ -55,10 +55,13 @@ class ConsultResponseController extends Controller
         $consult_request = ConsultRequest::find($request->consult_request);
         $consult_request->responded = 'Y';
 
-        $consult_response =  $consult_request->consultResponse()->create([
-        	'response' => 'This is working'
-        ]);
+        if($consult_request->save()) {
+	        $consult_response = $consult_request->consultResponse()->create([
+		        'response' => 'This is working'
+	        ]);
 
+	        return back()->with('status', 'Request Moved To Completed');
+        }
     }
 
     /**

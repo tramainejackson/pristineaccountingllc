@@ -15,13 +15,13 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home_index');
 
-Route::post('/', 'HomeController@consult_request');
-
 Route::get('/about', 'HomeController@about')->name('about');
 
 Route::get('/pricing', 'HomeController@pricing')->name('pricing');
 
 Route::resource('administrator', 'AdminController');
+
+Route::get('/contacts', 'AdminController@contacts')->name('administrator.contacts');
 
 Route::resource('consults', 'ConsultRequestController');
 

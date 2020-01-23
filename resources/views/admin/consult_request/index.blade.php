@@ -2,6 +2,14 @@
 
 @section('content')
 
+    @if(session('status'))
+        @section('additional_scripts')
+            <script type="text/javascript">
+                toastr.success("Request Moved To Completed", "Success", {showMethod: 'slideDown'});
+            </script>
+        @endsection
+    @endif
+
     <div class="container-fluid">
 
         <div class="row" id="">
@@ -42,7 +50,7 @@
                                                 <p class="">Received - <span class='text-muted'>{{ $consult->created_at->format('m/d/Y') }}</span></p>
                                             </div>
 
-                                            <table id="" class="table table-bordered table-responsive">
+                                            <table id="" class="table table-bordered table-responsive-xl">
                                                 <thead class="info-color-dark white-text">
                                                     <tr>
                                                         <th class="th-sm">Received<i class="" aria-hidden="true"></i></th>
@@ -112,7 +120,7 @@
                                             <p class="">Responded - <span class='text-muted'>{{ $response->created_at->format('m/d/Y') }}</span></p>
                                         </div>
 
-                                        <table id="" class="table table-bordered table-responsive">
+                                        <table id="" class="table table-bordered table-responsive-xl">
 
                                             <thead class="stylish-color-dark white-text">
                                                 <tr>

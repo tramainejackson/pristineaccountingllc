@@ -35,6 +35,26 @@ class AdminController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function contacts() {
+	    $admin = Auth::user();
+	    $setting = Admin::first();
+	    $consults = ConsultRequest::all();
+	    $open_consults = ConsultRequest::leastRecent();
+	    $today = Carbon::now();
+	    $consult_created = null;
+	    $open_consults->isNotEmpty() ? $open_consults->count() : 0;
+
+	    // Create Carbon Date if there is an open consult
+	    $open_consults !== 0 ? $consult_created = new Carbon($open_consults->first()->created_at) : null;
+
+        return view('admin.contacts', compact('admin', 'consults', 'open_consults', 'consult_created', 'today', 'setting'));
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response

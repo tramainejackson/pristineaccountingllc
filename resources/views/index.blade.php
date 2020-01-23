@@ -3,9 +3,11 @@
 @section('content')
 
     @if(session('status'))
-        <div class="alert alert-success">
-            {{ session('status') }}
-        </div>
+        @section('additional_scripts')
+            <script type="text/javascript">
+                toastr.success("Request Sent Successfully", "", {showMethod: 'slideDown'});
+            </script>
+        @endsection
     @endif
 
     <!-- Jumbotron -->
@@ -250,7 +252,7 @@
 
                     <div class="" id="">
 
-                        {!! Form::open(['action' => 'HomeController@consult_request', 'method' => 'POST']) !!}
+                        {!! Form::open(['action' => 'ConsultRequestController@store', 'method' => 'POST']) !!}
 
                             <div class="form-row">
 

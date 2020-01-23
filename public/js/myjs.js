@@ -789,9 +789,6 @@ $(function () {
     $("#mdb-lightbox-ui").load("/addons/mdb-lightbox-ui.html");
 });
 
-// object-fit polyfill run
-objectFitImages();
-
 /* init Jarallax */
 jarallax(document.querySelectorAll('.jarallax'));
 

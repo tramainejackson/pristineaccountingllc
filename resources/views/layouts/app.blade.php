@@ -50,6 +50,10 @@
                             <li><a class="collapsible-header waves-effect" href="{{ route('about') }}"><i class="fas fa-pencil-alt"></i>About Me</a></li>
                             <li><a class="collapsible-header waves-effect" href="{{ route('home_index') . '#services' }}"><i class="fas fa-clipboard-check"></i>Services</a></li>
                             <li><a class="collapsible-header waves-effect" href="{{ route('home_index') . '#consultation' }}"><i class="fas fa-desktop"></i>Consultation Request</a></li>
+                            @if(Auth::user())
+                                <li><a class="collapsible-header waves-effect" href="{{ route('administrator.index') }}"><i class="fas fa-user"></i>Administrator</a></li>
+                                <li><a class="collapsible-header waves-effect" href="{{ route('administrator.contacts') }}"><i class="fas fa-users"></i>Contacts</a></li>
+                            @endif
 
                             @if(!Auth::user())
                                 <li class="d-sm-none d-flex">
@@ -191,5 +195,8 @@
     <!-- MDB core JavaScript -->
     <script type="text/javascript" src="{{ asset('js/mdb.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/myjs.js') }}"></script>
+
+    @yield('additional_scripts')
+
 </body>
 </html>
