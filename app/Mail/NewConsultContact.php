@@ -37,6 +37,6 @@ class NewConsultContact extends Mailable
 	 */
 	public function build()
 	{
-		return $this->subject('New Contact Added')->view('emails.new_contact', compact('consult_contact'));
+		return $this->subject('New Consult Requested')->view('emails.new_contact', compact('consult_contact'));
 	}
 }

@@ -82,7 +82,7 @@ class ConsultRequestController extends Controller
 		    if($contact->save()) {}
 
 //		    \Mail::to($consult->email)->send(new Update($consult));
-		    \Mail::to('pristineaccting@gmail.com')->send(new NewConsultContact($contact));
+		    \Mail::to($consult->email)->send(new NewConsultContact($contact));
 
 		    return back()->with('status', 'Thank you for your request ' . $consult->first_name . '. We will contact you at ' . $consult->email . ' soon!');
 	    }

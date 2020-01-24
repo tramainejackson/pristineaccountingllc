@@ -30,7 +30,7 @@ class ConsultContact extends Model
 	 * Get the consult request record associated with the user.
 	 */
 	public function consultRequest()	{
-		return $this->hasOne('App\ConsultRequest');
+		return $this->belongsTo('App\ConsultRequest');
 	}
 
 }

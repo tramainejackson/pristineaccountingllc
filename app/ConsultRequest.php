@@ -29,6 +29,13 @@ class ConsultRequest extends Model
 	/**
 	 * Get the consult request record associated with the user.
 	 */
+	public function consultContact()	{
+		return $this->hasOne('App\ConsultContact');
+	}
+
+	/**
+	 * Get the consult request record associated with the user.
+	 */
 	public function consultResponse()	{
 		return $this->hasOne('App\ConsultResponse');
 	}
