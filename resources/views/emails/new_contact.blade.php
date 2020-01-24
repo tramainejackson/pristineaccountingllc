@@ -79,10 +79,10 @@
 		<div style="font-family: 'Playfair Display', serif;">
 			<h3 class="contactEmailHeader" style="margin: 0px 35px 35px;">You Have A New Contact:</h3>
 			<ul class="list-unstyled contactInfoList">
-				<li class=""><b>First Name:</b> {{ $contact->first_name }}</li>
-				<li class=""><b>Last Name:</b> {{ $contact->last_name }}</li>
-				<li class=""><b>Email Address:</b> <a href="mailto:{{ $contact->email }}" class="">{{ $contact->email }}</a></li>
-				<li class=""><b>Phone Number:</b> {{ $contact->phone }}</li>
+				<li class=""><b>First Name:</b> {{ $consult_contact->first_name }}</li>
+				<li class=""><b>Last Name:</b> {{ $consult_contact->last_name }}</li>
+				<li class=""><b>Email Address:</b> <a href="mailto:{{ $consult_contact->email }}" class="">{{ $consult_contact->email }}</a></li>
+				<li class=""><b>Phone Number:</b> {{ $consult_contact->phone }}</li>
 			</ul>
 		</div>
 

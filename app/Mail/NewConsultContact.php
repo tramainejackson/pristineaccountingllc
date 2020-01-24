@@ -3,30 +3,31 @@
 namespace App\Mail;
 
 use App\ConsultRequest;
+use App\ConsultContact;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class NewContact extends Mailable
+class NewConsultContact extends Mailable
 {
 	use Queueable, SerializesModels;
 
 	/**
 	 * The Consult Request instance
 	 *
-	 * @var consult_request
+	 * @var consult_contact
 	 */
-	public $consult_request;
+	public $consult_contact;
 
 	/**
 	 * Create a new message instance.
 	 *
 	 * @return void
 	 */
-	public function __construct(ConsultRequest $consult_request)
+	public function __construct(ConsultContact $consult_contact)
 	{
-		$this->consult_request = $consult_request;
+		$this->consult_contact = $consult_contact;
 	}
 
 	/**
@@ -36,6 +37,6 @@ class NewContact extends Mailable
 	 */
 	public function build()
 	{
-		return $this->subject('New Contact Added')->view('emails.new_contact', compact('consult_request'));
+		return $this->subject('New Contact Added')->view('emails.new_contact', compact('consult_contact'));
 	}
 }

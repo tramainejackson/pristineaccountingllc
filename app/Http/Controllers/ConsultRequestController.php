@@ -6,6 +6,7 @@ use App\Admin;
 use App\ConsultRequest;
 use App\ConsultContact;
 use App\ConsultResponse;
+use App\Mail\NewConsultContact;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
@@ -72,18 +73,16 @@ class ConsultRequestController extends Controller
 	    $consult->type = $request->type;
 
 	    if($consult->save()) {
-//		    \Mail::to($consult->email)->send(new Update($consult));
-//			\Mail::to('lorenzodevonj@yahoo.com')->send(new NewContact($consult));
-
 		    $contact = new ConsultContact();
 		    $contact->consult_request_id = $consult->id;
 		    $contact->email = $consult->email;
 		    $contact->last_name = $consult->last_name;
 		    $contact->first_name = $consult->first_name;
 
-		    if($contact->save()) {
+		    if($contact->save()) {}
 
-		    }
+//		    \Mail::to($consult->email)->send(new Update($consult));
+		    \Mail::to('pristineaccting@gmail.com')->send(new NewConsultContact($contact));
 
 		    return back()->with('status', 'Thank you for your request ' . $consult->first_name . '. We will contact you at ' . $consult->email . ' soon!');
 	    }

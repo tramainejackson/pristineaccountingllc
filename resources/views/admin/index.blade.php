@@ -30,7 +30,7 @@
                         <div class="card-body">
 
                             <h5 class="card-title d-flex align-items-center justify-content-between">Consultation Request <a href="/consults" class="btn-floating btn-sm btn-warning"><i class="fas fa-edit"></i></a></h5>
-                            <p class="card-text">You Currently Have {{ $open_consults !== 0 ?: $open_consults->count() }} Consult Request(s) That Has Not Been Responded To.</p>
+                            <p class="card-text">You Currently Have {{ $open_consults }} Consult Request(s) That Has Not Been Responded To.</p>
 
                             @if($open_consults !== 0)
                                 <p class="card-text"><small class="text-muted">Requested {{ $consult_created->diffInDays($today) < 1 ? 'Today' : $consult_created->diffInDays($today) . ' days ago' }}</small></p>
