@@ -30,10 +30,10 @@ class ConsultRequestController extends Controller
 	    $today = Carbon::now();
 	    $consult_created = null;
 
-	    $open_consults->isNotEmpty() ? $open_consults->count() : 0;
+	    $open_consults->isNotEmpty() ? $open_consults = $open_consults->count() : $open_consults = 0;
 
 	    // Create Carbon Date if there is an open consult
-	    $open_consults !== 0 ? $consult_created = new Carbon($open_consults->first()->created_at) : null;
+	    $open_consults !== 0 ? $consult_created = new Carbon(ConsultRequest::leastRecent()->first()->created_at) : null;
 
         return view('admin.consult_request.index', compact('admin', 'consults', 'open_consults', 'consult_created', 'today', 'consults_responses'));
     }

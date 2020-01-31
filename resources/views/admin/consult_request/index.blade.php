@@ -18,12 +18,12 @@
             </div>
         </div>
 
-        <div class="row" id="">
+        <div class="row pb-5" id="">
 
             <div class="col-12 col-md-6 border-right overflow-auto" id="">
 
                 <div class="d-flex justify-content-between align-items-center" id="">
-                    <h2 class="d-inline-block">Open Request</h2>
+                    <h2 class="d-inline-block text-underline">Open Request</h2>
 
                     {!! $open_consults !== 0 ? "<span class='badge badge-pill badge-info'>" . $open_consults->count() . "</span>" : '' !!}
                 </div>
@@ -86,8 +86,13 @@
                                         </div>
                                     </div>
                                 </div>
-                            @endif()
+                            @else
+                            @endif
                         @endforeach
+                    </div>
+                @else
+                    <div class="text-center">
+                        <h3 class="h3 text-center mt-5">You do not have any current request</h3>
                     </div>
                 @endif
             </div>
@@ -97,7 +102,7 @@
             <div class="col-12 col-md-6 border-left" id="">
 
                 <div class="d-flex justify-content-between align-items-center" id="">
-                    <h2 class="d-inline-block">Completed Request</h2>{!! $consults_responses->count() !== 0 ? "<span class='badge badge-pill badge-info'>" . $consults_responses->count() . "</span>" : '' !!}
+                    <h2 class="d-inline-block text-underline">Completed Request</h2>{!! $consults_responses->count() !== 0 ? "<span class='badge badge-pill badge-info'>" . $consults_responses->count() . "</span>" : '' !!}
                 </div>
 
                 @if($consults_responses->count() !== 0)
@@ -165,7 +170,6 @@
                                     </div>
                                 </div>
                             </div>
-
                         @endforeach
                     </div>
                 @endif

@@ -34,6 +34,8 @@
 
                             @if($open_consults !== 0)
                                 <p class="card-text"><small class="text-muted">Requested {{ $consult_created->diffInDays($today) < 1 ? 'Today' : $consult_created->diffInDays($today) . ' days ago' }}</small></p>
+                            @else
+
                             @endif
                         </div>
                     </div>
