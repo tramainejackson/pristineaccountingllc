@@ -25,6 +25,9 @@
 </head>
 <body class="hidden-sn deep-purple-skin">
 
+    <!-- Loading spinner to be added when form being submitted -->
+    @include('modals.loading_spinner')
+
     <div id="app" class="mt-5 pt-5">
 
         <!--Double navigation-->
@@ -35,7 +38,7 @@
                     <!-- Logo -->
                     <li>
                         <div class="logo-wrapper waves-light">
-                            {{--<a href="#"><img src="https://mdbootstrap.com/img/logo/mdb-transparent.png" class="img-fluid flex-center"></a>--}}
+                            <a href="{{ route('home_index') }}"><img src="{{ asset('images/ap_logo.png') }}" class="img-fluid flex-center"></a>
                         </div>
                     </li>
                     <!--/. Logo -->

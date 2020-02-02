@@ -252,7 +252,7 @@
 
                     <div class="" id="">
 
-                        {!! Form::open(['action' => 'ConsultRequestController@store', 'method' => 'POST']) !!}
+                        {!! Form::open(['action' => 'ConsultRequestController@store', 'method' => 'POST', 'class' => 'consult_request_form']) !!}
 
                             <div class="form-row">
 
