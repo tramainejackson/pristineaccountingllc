@@ -339,61 +339,12 @@ h1.section-title span {
         font-size: 75% !important;
     }
 
-    .btn-group.tenantProp {
-        max-width: 100%;
+    .side-nav .logo-wrapper img {
+        padding-top: 24%;
     }
 
-    .btn-group.tenantProp select {
-        max-width: 100%;
-    }
-
-    fieldset legend {
-        width: 75% !important;
-    }
-
-    .emptyMedia {
-        font-size: 100%;
-    }
-
-    .media img {
-        max-height: initial;
-        max-height: auto;
-    }
-
-    .view img, .view video {
-        position: relative;
-        display: block;
-        margin: 0 auto;
-    }
-
-    .form-block-header {
-        background: linear-gradient(transparent, rgba(255, 188, 4, 1), transparent);
-        text-align: center;
-    }
-
-    .form-group [for="media"] {
-        margin-bottom: 24px;
-    }
-
-    .form-group select {
-        width: 100% !important;
-    }
-
-    .mdb-lightbox figure .img-fluid {
-        max-height: initial;
-    }
-
-    img.navbar-brand {
-        max-width: 65%;
-        margin: 0 auto;
-    }
-
-    .form-group select {
-        width: 100% !important;
-    }
-
-    .separtator.jumbotron {
-        padding: 7em 2em;
+    .side-nav .logo-wrapper {
+        height: 200px;
     }
 }
 
@@ -425,6 +376,14 @@ h1.section-title span {
         /* margin:0px -15px; */
         padding: 0 15px;
         width: -webkit-fill-available;
+    }
+
+    .side-nav .logo-wrapper {
+        height: 160px;
+    }
+
+    .side-nav .logo-wrapper img {
+        padding-top: 7%;
     }
 }
 
