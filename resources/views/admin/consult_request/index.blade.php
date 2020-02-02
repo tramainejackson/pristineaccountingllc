@@ -25,14 +25,14 @@
                 <div class="d-flex justify-content-between align-items-center" id="">
                     <h2 class="d-inline-block text-underline">Open Request</h2>
 
-                    {!! $open_consults !== 0 ? "<span class='badge badge-pill badge-info'>" . $open_consults->count() . "</span>" : '' !!}
+                    {!! $open_consults !== 0 ? "<span class='badge badge-pill badge-info'>" . $open_consults . "</span>" : '' !!}
                 </div>
 
                 @if($open_consults !== 0)
 
                     <div class="list-group-flush">
 
-                        @foreach($open_consults as $consult)
+                        @foreach(App\ConsultRequest::leastRecent() as $consult)
 
                             @if($consult->responded == 'N')
 
