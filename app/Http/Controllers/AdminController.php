@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Admin;
 use App\ConsultRequest;
+use App\ConsultContact;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
@@ -40,18 +41,9 @@ class AdminController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function contacts() {
-	    $admin = Auth::user();
-	    $setting = Admin::first();
-	    $consults = ConsultRequest::all();
-	    $open_consults = ConsultRequest::leastRecent();
-	    $today = Carbon::now();
-	    $consult_created = null;
-	    $open_consults->isNotEmpty() ? $open_consults = $open_consults->count() : $open_consults = 0;
+	    $contacts = ConsultContact::all();
 
-	    // Create Carbon Date if there is an open consult
-	    $open_consults !== 0 ? $consult_created = new Carbon(ConsultRequest::leastRecent()->first()->created_at) : null;
-
-        return view('admin.contacts', compact('admin', 'consults', 'open_consults', 'consult_created', 'today', 'setting'));
+        return view('admin.contacts', compact('contacts'));
     }
 
     /**

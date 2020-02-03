@@ -57,8 +57,8 @@
 
                         <div class="card-body">
 
-                            <h5 class="card-title d-flex align-items-center justify-content-between">Panel title <a class="btn-floating btn-sm btn-warning"><i class="fas fa-edit"></i></a></h5>
-                            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                            <h5 class="card-title d-flex align-items-center justify-content-between">Testimonials <a class="btn-floating btn-sm btn-warning"><i class="fas fa-edit"></i></a></h5>
+                            <p class="card-text">You currently have 0 testimonials. These are your reviews from the clients that you've serviced so far. You can choose which ones display on your website.</p>
                             <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
 
                         </div>

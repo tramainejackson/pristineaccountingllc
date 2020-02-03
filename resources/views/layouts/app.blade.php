@@ -62,11 +62,7 @@
                                 <li><a class="collapsible-header waves-effect" href="{{ route('administrator.contacts') }}"><i class="fas fa-users"></i>Contacts</a></li>
                             @endif
 
-                            @if(!Auth::user())
-                                <li class="d-sm-none d-flex">
-                                    <a class="collapsible-header waves-effect" href="{{ url()->current() == route('home_index') ? '#contact' : route('home_index') . '#contact' }}" class="collapsible-header waves-effect"><i class="fa fa-envelope"></i> <span class="clearfix d-none d-sm-inline-block">Contact</span></a>
-                                </li>
-                            @else
+                            @if(Auth::user())
                                 <li class="d-sm-none d-flex">
                                     <a class="collapsible-header waves-effect" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                         <i class="fas fa-sign-out-alt"></i> Logout

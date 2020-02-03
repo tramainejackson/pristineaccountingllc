@@ -307,6 +307,14 @@ h1.section-title span {
     .separtator.jumbotron {
         padding: 8em 2em;
     }
+
+    .side-nav .logo-wrapper img {
+        padding-top: 24%;
+    }
+
+    .side-nav .logo-wrapper {
+        height: 200px;
+    }
 }
 
 @media only screen and (min-width: 576px) {
