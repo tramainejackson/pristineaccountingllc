@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 
-class ConsultRequestController extends Controller
+class ConsultContactController extends Controller
 {
 	public function __construct() {
 		$this->middleware(['auth'])->except('store');
@@ -23,19 +23,9 @@ class ConsultRequestController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index() {
-	    $admin = Auth::user();
-	    $consults = ConsultRequest::all();
-	    $consults_responses = ConsultResponse::all();
-	    $open_consults = ConsultRequest::leastRecent();
-	    $today = Carbon::now();
-	    $consult_created = null;
+	    $contacts = ConsultContact::all();
 
-	    $open_consults->isNotEmpty() ? $open_consults = $open_consults->count() : $open_consults = 0;
-
-	    // Create Carbon Date if there is an open consult
-	    $open_consults !== 0 ? $consult_created = new Carbon(ConsultRequest::leastRecent()->first()->created_at) : null;
-
-        return view('admin.consult_request.index', compact('admin', 'consults', 'open_consults', 'consult_created', 'today', 'consults_responses'));
+	    return view('admin.contacts.index', compact('contacts'));
     }
 
     /**
@@ -46,7 +36,7 @@ class ConsultRequestController extends Controller
     public function create() {
 	    $admin = Auth::user();
 
-	    return view('admin.consult_request.create', compact('admin'));
+	    return view('admin.contacts.create', compact('admin'));
     }
 
     /**
@@ -107,9 +97,8 @@ class ConsultRequestController extends Controller
      * @param  \App\Admin  $admin
      * @return \Illuminate\Http\Response
      */
-    public function edit(Admin $admin)
-    {
-        //
+    public function edit(ConsultContact $consult_contact) {
+	    return view('admin.contacts.edit', compact('consult_contact'));
     }
 
     /**
@@ -119,9 +108,25 @@ class ConsultRequestController extends Controller
      * @param  \App\Admin  $admin
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Admin $admin)
-    {
-        //
+    public function update(Request $request, ConsultContact $consult_contact) {
+
+	    $this->validate($request, [
+		    'email'      => 'required|email|max:50',
+		    'first_name' => 'required|max:50',
+		    'last_name'  => 'required|max:50',
+		    'phone'      => 'numeric|integer',
+	    ]);
+
+	    $consult_contact->email = $request->email;
+	    $consult_contact->last_name = $request->last_name;
+	    $consult_contact->first_name = $request->first_name;
+	    $consult_contact->phone = $request->phone;
+
+	    if($consult_contact->save()) {
+
+	    }
+
+	    return back()->with('status', 'Contact Updated');
     }
 
     /**

@@ -36,17 +36,6 @@ class AdminController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function contacts() {
-	    $contacts = ConsultContact::all();
-
-        return view('admin.contacts', compact('contacts'));
-    }
-
-    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response

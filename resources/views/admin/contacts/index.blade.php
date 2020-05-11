@@ -11,7 +11,12 @@
     <div class="container-fluid">
 
         <div class="row" id="">
+            <div class="col-12 mb-3" id="">
+                <button class='btn btn-light-green ml-0' type='button'><a href="{{ route('consult_contacts.create') }}" class="white-text">Create New Contact</a></button>
+            </div>
+        </div>
 
+        <div class="row" id="">
             <div class="col-12" id="">
                 <h2>Contacts</h2>
             </div>
@@ -33,8 +38,9 @@
 
                             <div class="card-body">
 
-                                <h5 class="card-title d-flex align-items-center justify-content-between">{{ $contact->full_name()  }} <a href="/consults" class="btn-floating btn-sm btn-warning"><i class="fas fa-edit"></i></a></h5>
+                                <h5 class="card-title d-flex align-items-center justify-content-between">{{ $contact->full_name()  }} <a href="{{ route('consult_contacts.edit', ['consult_contact' => $contact->id]) }}" class="btn-floating btn-sm btn-warning"><i class="fas fa-edit"></i></a></h5>
                                 <p class="card-text">{{ $contact->email }}</p>
+                                <p class="card-text">{{ $contact->phone }}</p>
 
                             </div>
                         </div>

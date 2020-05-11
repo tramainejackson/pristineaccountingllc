@@ -2,7 +2,7 @@
 
 @section('content')
     <!-- Jumbotron -->
-    <div class="jumbotron card card-image" style="background-image: url({{ asset('images/accounting_image2.jpg') }});">
+    <div class="jumbotron card card-image mt-n5" style="background-image: url({{ asset('images/accounting_image2.jpg') }});">
 
         <div class="text-center py-5 px-4">
 

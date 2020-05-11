@@ -32,8 +32,8 @@ Route::get('/pricing', 'HomeController@pricing')->name('pricing');
 
 Route::resource('administrator', 'AdminController');
 
-Route::get('/contacts', 'AdminController@contacts')->name('administrator.contacts');
-
 Route::resource('consults', 'ConsultRequestController');
 
 Route::resource('consult_responses', 'ConsultResponseController');
+
+Route::resource('consult_contacts', 'ConsultContactController');

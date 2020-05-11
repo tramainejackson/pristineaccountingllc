@@ -29,8 +29,22 @@ class ConsultContact extends Model
 	/**
 	 * Get the consult request record associated with the user.
 	 */
-	public function consultRequest()	{
+	public function consultRequest() {
 		return $this->belongsTo('App\ConsultRequest');
+	}
+
+	/**
+	 * Get the user's phone number.
+	 *
+	 * @param  string  $value
+	 * @return string
+	 */
+	public function getPhoneAttribute($value) {
+		if($value == null) {
+			return 'No Phone Number Listed';
+		} else {
+			return ucfirst($value);
+		}
 	}
 
 }
