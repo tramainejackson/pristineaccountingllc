@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Admin;
+use App\Recommendation;
 use Illuminate\Http\Request;
 use App\ConsultRequest;
 use App\Mail\NewContact;
@@ -19,8 +20,17 @@ class HomeController extends Controller
         $this->middleware('web');
     }
 
+	/**
+	 * Show the application dashboard.
+	 *
+	 * @return \Illuminate\Http\Response
+	 */
+	public function index() {
+		return view('index');
+	}
+
     /**
-     * Show the home web page.
+     * Show the about web page.
      *
      * @return \Illuminate\Http\Response
      */
@@ -29,23 +39,27 @@ class HomeController extends Controller
     }
 
     /**
-     * Show the home web page.
+     * Show the pricing web page.
      *
      * @return \Illuminate\Http\Response
      */
     public function pricing() {
-    	$setting = Admin::first();
-
-	    return view('pricing', compact('setting'));
+	    return view('pricing');
     }
 
     /**
-     * Show the application dashboard.
+     * Show the testimonials web page.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index() {
-	    return view('index');
+    public function testimonials() {
+    	$recommendations = Recommendation::showTestimonials();
+
+    	if($recommendations->count() >= 1) {
+    		return view('testimonials', compact('recommendations'));
+	    } else {
+    		abort(404);
+	    }
     }
 
     /**

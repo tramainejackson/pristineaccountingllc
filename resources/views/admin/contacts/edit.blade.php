@@ -2,14 +2,6 @@
 
 @section('content')
 
-    @if(session('status'))
-        @section('additional_scripts')
-            <script type="text/javascript">
-                toastr.success("Request Moved To Completed", "Success", {showMethod: 'slideDown'});
-            </script>
-        @endsection
-    @endif
-
     <div class="container-fluid">
 
         <div class="row pb-5" id="">
@@ -25,7 +17,10 @@
                             <!-- Section heading -->
                             <h3 class="font-weight-bold my-4">Edit Contact</h3>
 
-                            {!! Form::open(['action' => ['ConsultContactController@update', 'consult_contact' => $consult_contact->id], 'method' => 'PATCH', 'class' => 'update_consult_contact_form']) !!}
+                            <form action="{{ action('ConsultContactController@update', $consult_contact->id) }}" class="update_consult_contact_form" method="POST">
+
+                                {{ csrf_field() }}
+                                {{ method_field('PATCH') }}
 
                                 <div class="row">
                                     <div class="col-md-6 mb-4">
@@ -70,6 +65,10 @@
                                         <input type="number" id="phone" class="form-control" name='phone' value='{{ $consult_contact->phone }}' placeholder="Enter Phone Number">
 
                                     </div>
+
+                                    @if ($errors->has('phone'))
+                                        <span class="text-danger">{{ $errors->first('phone') }}</span>
+                                    @endif
                                 </div>
 
                                 <div class="row">
@@ -81,8 +80,37 @@
 
                                     </div>
                                 </div>
+                            </form>
 
-                            {!! Form::close() !!}
+                            <div class="row mt-5">
+
+                                @if($consult_contact->recommendation->isNotEmpty())
+
+                                    <div class="col-12" id="">
+                                        <h3 class="h3">This contact has completed a survey. Click <a href="">here</a> to go to that survey</h3>
+                                    </div>
+
+                                    <div class="col-12">
+
+                                        <div class="text-center">
+                                            <a class="btn btn-info btn-rounded">Send Another Survey</a>
+                                        </div>
+
+                                    </div>
+                                @else
+                                    <div class="col-12" id="">
+                                        <h3 class="h3">This contact has not completed a survey</h3>
+                                    </div>
+
+                                    <div class="col-12">
+
+                                        <div class="text-center">
+                                            <a href="{{ action('RecommendationController@send_survey', $consult_contact) }}" class="btn btn-mdb-color btn-rounded">Send Survey</a>
+                                        </div>
+
+                                    </div>
+                                @endif
+                            </div>
                         </div>
                     </div>
                 </section>

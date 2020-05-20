@@ -30,6 +30,20 @@
 
     <div id="app" class="mt-5 pt-5">
 
+        @if(session('status'))
+            @section('additional_scripts')
+                <script type="text/javascript">
+                    toastr.success("{{ session('status') }}", "", {showMethod: 'slideDown'});
+                </script>
+            @endsection
+        @elseif(session('bad_status'))
+            @section('additional_scripts')
+                <script type="text/javascript">
+                    toastr.error("{{ session('bad_status') }}", "", {showMethod: 'slideDown'});
+                </script>
+            @endsection
+        @endif
+
         <!--***********************************************
         *******************  Navigation  ******************
         ************************************************-->
@@ -44,8 +58,6 @@
         *******************    Footer    ******************
         ************************************************-->
         @include('content_parts.footer')
-
-        @include('content_parts.testimonial')
 
     </div>
 

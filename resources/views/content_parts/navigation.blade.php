@@ -1,3 +1,6 @@
+{{--Check if there any testimonials to show--}}
+@php $get_testimonials = \App\Recommendation::showTestimonials()->count(); @endphp
+
 <!--Double navigation-->
 <header>
     <!-- Sidebar navigation -->
@@ -25,6 +28,10 @@
                     <li><a class="collapsible-header waves-effect" href="{{ route('about') }}"><i class="fas fa-pencil-alt"></i>About Me</a></li>
                     <li><a class="collapsible-header waves-effect" href="{{ route('home_index') . '#services' }}"><i class="fas fa-clipboard-check"></i>Services</a></li>
                     <li><a class="collapsible-header waves-effect" href="{{ route('home_index') . '#consultation' }}"><i class="fas fa-desktop"></i>Consultation Request</a></li>
+
+                    @if($get_testimonials >= 1)
+                        <li><a class="collapsible-header waves-effect" href="{{ route('testimonials') }}"><i class="fas fa-star"></i>Testimonials</a></li>
+                    @endif
 
                     @if(Auth::user())
                         <li><a class="collapsible-header waves-effect" href="{{ route('administrator.index') }}"><i class="fas fa-user"></i>Administrator</a></li>

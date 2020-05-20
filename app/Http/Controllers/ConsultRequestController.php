@@ -55,10 +55,7 @@ class ConsultRequestController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-	    //	    dd($request);
-
+    public function store(Request $request) {
 	    $this->validate($request, [
 		    'email'      => 'required|email|max:50',
 		    'first_name' => 'required|max:50',

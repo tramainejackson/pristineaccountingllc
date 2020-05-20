@@ -30,7 +30,15 @@ Route::get('/about', 'HomeController@about')->name('about');
 
 Route::get('/pricing', 'HomeController@pricing')->name('pricing');
 
+Route::get('/testimonials', 'HomeController@testimonials')->name('testimonials');
+
 Route::resource('administrator', 'AdminController');
+
+Route::get('survey/{survey_id}', 'RecommendationController@survey');
+
+Route::get('/send_survey/{consult_contact}', 'RecommendationController@send_survey');
+
+Route::resource('recommendations', 'RecommendationController');
 
 Route::resource('consults', 'ConsultRequestController');
 

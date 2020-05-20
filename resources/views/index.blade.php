@@ -2,14 +2,6 @@
 
 @section('content')
 
-    @if(session('status'))
-        @section('additional_scripts')
-            <script type="text/javascript">
-                toastr.success("Request Sent Successfully", "", {showMethod: 'slideDown'});
-            </script>
-        @endsection
-    @endif
-
     <!-- Jumbotron -->
     <div class="jumbotron card card-image mt-n5" style="background-image: url({{ asset('images/accounting_image2.jpg') }});">
 

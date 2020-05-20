@@ -34,6 +34,13 @@ class ConsultContact extends Model
 	}
 
 	/**
+	 * Get the consult request record associated with the user.
+	 */
+	public function recommendation() {
+		return $this->hasMany('App\Recommendation');
+	}
+
+	/**
 	 * Get the user's phone number.
 	 *
 	 * @param  string  $value
@@ -45,6 +52,18 @@ class ConsultContact extends Model
 		} else {
 			return ucfirst($value);
 		}
+	}
+
+	/**
+	 * Scope a query to only include most recent consult request
+	 * that hasn't been responded to yet.
+	 *
+	 * @param \Illuminate\Database\Eloquent\Builder $query
+	 * @return \Illuminate\Database\Eloquent\Builder
+	 */
+	public function scopeSurveyId($query, $survey_id)	{
+		return $query->where('survey_id', '=', $survey_id)
+			->get();
 	}
 
 }

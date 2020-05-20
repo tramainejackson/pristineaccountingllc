@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Admin;
+use App\Recommendation;
 use App\ConsultRequest;
 use App\ConsultContact;
 use Illuminate\Http\Request;
@@ -22,17 +23,22 @@ class AdminController extends Controller
      */
     public function index() {
 	    $admin = Auth::user();
-	    $setting = Admin::first();
 	    $consults = ConsultRequest::all();
 	    $open_consults = ConsultRequest::leastRecent();
+	    $testimonials = Recommendation::all();
 	    $today = Carbon::now();
 	    $consult_created = null;
+	    $testimonial_created = null;
 	    $open_consults->isNotEmpty() ? $open_consults = $open_consults->count() : $open_consults = 0;
+	    $testimonials->isNotEmpty() ? $testimonials = $testimonials->count() : $testimonials = 0;
 
 	    // Create Carbon Date if there is an open consult
 	    $open_consults !== 0 ? $consult_created = new Carbon(ConsultRequest::leastRecent()->first()->created_at) : null;
 
-        return view('admin.index', compact('admin', 'consults', 'open_consults', 'consult_created', 'today', 'setting'));
+	    // Create Carbon Date if there is testimonials availble
+	    $testimonials !== 0 ? $testimonial_created = new Carbon(ConsultRequest::all()->first()->created_at) : null;
+
+        return view('admin.index', compact('admin', 'consults', 'open_consults', 'consult_created', 'today', 'testimonials', 'testimonial_created'));
     }
 
     /**

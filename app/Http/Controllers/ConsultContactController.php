@@ -114,19 +114,17 @@ class ConsultContactController extends Controller
 		    'email'      => 'required|email|max:50',
 		    'first_name' => 'required|max:50',
 		    'last_name'  => 'required|max:50',
-		    'phone'      => 'numeric|integer',
+		    'phone'      => 'nullable|numeric|integer',
 	    ]);
 
-	    $consult_contact->email = $request->email;
-	    $consult_contact->last_name = $request->last_name;
-	    $consult_contact->first_name = $request->first_name;
-	    $consult_contact->phone = $request->phone;
+	    $consult_contact->email         = $request->email;
+	    $consult_contact->last_name     = $request->last_name;
+	    $consult_contact->first_name    = $request->first_name;
+	    $consult_contact->phone         = $request->phone;
 
 	    if($consult_contact->save()) {
-
+		    return back()->with('status', 'Contact Updated Successfully');
 	    }
-
-	    return back()->with('status', 'Contact Updated');
     }
 
     /**

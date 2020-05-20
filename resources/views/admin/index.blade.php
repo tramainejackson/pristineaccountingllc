@@ -35,7 +35,7 @@
                             @if($open_consults !== 0)
                                 <p class="card-text"><small class="text-muted">Requested {{ $consult_created->diffInDays($today) < 1 ? 'Today' : $consult_created->diffInDays($today) . ' days ago' }}</small></p>
                             @else
-
+                                <p class="card-text"><small class="text-muted">Requested 0 days ago</small></p>
                             @endif
                         </div>
                     </div>
@@ -57,10 +57,14 @@
 
                         <div class="card-body">
 
-                            <h5 class="card-title d-flex align-items-center justify-content-between">Testimonials <a class="btn-floating btn-sm btn-warning"><i class="fas fa-edit"></i></a></h5>
-                            <p class="card-text">You currently have 0 testimonials. These are your reviews from the clients that you've serviced so far. You can choose which ones display on your website.</p>
-                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                            <h5 class="card-title d-flex align-items-center justify-content-between">Testimonials <a href="/recommendations" class="btn-floating btn-sm btn-warning"><i class="fas fa-edit"></i></a></h5>
+                            <p class="card-text">You currently have {{ $testimonials }} testimonials. These are your reviews from the clients that you've serviced so far. You can choose which ones display on your website.</p>
 
+                            @if($testimonials !== 0)
+                                <p class="card-text"><small class="text-muted">Testimonial received {{ $testimonial_created->diffInDays($today) < 1 ? 'Today' : $testimonial_created->diffInDays($today) . ' days ago' }}</small></p>
+                            @else
+                                <p class="card-text"><small class="text-muted">Last updated 0 mins ago</small></p>
+                            @endif
                         </div>
                     </div>
                 </div>
