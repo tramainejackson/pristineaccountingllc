@@ -33,7 +33,7 @@
 
                                     <div class="card-body">
 
-                                        <h5 class="card-title d-flex align-items-center justify-content-between">{{ $recommendation->consultContact->full_name()  }} <a href="{{ route('consult_contacts.edit', ['consult_contact' => $recommendation->consultContact->id]) }}" class="btn-floating btn-sm btn-warning"><i class="fas fa-edit"></i></a></h5>
+                                        <h5 class="card-title d-flex align-items-center justify-content-between">{{ $recommendation->consultContact->full_name()  }} <a href="{{ route('recommendations.edit', $recommendation->id) }}" class="btn-floating btn-sm btn-warning"><i class="fas fa-edit"></i></a></h5>
                                         <p class="card-text">{{ $recommendation->consultContact->email }}</p>
                                         <p class="card-text">{{ $recommendation->consultContact->phone }}</p>
 

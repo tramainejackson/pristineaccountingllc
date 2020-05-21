@@ -36,7 +36,7 @@ class AdminController extends Controller
 	    $open_consults !== 0 ? $consult_created = new Carbon(ConsultRequest::leastRecent()->first()->created_at) : null;
 
 	    // Create Carbon Date if there is testimonials availble
-	    $testimonials !== 0 ? $testimonial_created = new Carbon(ConsultRequest::all()->first()->created_at) : null;
+	    $testimonials !== 0 ? $testimonial_created = new Carbon(Recommendation::all()->first()->created_at) : null;
 
         return view('admin.index', compact('admin', 'consults', 'open_consults', 'consult_created', 'today', 'testimonials', 'testimonial_created'));
     }

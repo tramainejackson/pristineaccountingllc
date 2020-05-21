@@ -2,12 +2,6 @@
 
 @section('content')
 
-    @if (session('status'))
-        <script type="text/javascript">
-            toastr.success("Calendar showing updated", "Success", {showMethod: 'slideDown'});
-        </script>
-    @endif
-
     <div class="container-fluid">
 
         <div class="row" id="">
@@ -58,7 +52,7 @@
                         <div class="card-body">
 
                             <h5 class="card-title d-flex align-items-center justify-content-between">Testimonials <a href="/recommendations" class="btn-floating btn-sm btn-warning"><i class="fas fa-edit"></i></a></h5>
-                            <p class="card-text">You currently have {{ $testimonials }} testimonials. These are your reviews from the clients that you've serviced so far. You can choose which ones display on your website.</p>
+                            <p class="card-text">You currently have {{ $testimonials }} testimonial(s). These are your reviews from the clients that you've serviced so far. You can choose which ones display on your website.</p>
 
                             @if($testimonials !== 0)
                                 <p class="card-text"><small class="text-muted">Testimonial received {{ $testimonial_created->diffInDays($today) < 1 ? 'Today' : $testimonial_created->diffInDays($today) . ' days ago' }}</small></p>

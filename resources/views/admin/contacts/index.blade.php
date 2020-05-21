@@ -2,21 +2,15 @@
 
 @section('content')
 
-    @if (session('status'))
-        <script type="text/javascript">
-            toastr.success("Calendar showing updated", "", {showMethod: 'slideDown'});
-        </script>
-    @endif
-
     <div class="container-fluid">
 
-        <div class="row" id="">
+        <div class="row mb-5" id="">
             <div class="col-12 mb-3" id="">
                 <button class='btn btn-light-green ml-0' type='button'><a href="{{ route('consult_contacts.create') }}" class="white-text">Create New Contact</a></button>
             </div>
         </div>
 
-        <div class="row" id="">
+        <div class="row my-5" id="">
             <div class="col-12" id="">
                 <h2>Contacts</h2>
             </div>

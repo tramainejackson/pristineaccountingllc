@@ -12,6 +12,7 @@
                 <section class="text-center dark-grey-text mb-5">
 
                     <div class="card">
+
                         <div class="card-body rounded-top border-top p-5">
 
                             <!-- Section heading -->
@@ -110,6 +111,18 @@
 
                                     </div>
                                 @endif
+                            </div>
+
+                            <div class="row position-absolute top right">
+                                <div class="col-12" id="">
+                                    <form action="{{ route('consult_contacts.destroy', $consult_contact->id) }}" method="POST">
+
+                                        {{ csrf_field() }}
+                                        {{ method_field('DELETE') }}
+
+                                        <button class='btn btn-danger' type='submit'>DELETE CONTACT</button>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>

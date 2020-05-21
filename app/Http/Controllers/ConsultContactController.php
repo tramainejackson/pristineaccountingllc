@@ -133,8 +133,22 @@ class ConsultContactController extends Controller
      * @param  \App\Admin  $admin
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Admin $admin)
-    {
-        //
+    public function destroy(ConsultContact $consult_contact) {
+        if($consult_contact) {
+
+        	$consult_recommendations = $consult_contact->recommendation;
+
+        	//Remove contact
+        	if($consult_contact->delete()) {
+				//Remove any recommendations if any exist
+		        if($consult_recommendations->isNotEmpty()) {
+			        foreach ($consult_recommendations as $recommendation) {
+				        if($recommendation->delete()){}
+			        }
+		        }
+
+		        return redirect()->action('ConsultContactController@index')->with('status', 'Contact Removed Successfully');
+	        }
+        }
     }
 }

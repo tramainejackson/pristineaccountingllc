@@ -46,7 +46,7 @@ class RecommendationController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request) {
-    	dd($request);
+//    	dd($request);
 	    $this->validate($request, [
 		    'meet_needs'    => 'required|integer',
 		    'recommend'     => 'required|integer',
@@ -62,13 +62,20 @@ class RecommendationController extends Controller
 	    $recommendation->suggestions    = $request->suggestions;
 	    $recommendation->tell_someone   = $request->tell_someone;
 
+	    // Get contact by the survey ID
 	    $survey_contact = ConsultContact::surveyId($request->survey_id);
 
-	    if($recommendation->save()) {
-	    	return redirect()->action('HomeController@index')->with('status', 'Thanks for taking our quick survey. As a small start up company, your feedback is a tremendous asset!');
-	    } else {
+		if($survey_contact->isNotEmpty()){
+			$recommendation->consult_contact_id = $survey_contact->first()->id;
 
-	    }
+		    if($recommendation->save()) {
+		        return redirect()->action('HomeController@index')->with('status', 'Thanks for taking our quick survey. As a small start up company, your feedback is a tremendous asset!');
+		    } else {
+			    return redirect()->action('HomeController@index')->with('bad_status', 'Unable to process the survey. Please try taking the survey again!');
+		    }
+        } else {
+			return redirect()->action('HomeController@index')->with('bad_status', 'Unable to process the survey. Please try taking the survey again!');
+		}
     }
 
     /**
@@ -88,10 +95,12 @@ class RecommendationController extends Controller
      * @param  \App\Recommendation  $recommendation
      * @return \Illuminate\Http\Response
      */
-    public function edit(Recommendation $recommendation)
-    {
-        //
+    public function edit(Recommendation $recommendation) {
+    	$contact = $recommendation->consultContact;
+
+	    return view('admin.recommendations.edit', compact('recommendation', 'contact'));
     }
+
 
     /**
      * Update the specified resource in storage.
