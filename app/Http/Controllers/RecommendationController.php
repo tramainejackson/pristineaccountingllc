@@ -142,7 +142,7 @@ class RecommendationController extends Controller
     	// Send an email if the consult contact exist
     	if($consult_contact) {
     		// Create/Replace survery id and save to the contact
-		    $consult_contact->survey_id = bcrypt(str_ireplace(' ', '_', $consult_contact->full_name() . $consult_contact->id));
+		    $consult_contact->survey_id = str_ireplace('/', 'z',bcrypt(str_ireplace(' ', '_', $consult_contact->full_name() . $consult_contact->id)));
 
 		    if($consult_contact->save()) {
 			    // Send survey in an email
