@@ -115,12 +115,23 @@ class ConsultContactController extends Controller
 		    'first_name' => 'required|max:50',
 		    'last_name'  => 'required|max:50',
 		    'phone'      => 'nullable|numeric|integer',
+		    'avatar'     => 'nullable|image',
 	    ]);
 
 	    $consult_contact->email         = $request->email;
 	    $consult_contact->last_name     = $request->last_name;
 	    $consult_contact->first_name    = $request->first_name;
 	    $consult_contact->phone         = $request->phone;
+
+	    if($request->hasFile('avatar')) {
+		    $avatar = $consult_contact->create_avatar($request->file('avatar'), strtolower(str_ireplace(' ', '_', $consult_contact->full_name())));
+
+		    if($avatar[0] == 'success') {
+			    $consult_contact->avatar = $avatar[1];
+		    } else {
+
+		    }
+	    }
 
 	    if($consult_contact->save()) {
 		    return back()->with('status', 'Contact Updated Successfully');

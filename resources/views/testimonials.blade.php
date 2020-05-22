@@ -31,8 +31,7 @@
                                         <div class="testimonial">
                                             <!--Avatar-->
                                             <div class="avatar mx-auto mb-4">
-                                                <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20({{ $loop->first ? '30' : '31' }}).jpg" class="rounded-circle img-fluid"
-                                                     alt="First sample avatar image">
+                                                <img src="{{ asset('storage/images/' . $recommendation->consultContact->avatar) }}" class="rounded-circle img-fluid" alt="First sample avatar image">
                                             </div>
                                             <!--Content-->
                                             <p>

@@ -5,6 +5,12 @@
     <div class="container-fluid">
 
         <div class="row pb-5" id="">
+            <div class="col-8 mx-auto" id="">
+                <a href="{{ route('consult_contacts.index') }}" class="btn btn-warning">All Contacts</a>
+            </div>
+        </div>
+
+        <div class="row pb-5" id="">
 
             <div class="col-8 mx-auto" id="">
 
@@ -18,10 +24,26 @@
                             <!-- Section heading -->
                             <h3 class="font-weight-bold my-4">Edit Contact</h3>
 
-                            <form action="{{ action('ConsultContactController@update', $consult_contact->id) }}" class="update_consult_contact_form" method="POST">
+                            <form action="{{ action('ConsultContactController@update', $consult_contact->id) }}" class="update_consult_contact_form" method="POST" enctype="multipart/form-data">
 
                                 {{ csrf_field() }}
                                 {{ method_field('PATCH') }}
+
+                                <!-- Client Default Image -->
+                                <div class="row contactImg mb-3">
+                                    <div class="view mx-auto" id="">
+                                        <img class="hoverable" src="{{ asset('storage/images/' . $consult_contact->avatar) }}" alt="Member Image" width="300">
+
+                                        <div class="mask d-flex justify-content-center">
+                                            <button type="button" class="btn align-self-end m-0 p-1 white">Change Image</button>
+                                            <input type="file" class="hidden" name="avatar" hidden />
+                                        </div>
+                                    </div>
+
+                                    @if ($errors->has('avatar'))
+                                        <span class="text-danger">{{ $errors->first('avatar') }}</span>
+                                    @endif
+                                </div>
 
                                 <div class="row">
                                     <div class="col-md-6 mb-4">
@@ -88,7 +110,7 @@
                                 @if($consult_contact->recommendation->isNotEmpty())
 
                                     <div class="col-12" id="">
-                                        <h3 class="h3">This contact has completed a survey. Click <a href="">here</a> to go to that survey</h3>
+                                        <h3 class="h3">This contact has completed a survey. Click <a href="{{ route('recommendations.edit', $consult_contact->recommendation->first()->id) }}">here</a> to go to that survey</h3>
                                     </div>
 
                                     <div class="col-12">
@@ -114,14 +136,8 @@
                             </div>
 
                             <div class="row position-absolute top right">
-                                <div class="col-12" id="">
-                                    <form action="{{ route('consult_contacts.destroy', $consult_contact->id) }}" method="POST">
-
-                                        {{ csrf_field() }}
-                                        {{ method_field('DELETE') }}
-
-                                        <button class='btn btn-danger' type='submit'>DELETE CONTACT</button>
-                                    </form>
+                                <div class="col" id="">
+                                    <button class="btn btn-danger d-block mt-2 deleteBtn" type="button" data-toggle="modal" data-target="#delete_modal">DELETE CONTACT</button>
                                 </div>
                             </div>
                         </div>
@@ -131,4 +147,8 @@
             </div>
         </div>
     </div>
+
+    @component('modals.delete_modal', ['title' => 'Delete Contact', 'controller' => 'ConsultContactController@destroy', 'id' => $consult_contact->id])
+        Contact name - {{ $consult_contact->full_name() }}
+    @endcomponent
 @endsection

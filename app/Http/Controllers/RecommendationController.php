@@ -46,7 +46,6 @@ class RecommendationController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request) {
-//    	dd($request);
 	    $this->validate($request, [
 		    'meet_needs'    => 'required|integer',
 		    'recommend'     => 'required|integer',
@@ -109,9 +108,28 @@ class RecommendationController extends Controller
      * @param  \App\Recommendation  $recommendation
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Recommendation $recommendation)
-    {
-        //
+    public function update(Request $request, Recommendation $recommendation) {
+//        dd($request);
+	    $this->validate($request, [
+		    'meet_needs'    => 'required|integer',
+		    'recommend'     => 'required|integer',
+		    'rating'        => 'required|numeric',
+		    'suggestions'   => 'nullable',
+		    'tell_someone'  => 'nullable',
+	    ]);
+
+	    $recommendation->meet_needs         = $request->meet_needs;
+	    $recommendation->recommend          = $request->recommend;
+	    $recommendation->rating             = $request->rating;
+	    $recommendation->suggestions        = $request->suggestions;
+	    $recommendation->tell_someone       = $request->tell_someone;
+	    $recommendation->show_testimonial   = $request->show_testimonial;
+
+	    if($recommendation->save()) {
+	    	return back()->with('status', 'Testimonial saved successfully!');
+	    } else {
+		    return back()->with('bad_status', 'Testimonial not saved. Please try again.');
+	    }
     }
 
     /**

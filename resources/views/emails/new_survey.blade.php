@@ -70,8 +70,8 @@
 			<td valign="top" style="padding:0;Margin:0;">
 				<table cellpadding="0" cellspacing="0" class="es-header" align="center" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;table-layout:fixed !important;width:100%;background-color:#1B2A2F;background-repeat:repeat;background-position:center top;">
 					<tbody><tr style="border-collapse:collapse;">
-						<td align="center" bgcolor="#77a9c1" style="padding:0;Margin:0;background-color:#77A9C1;">
-							<table class="es-header-body" width="600" cellspacing="0" cellpadding="0" bgcolor="#77a9c1" align="center" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;background-color:#77A9C1;">
+						<td align="center" bgcolor="#f6adf4" style="padding:0;Margin:0;background-color:#77A9C1;">
+							<table class="es-header-body" width="600" cellspacing="0" cellpadding="0" bgcolor="#f6adf4" align="center" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;background-color:#77A9C1;">
 								<tbody><tr style="border-collapse:collapse;">
 									<td align="left" style="padding:0;Margin:0;padding-top:25px;padding-bottom:40px;">
 										<table cellspacing="0" cellpadding="0" width="100%" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;">
@@ -102,7 +102,7 @@
 															<td align="center" class="es-m-txt-c" style="padding:0;Margin:0;padding-bottom:40px;"><h1 style="Margin:0;line-height:34px;mso-line-height-rule:exactly;font-family:Oswald, sans-serif;font-size:28px;font-style:normal;font-weight:bold;color:#262626;">THANK YOU!</h1></td>
 														</tr>
 														<tr style="border-collapse:collapse;">
-															<td align="left" style="padding:0;Margin:0;"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:20px;font-family:'Open Sans', sans-serif;line-height:30px;color:#262626;">I'm excited to that you have entrusted me with helping you with your accounting or tax projects. Please take a just a few seconds to complete this survey of just 5 questions by clicking the button below.</p></td>
+															<td align="left" style="padding:0;Margin:0;"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:20px;font-family:'Open Sans', sans-serif;line-height:30px;color:#262626;">I'm excited that you have entrusted me with helping you with your accounting or tax projects. Please take a few seconds to complete this survey of just 5 questions by clicking the button below.</p></td>
 														</tr>
 														<tr style="border-collapse:collapse;">
 															<td align="center" class="es-m-txt-c" style="padding:0;Margin:0;padding-top:40px;padding-bottom:40px;">
@@ -123,10 +123,10 @@
 															<td class="es-m-txt-c" style="padding:0;Margin:0;padding-bottom:20px;overflow-wrap:break-word;word-wrap:break-word;word-break:break-word;" align="center"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:20px;font-family:'Open Sans', sans-serif;line-height:30px;color:#262626;-webkit-hyphens:auto;-ms-hyphens:auto;-moz-hyphens:auto;hyphens:auto;overflow-wrap:break-word;word-wrap:break-word;"><strong><a target="_blank" href="https://pristineaccountingllc.com/survey/{{ $consult_contact->survey_id }}" style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'Open Sans', sans-serif;font-size:20px;text-decoration:none;color:#2F8112;white-space:pre-wrap;word-break:break-all;display:inline-block;">https://pristineaccountingllc.com/survey/{{ $consult_contact->survey_id }}</a></strong></p></td>
 														</tr>
 														<tr style="border-collapse:collapse;">
-															<td align="left" style="padding:0;Margin:0;padding-bottom:40px;"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:20px;font-family:'Open Sans', sans-serif;line-height:30px;color:#262626;">If you have any questions, plaease reply to <a target="_blank" href="mailto:adc0426@gmail.com" style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'Open Sans', sans-serif;font-size:20px;text-decoration:underline;color:#1073F4;">adc0426@gmail.com</a>.</p></td>
+															<td align="left" style="padding:0;Margin:0;padding-bottom:40px;"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:20px;font-family:'Open Sans', sans-serif;line-height:30px;color:#262626;">If you have any questions, please reply to <a target="_blank" href="mailto:adc0426@gmail.com" style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'Open Sans', sans-serif;font-size:20px;text-decoration:underline;color:#1073F4;">pristineaccting@gmail</a>.</p></td>
 														</tr>
 														<tr style="border-collapse:collapse;">
-															<td align="left" style="padding:0;Margin:0;padding-bottom:20px;"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:20px;font-family:'Open Sans', sans-serif;line-height:30px;color:#262626;"><strong>Thanks, Ashley</strong></p></td>
+															<td align="left" style="padding:0;Margin:0;padding-bottom:20px;"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:20px;font-family:'Open Sans', sans-serif;line-height:30px;color:#262626;"><strong>Thanks, <br/><br/>Ashley</strong></p></td>
 														</tr>
 														</tbody></table></td>
 											</tr>
@@ -137,8 +137,8 @@
 					</tbody></table>
 				<table cellpadding="0" cellspacing="0" class="es-footer" align="center" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;table-layout:fixed !important;width:100%;background-color:#111517;background-repeat:repeat;background-position:center top;">
 					<tbody><tr style="border-collapse:collapse;">
-						<td align="center" bgcolor="#77a9c1" style="padding:0;Margin:0;background-color:#77A9C1;">
-							<table class="es-footer-body" width="600" cellspacing="0" cellpadding="0" bgcolor="#77a9c1" align="center" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;background-color:#77A9C1;">
+						<td align="center" bgcolor="#f6adf4" style="padding:0;Margin:0;background-color:#77A9C1;">
+							<table class="es-footer-body" width="600" cellspacing="0" cellpadding="0" bgcolor="#f6adf4" align="center" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;background-color:#77A9C1;">
 								<tbody><tr style="border-collapse:collapse;">
 									<td align="left" style="Margin:0;padding-left:20px;padding-right:20px;padding-top:40px;padding-bottom:40px;">
 										<!--[if mso]><table width="560" cellpadding="0"
@@ -170,7 +170,7 @@
 																	</tbody></table></td>
 														</tr>
 														<tr style="border-collapse:collapse;">
-															<td align="left" class="es-m-txt-c" style="padding:0;Margin:0;padding-top:20px;padding-bottom:20px;"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:12px;font-family:'Open Sans', sans-serif;line-height:18px;color:#BCBDBD;text-align:center;">© 2019 Copyright: Pristine Accounting LLC</p></td>
+															<td align="left" class="es-m-txt-c" style="padding:0;Margin:0;padding-top:20px;padding-bottom:20px;"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:12px;font-family:'Open Sans', sans-serif;line-height:18px;color:#ffffff;text-align:center;">© 2020 Copyright: Pristine Accounting LLC</p></td>
 														</tr>
 														</tbody></table></td>
 											</tr>
