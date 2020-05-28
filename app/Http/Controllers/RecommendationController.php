@@ -9,6 +9,7 @@ use App\ConsultRequest;
 use App\ConsultResponse;
 use App\Mail\NewConsultContact;
 use App\Mail\NewContactSurvey;
+use App\Mail\AdminContactSurvey;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
@@ -109,7 +110,6 @@ class RecommendationController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Recommendation $recommendation) {
-//        dd($request);
 	    $this->validate($request, [
 		    'meet_needs'    => 'required|integer',
 		    'recommend'     => 'required|integer',
@@ -174,6 +174,7 @@ class RecommendationController extends Controller
 		    if($consult_contact->save()) {
 			    // Send survey in an email
 			    \Mail::to($consult_contact->email)->send(new NewContactSurvey($consult_contact));
+			    \Mail::to('pristineaccting@gmail')->send(new AdminContactSurvey($consult_contact));
 			    return back()->with('status', 'Email Sent Successfully To Contact');
 		    } else {
 			    return back()->with('status', 'Survey ID unable to be saved to contact. Please try again');

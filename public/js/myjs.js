@@ -197,12 +197,6 @@ $(document).ready(function() {
         e.preventDefault();
         $('.modal').removeClass('show');
 
-        // If this modal is the remove media objects modal
-        if($(this).hasClass('dismissProperyMedia')) {
-            // Remove all media objects from the modal
-            $(this).parent().next().find('form .row').empty();
-        }
-
         setTimeout(function() {
             $('.modal').removeClass('d-block');
             $('body').removeClass('modal-open');
@@ -233,21 +227,7 @@ $(document).ready(function() {
         }
     });
 
-    // House type toggle switch
-    $('body').on("click", ".aptBtn, .houseBtn", function(e) {
-        e.preventDefault();
-        if(!$('.aptBtn').hasClass('active btn-success')) {
-            $('.aptBtn').addClass('active btn-success').removeClass('btn-blue-grey').children().attr("checked", true);
-            $('.houseBtn').addClass('btn-blue-grey').removeClass('active btn-success').children().removeAttr("checked");
-        } else if(!$('.houseBtn').hasClass('active btn-success')) {
-            $('.houseBtn').addClass('active btn-success').removeClass('btn-blue-grey').children().attr("checked", true);
-            $('.aptBtn').addClass('btn-blue-grey').removeClass('active btn-success').children().removeAttr("checked");
-        } else {
-            console.log('Here');
-        }
-    });
-
-    // Under Construction / Active Toggle Switch
+    // Show Testimonial Switch
     $('body').on("click", ".showTestimonial", function(e) {
         e.preventDefault();
         if($(this).hasClass('showTestimonial')) {
@@ -262,6 +242,25 @@ $(document).ready(function() {
             } else {
                 console.log('Here');
             }
+        }
+    });
+
+    // Open/Closed Request Toggle
+    $('body').on("click", ".requestBtn", function(e) {
+        e.preventDefault();
+
+        if($(this).hasClass('openRequestBtn')) {
+            $(this).addClass('btn-light-green').removeClass('btn-outline-orange');
+            $('.closedRequestBtn').removeClass('btn-light-green').addClass('btn-outline-orange');
+            $('#open_request').removeClass('d-none');
+            $('#completed_request').addClass('d-none');
+        } else if($(this).hasClass('closedRequestBtn')) {
+            $(this).addClass('btn-light-green').removeClass('btn-outline-orange');
+            $('.openRequestBtn').removeClass('btn-light-green').addClass('btn-outline-orange');
+            $('#open_request').addClass('d-none');
+            $('#completed_request').removeClass('d-none');
+        } else {
+            console.log('Something went wrong!');
         }
     });
 

@@ -8,6 +8,8 @@ use App\ConsultRequest;
 use App\ConsultContact;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+use Intervention\Image\ImageManagerStatic as Image;
 use Carbon\Carbon;
 
 class AdminController extends Controller

@@ -32,7 +32,7 @@
                                 <option value="1">Yes</option>
                                 <option value="0">No</option>
                             </select>
-                            <label class="mdb-main-label" for="meet_needs">Did we meet all of your needs?</label>
+                            <label class="mdb-main-label" for="meet_needs">Did we meet all your expectations/accounting needs?</label>
                             <!--/Blue select-->
 
                             @if ($errors->has('meet_needs'))
@@ -48,7 +48,7 @@
                                 <option value="1">Yes</option>
                                 <option value="0">No</option>
                             </select>
-                            <label class="mdb-main-label" for="recommend">Would you recommend us to someone else?</label>
+                            <label class="mdb-main-label" for="recommend">Would you recommend our service to others?</label>
                             <!--/Blue select-->
 
                             @if ($errors->has('recommend'))
@@ -62,7 +62,7 @@
                             <!-- Material input -->
                             <div class="md-form">
                                 <input name="rating" type="number" class="form-control" id="" step="0.5" min="0" max="5">
-                                <label for="rating" >How would you rate us from 1-5?</label>
+                                <label for="rating">How would you rate us from 1-5? 5 being the best</label>
                             </div>
 
                             @if ($errors->has('rating'))
@@ -76,7 +76,7 @@
                             <!--Material textarea-->
                             <div class="md-form">
                               <textarea name="suggestions" id="" class="md-textarea form-control" rows="5">{{ old('suggestions') ? old('suggestions') : '' }}</textarea>
-                              <label for="suggestions">What could we have done differently?</label>
+                              <label for="suggestions">Is there anything we could have done differently?</label>
                             </div>
 
                             @if ($errors->has('suggestions'))
@@ -90,7 +90,7 @@
                             <!--Material textarea-->
                             <div class="md-form">
                               <textarea name="tell_someone" id="" class="md-textarea form-control" rows="5">{{ old('tell_someone') ? old('tell_someone') : '' }}</textarea>
-                              <label for="tell_someone">What would you tell someone who's considering our business?</label>
+                              <label for="tell_someone">In the below section please provide a review or comment.</label>
                             </div>
 
                             @if ($errors->has('tell_someone'))

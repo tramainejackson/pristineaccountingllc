@@ -9,6 +9,8 @@ use App\ConsultResponse;
 use App\Mail\NewConsultContact;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+use Intervention\Image\ImageManagerStatic as Image;
 use Carbon\Carbon;
 
 class ConsultRequestController extends Controller
@@ -104,9 +106,8 @@ class ConsultRequestController extends Controller
      * @param  \App\Admin  $admin
      * @return \Illuminate\Http\Response
      */
-    public function edit(Admin $admin)
-    {
-        //
+    public function edit(ConsultRequest $consult) {
+	    return view('admin.consult_request.edit', compact('consult'));
     }
 
     /**
@@ -131,4 +132,73 @@ class ConsultRequestController extends Controller
     {
         //
     }
+
+	/**
+	 * Create an invoice.
+	 *
+	 * @param  \App\Admin  $admin
+	 * @return \Illuminate\Http\Response
+	 */
+	public function create_invoice(Request $request, ConsultRequest $consult) {
+//		dd($request);
+		$template = Storage::disk('public')->exists('documents/Invoice_Template.docx');
+
+		if($template) {
+			$template = '/Applications/XAMPP/xamppfiles/htdocs/pristineaccountingllc/public/storage/documents/Invoice_Template.docx';
+			$templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor($template);
+
+			$values = [
+				$request->company_name,
+				$request->owner_name,
+				$request->company_address,
+				$request->payee,
+				$request->payee_address,
+				$request->payee_payment_method,
+				$request->payee_contact_name,
+				$request->payee_contact_phone,
+				$request->payee_contact_email,
+				$request->invoice_date,
+				$request->invoice_reason,
+				$request->invoice_number,
+				$request->invoice_terms,
+				$request->invoice_due_date,
+				$request->invoice_amount,
+				$request->project_period,
+				$request->project_name,
+				$request->description_of_services,
+			];
+			$placeholders = [
+				'company_name',
+				'owner_name',
+				'company_address',
+				'payee',
+				'payee_address',
+				'payee_payment_method',
+				'payee_contact_name',
+				'payee_contact_phone',
+				'payee_contact_email',
+				'invoice_date',
+				'invoice_reason',
+				'invoice_number',
+				'invoice_terms',
+				'invoice_due_date',
+				'invoice_amount',
+				'project_period',
+				'project_name',
+				'description_of_services',
+			];
+
+			$templateProcessor->setValue($placeholders, $values);
+
+			$templateProcessor->saveAs('/Applications/XAMPP/xamppfiles/htdocs/pristineaccountingllc/public/storage/documents/TestTemplate.docx');
+
+			if($template = Storage::disk('public')->exists('documents/TestTemplate.docx')) {
+				return back()->with('status', 'Invoice Created Successfully');
+			} else {
+
+			}
+		} else {
+			dd('Template Not Found');
+		}
+	}
 }

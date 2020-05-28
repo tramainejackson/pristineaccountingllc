@@ -32,11 +32,13 @@ Route::get('/pricing', 'HomeController@pricing')->name('pricing');
 
 Route::get('/testimonials', 'HomeController@testimonials')->name('testimonials');
 
-Route::resource('administrator', 'AdminController');
-
 Route::get('survey/{survey_id}', 'RecommendationController@survey');
 
 Route::get('/send_survey/{consult_contact}', 'RecommendationController@send_survey');
+
+Route::post('/create_invoice/{consult}', 'ConsultRequestController@create_invoice');
+
+Route::resource('administrator', 'AdminController');
 
 Route::resource('recommendations', 'RecommendationController');
 

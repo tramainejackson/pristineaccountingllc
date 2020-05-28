@@ -172,7 +172,12 @@
                                         </table>
 
                                         <div class="mb-2">
-                                            <a class='btn btn-outline-green btn-block' href="{{ route('consults.edit', $response->consultRequest->id) }}">Draft A New Contract</a>
+                                            <form action="{{ action('AdminController@create_invoice', []) }}" method="POST" class="">
+                                                {{ csrf_field() }}
+                                                {{ method_field('POST') }}
+
+                                                <button class='btn btn-outline-green btn-block'>Draft A New Contract</button>
+                                            </form>
                                         </div>
 
                                         <div class="mb-2">

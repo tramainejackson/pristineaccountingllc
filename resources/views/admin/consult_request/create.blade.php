@@ -2,14 +2,6 @@
 
 @section('content')
 
-    @if(session('status'))
-        @section('additional_scripts')
-            <script type="text/javascript">
-                toastr.success("Request Moved To Completed", "Success", {showMethod: 'slideDown'});
-            </script>
-        @endsection
-    @endif
-
     <div class="container-fluid">
 
         <div class="row pb-5" id="">
