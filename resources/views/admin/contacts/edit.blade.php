@@ -150,7 +150,7 @@
 
                                     <div class="col-12 text-left">
                                         @foreach($invoices as $invoice)
-                                            <a class="btn btn-outline-blue-grey" href="{{ asset('storage/documents/' . $invoice->file_name . '.docx') }}" download="{{ $consult_contact->full_name() . ' Invoice - ' . $invoice->invoice_number }}">Download Invoice - {{ $invoice->invoice_number }}</a>
+                                            <a class="btn btn-outline-blue-grey" href="{{ asset('storage/documents/' . $invoice->file_name . '.docx') }}" download="{{ $consult_contact->full_name() . ' Invoice - ' . $invoice->invoice_number }}">Download Invoice - {{ $invoice->invoice_number < 10 ? '00' .$invoice->invoice_number : '0' . $invoice->invoice_number }}</a>
                                         @endforeach
                                     </div>
                                 </div>
@@ -158,7 +158,7 @@
 
                             <div class="row position-absolute top right">
                                 <div class="col" id="">
-                                    <button class="btn btn-danger d-block mt-2 deleteBtn" type="button" data-toggle="modal" data-target="#delete_modal">DELETE CONTACT</button>
+                                    <button class="btn btn-danger d-block mt-2 deleteBtn" id="consultContacts_{{ $consult_contact->id }}" type="button" data-toggle="modal" data-target="#delete_modal" onclick="event.preventDefault(); deleteModalUpdate(this);">DELETE CONTACT</button>
                                 </div>
                             </div>
                         </div>
@@ -169,7 +169,7 @@
         </div>
     </div>
 
-    @component('modals.delete_modal', ['title' => 'Delete Contact', 'controller' => 'ConsultContactController@destroy', 'id' => $consult_contact->id])
+    @component('modals.delete_modal', ['title' => 'Delete Contact'])
         Contact name - {{ $consult_contact->full_name() }}
     @endcomponent
 @endsection

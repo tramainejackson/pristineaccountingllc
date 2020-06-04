@@ -151,6 +151,7 @@ class ConsultContactController extends Controller
         if($consult_contact) {
 
         	$consult_recommendations = $consult_contact->recommendation;
+        	$consult_request = $consult_contact->consultRequest;
 
         	//Remove contact
         	if($consult_contact->delete()) {
@@ -158,6 +159,15 @@ class ConsultContactController extends Controller
 		        if($consult_recommendations->isNotEmpty()) {
 			        foreach ($consult_recommendations as $recommendation) {
 				        if($recommendation->delete()){}
+			        }
+		        }
+
+				//Remove any consults if any exist
+		        if($consult_request != null) {
+		        	if($consult_request->delete()){
+				        if($consult_request->consultResponse != null) {
+					        if($consult_request->consultResponse->delete()) {}
+				        }
 			        }
 		        }
 

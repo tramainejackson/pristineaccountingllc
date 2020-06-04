@@ -6,6 +6,7 @@ use App\Admin;
 use App\ConsultRequest;
 use App\ConsultContact;
 use App\ConsultResponse;
+use App\Invoice;
 use App\Mail\NewConsultContact;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -66,6 +67,7 @@ class ConsultRequestController extends Controller
 		    'type'  => 'required',
 	    ]);
 
+	    // Create a new consultation request
 	    $consult = new ConsultRequest();
 	    $consult->email = $request->email;
 	    $consult->last_name = $request->last_name;
@@ -73,19 +75,31 @@ class ConsultRequestController extends Controller
 	    $consult->service = $request->service;
 	    $consult->type = $request->type;
 
-	    if($consult->save()) {
-		    $contact = new ConsultContact();
-		    $contact->consult_request_id = $consult->id;
-		    $contact->email = $consult->email;
-		    $contact->last_name = $consult->last_name;
-		    $contact->first_name = $consult->first_name;
+	    // Create a new contact
+	    $contact = new ConsultContact();
+	    $contact->consult_request_id = $consult->id;
+	    $contact->email = $consult->email;
+	    $contact->last_name = $consult->last_name;
+	    $contact->first_name = $consult->first_name;
 
-		    if($contact->save()) {}
+	    // Save contact
+	    if($contact->save()) {
 
-//		    \Mail::to($consult->email)->send(new Update($consult));
-		    \Mail::to($consult->email)->send(new NewConsultContact($contact));
+	    	// Add contact id to the consultation request
+		    $consult->consult_contact_id = $contact->id;
 
-		    return back()->with('status', 'Thank you for your request ' . $consult->first_name . '. We will contact you at ' . $consult->email . ' soon!');
+		    // Save consultation
+		    if($consult->save()) {
+
+//		        \Mail::to($consult->email)->send(new Update($consult));
+			    \Mail::to($consult->email)->send(new NewConsultContact($contact));
+
+			    return back()->with('status', 'Thank you for your request ' . $consult->first_name . '. We will contact you at ' . $consult->email . ' soon!');
+		    } else {
+
+		    }
+	    } else {
+
 	    }
     }
 
@@ -181,7 +195,8 @@ class ConsultRequestController extends Controller
 			'project_name'              => 'required',
 			'description_of_services'   => 'required',
 		]);
-//		dd($consult);
+
+		// Verify template exist in documents
 		$template = Storage::disk('public')->exists('documents/Invoice_Template.docx');
 
 		if($template) {
@@ -232,11 +247,21 @@ class ConsultRequestController extends Controller
 
 			$templateProcessor->setValue($placeholders, $values);
 
-//			$templateProcessor->saveAs('/var/www/pristineaccountingllc.com/public/storage/documents/'. strtolower($consult->first_name . '_' . $consult->last_name) . '_ ' .$request->invoice_number . '.docx');
-			$templateProcessor->saveAs('/Applications/XAMPP/xamppfiles/htdocs/pristineaccountingllc/public/storage/documents/'. strtolower($consult->first_name . '_' . $consult->last_name) . '_ ' .$request->invoice_number . '.docx');
+//			$templateProcessor->saveAs('/var/www/pristineaccountingllc.com/public/storage/documents/'. strtolower($consult->first_name . '_' . $consult->last_name) . '_' .$request->invoice_number . '.docx');
+			$templateProcessor->saveAs('/Applications/XAMPP/xamppfiles/htdocs/pristineaccountingllc/public/storage/documents/'. strtolower($consult->first_name . '_' . $consult->last_name) . '_' .$request->invoice_number . '.docx');
 
-			if($template = Storage::disk('public')->exists('documents/'. strtolower($consult->first_name . '_' . $consult->last_name) . '_ ' .$request->invoice_number . '.docx')) {
-				return back()->with('status', 'Invoice Created Successfully');
+			if($template = Storage::disk('public')->exists('documents/'. strtolower($consult->first_name . '_' . $consult->last_name) . '_' .$request->invoice_number . '.docx')) {
+				$invoice = new Invoice();
+				$invoice->consult_request_id = $consult->id;
+				$invoice->consult_contact_id = $consult->consult_contact_id;
+				$invoice->invoice_number     = $request->invoice_number;
+				$invoice->file_name          = strtolower($consult->first_name . '_' . $consult->last_name) . '_' . $request->invoice_number;
+
+				if($invoice->save()) {
+					return redirect()->action('ConsultContactController@edit', $consult->id)->with('status', 'Invoice Created Successfully');
+				} else {
+					return back()->with('bad_status', 'Invoice documents created but unable to save invoice to database. Please try again.');
+				}
 			} else {
 				return back()->with('status', 'Unable to create invoice. Please try again.');
 			}
