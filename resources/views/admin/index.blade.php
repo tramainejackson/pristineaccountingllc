@@ -2,11 +2,11 @@
 
 @section('content')
 
-    <div class="container-fluid">
+    <div class="container">
 
         <div class="row" id="">
 
-            <div class="col-12" id="">
+            <div class="col-12 my-5" id="">
                 <h2>Welcome Back {{ $admin->name }}</h2>
             </div>
         </div>
@@ -35,16 +35,16 @@
                     </div>
 
                     <!-- Card -->
-                    <div class="card mb-4">
+                    {{--<div class="card mb-4">--}}
 
-                        <div class="card-body">
+                        {{--<div class="card-body">--}}
 
-                            <h5 class="card-title d-flex align-items-center justify-content-between">Open Tax Returns <a class="btn-floating btn-sm btn-warning"><i class="fas fa-edit"></i></a></h5>
-                            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                            {{--<h5 class="card-title d-flex align-items-center justify-content-between">Open Tax Returns <a class="btn-floating btn-sm btn-warning"><i class="fas fa-edit"></i></a></h5>--}}
+                            {{--<p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>--}}
+                            {{--<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>--}}
 
-                        </div>
-                    </div>
+                        {{--</div>--}}
+                    {{--</div>--}}
 
                     <!-- Card -->
                     <div class="card mb-4">
@@ -65,9 +65,9 @@
             </div>
         </div>
 
-        <div class="row" id="">
+        <div class="row mb-5" id="">
 
-            <div class="col-12 col-lg-8" id="">
+            <div class="col-12 mb-5" id="">
 
                 <div class="card" id="">
 

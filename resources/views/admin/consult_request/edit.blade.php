@@ -6,11 +6,38 @@
 
         <div class="row pb-5" id="">
 
-            <div class="col-5 mx-auto" id="">
+            <div class="col-12 mx-auto my-3" id="consultation_information">
+                <h2 class="">Consultation Information</h2>
+
+                <div class="" id="">
+                    <table id="" class="table table-bordered table-responsive-sm">
+                        <thead class="info-color-dark white-text">
+                        <tr>
+                            <th class="th-sm">Received<i class="" aria-hidden="true"></i></th>
+                            <th class="th-sm">Name<i class="" aria-hidden="true"></i></th>
+                            <th class="th-sm">Type<i class="" aria-hidden="true"></i></th>
+                            <th class="th-sm">Service<i class="" aria-hidden="true"></i></th>
+                            <th class="th-sm">Email<i class="" aria-hidden="true"></i></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>{{ $consult->created_at->format('m/d/Y') }}</td>
+                            <td>{{ $consult->full_name() }}</td>
+                            <td>{{ $consult->type == 'B' ? 'Business' : 'Personal' }}</td>
+                            <td>{{ ucwords(str_ireplace("_", " ", $consult->service)) }}</td>
+                            <td>{{ $consult->email }}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-5 order-1 order-md-0 mx-auto" id="">
                 <img class="mw-100" src="{{ asset('storage/images/invoice_template_image.png') }}" alt="Invoice Template Image">
             </div>
 
-            <div class="col-7 mx-auto" id="">
+            <div class="col-12 col-md-7 mx-auto" id="">
 
                 <!--Section: Content-->
                 <section class="text-center dark-grey-text mb-5">
@@ -164,7 +191,7 @@
                                     <div class="md-form col-12 col-md-6 mb-4">
 
                                         <!-- Invoice Number -->
-                                        <input type="text" name="invoice_number" id="invoice_number" class="form-control" placeholder="Enter Invoice Number" value="{{ old('invoice_number') ? old('invoice_number') : '' }}">
+                                        <input type="text" name="invoice_number" id="invoice_number" class="form-control" placeholder="Enter Invoice Number" value="{{ old('invoice_number') ? old('invoice_number') : $invoice_number }}">
                                         <label for="invoice_number">Invoice Number</label>
 
                                         @if ($errors->has('invoice_number'))

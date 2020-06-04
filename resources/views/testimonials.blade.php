@@ -28,7 +28,9 @@
 
                                     <!--Slide-->
                                     <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
+
                                         <div class="testimonial">
+
                                             <!--Avatar-->
                                             <div class="avatar mx-auto mb-4">
                                                 <img src="{{ asset('storage/images/' . $recommendation->consultContact->avatar) }}" class="rounded-circle img-fluid" alt="First sample avatar image">
@@ -40,13 +42,21 @@
                                             <h4 class="font-weight-bold">{{ $recommendation->consultContact->full_name() }}</h4>
 
                                             <!--Ratings-->
-                                            @for($x=0; $x < floor((int)$recommendation->rating); $x++)
-                                                <i class="fas fa-star blue-text"> </i>
-                                            @endfor
+                                            <div class="" id="">
 
-                                            @if(strlen($recommendation->rating) > 1)
-                                                <i class="fas fa-star-half-alt blue-text"> </i>
-                                            @endif
+                                                @for($x=0; $x < floor((int)$recommendation->rating); $x++)
+                                                    <i class="fas fa-star blue-text"> </i>
+                                                @endfor
+
+                                                @if(strlen($recommendation->rating) > 1)
+                                                    <i class="fas fa-star-half-alt blue-text"> </i>
+                                                @endif
+                                            </div>
+
+                                            <!-- Loop Count -->
+                                            <div class="pt-5" id="">
+                                                <p class="text-muted">{{ $loop->iteration }} / {{ $loop->count }}</p>
+                                            </div>
                                         </div>
                                     </div>
                                     <!--Slide-->

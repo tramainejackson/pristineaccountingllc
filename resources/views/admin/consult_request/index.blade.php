@@ -43,59 +43,54 @@
 
                                         <div class="row justify-content-between flex-column py-4" id="">
 
-                                            <div class="text-center">
-                                                <p class=""><i class="far fa-image fa-2x mr-4 grey p-3 white-text rounded-circle" aria-hidden="true"></i>{{ $consult->full_name() }}</p>
-                                            </div>
+                                            <div class="col modal-row" id="">
 
-                                            <div class="text-center">
-                                                <p class="">Received - <span class='text-muted'>{{ $consult->created_at->format('m/d/Y') }}</span></p>
-                                            </div>
+                                                <div class="text-center">
+                                                    <p class="d-flex align-items-center justify-content-center flex-column">
+                                                        {{-- Client Avatar --}}
+                                                        <img src="{{ asset('storage/images/' . $consult->consultContact->avatar) }}" class="img-fluid img-thumbnail rounded-circle" width="200" alt="Contact Avatar" />
 
-                                            <table id="" class="table table-bordered table-responsive-xl">
-                                                <thead class="info-color-dark white-text">
-                                                    <tr>
-                                                        <th class="th-sm">Received<i class="" aria-hidden="true"></i></th>
-                                                        <th class="th-sm">Name<i class="" aria-hidden="true"></i></th>
-                                                        <th class="th-sm">Type<i class="" aria-hidden="true"></i></th>
-                                                        <th class="th-sm">Service<i class="" aria-hidden="true"></i></th>
-                                                        <th class="th-sm">Email<i class="" aria-hidden="true"></i></th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td>{{ $consult->created_at->format('m/d/Y') }}</td>
-                                                        <td>{{ $consult->full_name() }}</td>
-                                                        <td>{{ $consult->type == 'B' ? 'Business' : 'Personal' }}</td>
-                                                        <td>{{ ucwords(str_ireplace("_", " ", $consult->service)) }}</td>
-                                                        <td>{{ $consult->email }}</td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
+                                                        {{-- Contact Link--}}
+                                                        <a href="{{ route('consult_contacts.edit', $consult->consultContact->id) }}">{{ $consult->full_name() }}</a>
+                                                    </p>
+                                                </div>
 
-                                            <div class="mb-2">
-                                                <button class='btn btn-outline-amber btn-block' onclick="event.preventDefault(); document.getElementById('response-form').submit();">Respond</button>
+                                                <div class="text-center">
+                                                    <p class="">Received - <span class='text-muted'>{{ $consult->created_at->format('m/d/Y') }}</span></p>
+                                                </div>
 
-                                                <form id="response-form" action="{{ route('consult_responses.store') }}" method="POST" style="display: none;">
-                                                    {{ csrf_field() }}
-                                                    <input type="number" name="consult_request" value="{{ $consult->id }}">
-                                                </form>
-                                            </div>
+                                                <table id="" class="table table-bordered table-responsive-sm newModalContent">
+                                                    <thead class="info-color-dark white-text">
+                                                        <tr>
+                                                            <th class="th-sm">Received<i class="" aria-hidden="true"></i></th>
+                                                            <th class="th-sm">Name<i class="" aria-hidden="true"></i></th>
+                                                            <th class="th-sm">Type<i class="" aria-hidden="true"></i></th>
+                                                            <th class="th-sm">Service<i class="" aria-hidden="true"></i></th>
+                                                            <th class="th-sm">Email<i class="" aria-hidden="true"></i></th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>{{ $consult->created_at->format('m/d/Y') }}</td>
+                                                            <td>{{ $consult->full_name() }}</td>
+                                                            <td>{{ $consult->type == 'B' ? 'Business' : 'Personal' }}</td>
+                                                            <td>{{ ucwords(str_ireplace("_", " ", $consult->service)) }}</td>
+                                                            <td>{{ $consult->email }}</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
 
-                                            <div class="mb-2">
-                                                <button class='btn btn-outline-red btn-block deleteBtn' type="button" data-toggle="modal" data-target="#delete_modal">Remove</button>
+                                                <div class="mb-2">
+                                                    <button class='btn btn-outline-amber btn-block' id="consults_{{ $consult->id }}" type="button" data-toggle="modal" data-target="#confirm_modal" onclick="event.preventDefault(); confirmModalUpdate(this);">Complete</button>
+                                                </div>
+
+                                                <div class="mb-2">
+                                                    <button class='btn btn-outline-red btn-block' id="consults_{{ $consult->id }}" type="button" data-toggle="modal" data-target="#delete_modal" onclick="event.preventDefault(); deleteModalUpdate(this);">Remove</button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-
-                                @component('modals.delete_modal', ['title' => 'Delete Open Consult Request', 'controller' => 'ConsultContactController@destroy', 'id' => $consult->id])
-                                    This will permanently delete this current consultation request.
-                                    <br/>Received - {{ $consult->created_at->format('m/d/Y') }}
-                                    <br/>Name - {{ $consult->full_name() }}
-                                    <br/>Type - {{ $consult->type == 'B' ? 'Business' : 'Personal' }}
-                                    <br/>Service - {{ ucwords(str_ireplace("_", " ", $consult->service)) }}
-                                    <br/>Email - {{ $consult->email }}
-                                @endcomponent
                             @else
                             @endif
                         @endforeach
@@ -128,55 +123,64 @@
 
                                     <div class="row justify-content-between flex-column py-4" id="">
 
-                                        <div class="text-center">
-                                            <p class=""><i class="far fa-image fa-2x mr-4 grey p-3 white-text rounded-circle" aria-hidden="true"></i>{{ $response->consultRequest->full_name() }}</p>
-                                        </div>
+                                        <div class="col modal-row" id="">
 
-                                        <div class="text-center">
-                                            <p class="">Responded - <span class='text-muted'>{{ $response->created_at->format('m/d/Y') }}</span></p>
-                                        </div>
+                                            <div class="text-center">
+                                                <p class="d-flex align-items-center justify-content-center flex-column">
+                                                     {{-- Client Avatar--}}
+                                                    <img src="{{ asset('storage/images/' . $response->consultRequest->consultContact->avatar) }}" class="img-fluid img-thumbnail rounded-circle" width="200" alt="Contact Avatar" />
 
-                                        <table id="" class="table table-bordered table-responsive-xl">
+                                                    {{-- Contact Link --}}
+                                                    <a href="{{ route('consult_contacts.edit', $response->consultRequest->consultContact->id) }}">{{ $response->consultRequest->full_name() }}</a>
+                                                </p>
+                                            </div>
 
-                                            <thead class="stylish-color-dark white-text">
-                                                <tr>
-                                                    <th class="th-sm">Received<i class="" aria-hidden="true"></i></th>
-                                                    <th class="th-sm">Name<i class="" aria-hidden="true"></i></th>
-                                                    <th class="th-sm">Type<i class="" aria-hidden="true"></i></th>
-                                                    <th class="th-sm">Service<i class="" aria-hidden="true"></i></th>
-                                                    <th class="th-sm">Email<i class="" aria-hidden="true"></i></th>
-                                                </tr>
-                                            </thead>
+                                            <div class="text-center">
+                                                <p class="">Responded - <span class='text-muted'>{{ $response->created_at->format('m/d/Y') }}</span></p>
+                                            </div>
 
-                                            <tbody>
-                                                <tr>
-                                                    <td>{{ $response->consultRequest->created_at->format('m/d/Y') }}</td>
-                                                    <td>{{ $response->consultRequest->full_name() }}</td>
-                                                    <td>{{ $response->consultRequest->type == 'B' ? 'Business' : 'Personal' }}</td>
-                                                    <td>{{ ucwords(str_ireplace("_", " ", $response->consultRequest->service)) }}</td>
-                                                    <td>{{ $response->consultRequest->email }}</td>
-                                                </tr>
-                                            </tbody>
+                                            <table id="" class="table table-bordered table-responsive-sm newModalContent">
 
-                                            <thead class="stylish-color white-text">
-                                                <tr>
-                                                    <th class="th-sm" colspan="5">Response<i class="" aria-hidden="true"></i></th>
-                                                </tr>
-                                            </thead>
+                                                <thead class="stylish-color-dark white-text">
+                                                    <tr>
+                                                        <th class="th-sm">Received<i class="" aria-hidden="true"></i></th>
+                                                        <th class="th-sm">Name<i class="" aria-hidden="true"></i></th>
+                                                        <th class="th-sm">Type<i class="" aria-hidden="true"></i></th>
+                                                        <th class="th-sm">Service<i class="" aria-hidden="true"></i></th>
+                                                        <th class="th-sm">Email<i class="" aria-hidden="true"></i></th>
+                                                    </tr>
+                                                </thead>
 
-                                            <tbody>
-                                                <tr>
-                                                    <td colspan="5">{{ $response->response }}</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>{{ $response->consultRequest->created_at->format('m/d/Y') }}</td>
+                                                        <td>{{ $response->consultRequest->full_name() }}</td>
+                                                        <td>{{ $response->consultRequest->type == 'B' ? 'Business' : 'Personal' }}</td>
+                                                        <td>{{ ucwords(str_ireplace("_", " ", $response->consultRequest->service)) }}</td>
+                                                        <td>{{ $response->consultRequest->email }}</td>
+                                                    </tr>
+                                                </tbody>
 
-                                        <div class="mb-2">
-                                            <a class='btn btn-outline-green btn-block' href="{{ route('consults.edit', $response->consultRequest->id) }}">Draft A New Contract</a>
-                                        </div>
+                                                <thead class="stylish-color white-text">
+                                                    <tr>
+                                                        <th class="th-sm" colspan="5">Response<i class="" aria-hidden="true"></i></th>
+                                                    </tr>
+                                                </thead>
 
-                                        <div class="mb-2">
-                                            <button class='btn btn-outline-red btn-block'>Remove</button>
+                                                <tbody>
+                                                    <tr>
+                                                        <td colspan="5">{{ $response->response }}</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+
+                                            <div class="mb-2">
+                                                <a class='btn btn-outline-green btn-block' href="{{ route('consults.edit', $response->consultRequest->id) }}">Draft A New Contract</a>
+                                            </div>
+
+                                            <div class="mb-2">
+                                                <button class='btn btn-outline-red btn-block' id="consultResponses_{{ $response->id }}" type="button" data-toggle="modal" data-target="#delete_modal" onclick="event.preventDefault(); deleteModalUpdate(this);">Remove</button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -187,4 +191,12 @@
             </div>
         </div>
     </div>
+
+    @component('modals.delete_modal', ['title' => 'Delete Open Consult Request'])
+        This will permanently delete this current consultation request or consultation response.
+    @endcomponent
+
+    @component('modals.confirm_modal', ['title' => 'Complete Open Consult Request'])
+        This will move this current consultation request to the completed request.
+    @endcomponent
 @endsection

@@ -7,6 +7,13 @@
 
         <!-- Grid row -->
         <div class="row">
+            <div class="col" id="">
+                <a href="{{ route('recommendations.index') }}" class="btn btn-warning">All Testimonials</a>
+            </div>
+        </div>
+
+        <!-- Grid row -->
+        <div class="row">
 
             <div class="col-12 text-center" id="">
                 <h2 class>{{ $contact->full_name() }}'s Survey</h2>

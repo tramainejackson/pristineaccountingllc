@@ -4,6 +4,13 @@
 
     <div class="container-fluid">
 
+        <!-- Grid row -->
+        <div class="row">
+            <div class="col mb-3" id="">
+                <a href="{{ route('consults.index') }}" class="btn btn-warning">All Consult Request</a>
+            </div>
+        </div>
+
         <div class="row pb-5" id="">
 
             <div class="col-8 mx-auto" id="">

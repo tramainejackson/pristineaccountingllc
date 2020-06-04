@@ -92,7 +92,7 @@ class ConsultRequestController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Admin  $admin
+     * @param  \App\ConsultRequest $consult
      * @return \Illuminate\Http\Response
      */
     public function show(Admin $admin)
@@ -103,47 +103,89 @@ class ConsultRequestController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Admin  $admin
+     * @param  \App\ConsultRequest $consult
      * @return \Illuminate\Http\Response
      */
     public function edit(ConsultRequest $consult) {
-	    return view('admin.consult_request.edit', compact('consult'));
+
+    	$invoice_number = $consult->invoice->isNotEmpty() ? $consult->invoice->last()->NewInvoiceNumber($consult->invoice->last()->invoice_number) : '';
+
+	    return view('admin.consult_request.edit', compact('consult', 'invoice_number'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Admin  $admin
+     * @param  \App\ConsultRequest $consult
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Admin $admin)
-    {
-        //
+    public function update(Request $request, ConsultRequest $consult) {
+    	$consult->responded = 'Y';
+
+	    if($consult->save()) {
+	    	$consult_response = new ConsultResponse();
+		    $consult_response->consult_request_id = $consult->id;
+		    $consult_response->response = $request->addt_info;
+
+		    if($consult_response->save()) {
+		    	return back()->with('status', 'Consult Request Completed Successfully and Response Created');
+		    } else {
+		    	return back()->with('status', 'Consult Request Saved Successfully but no Response Created');
+		    }
+	    } else {
+		    return back()->with('bad_status', 'Unable To Remove Consult Request, Please Try Again');
+	    }
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Admin  $admin
+     * @param  \App\ConsultRequest $consult
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Admin $admin)
-    {
-        //
+    public function destroy(ConsultRequest $consult) {
+    	// Removed Consult Request
+        if($consult->delete()) {
+	        return back()->with('status', 'Consult Request Removed Successfully');
+        } else {
+	        return back()->with('bad_status', 'Unable To Remove Consult Request, Please Try Again');
+        }
     }
 
 	/**
 	 * Create an invoice.
 	 *
-	 * @param  \App\Admin  $admin
+	 * @param  \App\Request $request
+	 * @param  \App\ConsultRequest $consult
 	 * @return \Illuminate\Http\Response
 	 */
 	public function create_invoice(Request $request, ConsultRequest $consult) {
-//		dd($request);
+		$this->validate($request, [
+			'company_name'              => 'required',
+			'owner_name'                => 'required',
+			'company_address'           => 'required',
+			'payee'                     => 'required',
+			'payee_address'             => 'required',
+			'payee_payment_method'      => 'required',
+			'payee_contact_name'        => 'required',
+			'payee_contact_phone'       => 'required',
+			'payee_contact_email'       => 'required|email',
+			'invoice_date'              => 'required',
+			'invoice_reason'            => 'required',
+			'invoice_number'            => 'required',
+			'invoice_terms'             => 'required',
+			'invoice_due_date'          => 'required',
+			'invoice_amount'            => 'required',
+			'project_period'            => 'required',
+			'project_name'              => 'required',
+			'description_of_services'   => 'required',
+		]);
+//		dd($consult);
 		$template = Storage::disk('public')->exists('documents/Invoice_Template.docx');
 
 		if($template) {
+//			$template = '/var/www/pristineaccountingllc.com/public/storage/documents/Invoice_Template.docx';
 			$template = '/Applications/XAMPP/xamppfiles/htdocs/pristineaccountingllc/public/storage/documents/Invoice_Template.docx';
 			$templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor($template);
 
@@ -190,12 +232,13 @@ class ConsultRequestController extends Controller
 
 			$templateProcessor->setValue($placeholders, $values);
 
-			$templateProcessor->saveAs('/Applications/XAMPP/xamppfiles/htdocs/pristineaccountingllc/public/storage/documents/TestTemplate.docx');
+//			$templateProcessor->saveAs('/var/www/pristineaccountingllc.com/public/storage/documents/'. strtolower($consult->first_name . '_' . $consult->last_name) . '_ ' .$request->invoice_number . '.docx');
+			$templateProcessor->saveAs('/Applications/XAMPP/xamppfiles/htdocs/pristineaccountingllc/public/storage/documents/'. strtolower($consult->first_name . '_' . $consult->last_name) . '_ ' .$request->invoice_number . '.docx');
 
-			if($template = Storage::disk('public')->exists('documents/TestTemplate.docx')) {
+			if($template = Storage::disk('public')->exists('documents/'. strtolower($consult->first_name . '_' . $consult->last_name) . '_ ' .$request->invoice_number . '.docx')) {
 				return back()->with('status', 'Invoice Created Successfully');
 			} else {
-
+				return back()->with('status', 'Unable to create invoice. Please try again.');
 			}
 		} else {
 			dd('Template Not Found');

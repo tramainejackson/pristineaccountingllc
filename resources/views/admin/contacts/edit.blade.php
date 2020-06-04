@@ -105,18 +105,24 @@
                                 </div>
                             </form>
 
-                            <div class="row mt-5">
+                            <div class="row my-5">
 
-                                @if($consult_contact->recommendation->isNotEmpty())
+                                @if($recommendations->isNotEmpty())
 
                                     <div class="col-12" id="">
-                                        <h3 class="h3">This contact has completed a survey. Click <a href="{{ route('recommendations.edit', $consult_contact->recommendation->first()->id) }}">here</a> to go to that survey</h3>
+                                        <h3 class="h3">This contact has completed a survey.</h3>
+                                    </div>
+
+                                    <div class="col-12 text-left">
+                                        @foreach($recommendations as $recommendation)
+                                            <a class="btn btn-outline-blue-grey" href="{{ route('recommendations.edit', $recommendation->id) }}">See survey - {{ $recommendation->id }}</a>
+                                        @endforeach
                                     </div>
 
                                     <div class="col-12">
 
                                         <div class="text-center">
-                                            <a class="btn btn-info btn-rounded">Send Another Survey</a>
+                                            <a class="btn btn-info btn-rounded">Send Another Survey Email</a>
                                         </div>
 
                                     </div>
@@ -134,6 +140,21 @@
                                     </div>
                                 @endif
                             </div>
+
+                            {{-- Show invoices --}}
+                            @if($invoices->isNotEmpty())
+                                <div class="row mt-5" id="invoices">
+                                    <div class="col-12">
+                                        <h3 class="">This contact has {{ $invoices->count() }} invoice(s).</h3>
+                                    </div>
+
+                                    <div class="col-12 text-left">
+                                        @foreach($invoices as $invoice)
+                                            <a class="btn btn-outline-blue-grey" href="{{ asset('storage/documents/' . $invoice->file_name . '.docx') }}" download="{{ $consult_contact->full_name() . ' Invoice - ' . $invoice->invoice_number }}">Download Invoice - {{ $invoice->invoice_number }}</a>
+                                        @endforeach
+                                    </div>
+                                </div>
+                            @endif
 
                             <div class="row position-absolute top right">
                                 <div class="col" id="">

@@ -6,6 +6,8 @@ use App\Admin;
 use App\ConsultRequest;
 use App\ConsultContact;
 use App\ConsultResponse;
+use App\Invoice;
+use App\Recommendation;
 use App\Mail\NewConsultContact;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -45,9 +47,7 @@ class ConsultContactController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-	    //	    dd($request);
+    public function store(Request $request){
 
 	    $this->validate($request, [
 		    'email'      => 'required|email|max:50',
@@ -98,7 +98,10 @@ class ConsultContactController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(ConsultContact $consult_contact) {
-	    return view('admin.contacts.edit', compact('consult_contact'));
+    	$invoices = $consult_contact->invoices;
+    	$recommendations = $consult_contact->recommendation;
+
+	    return view('admin.contacts.edit', compact('consult_contact', 'invoices', 'recommendations'));
     }
 
     /**

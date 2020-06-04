@@ -67,10 +67,10 @@ class ConsultResponseController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Admin  $admin
+     * @param  \App\ConsultResponse  $consult_response
      * @return \Illuminate\Http\Response
      */
-    public function show(Admin $admin)
+    public function show(ConsultResponse $consult_response)
     {
         //
     }
@@ -78,10 +78,10 @@ class ConsultResponseController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Admin  $admin
+     * @param  \App\ConsultResponse  $consult_response
      * @return \Illuminate\Http\Response
      */
-    public function edit(Admin $admin)
+    public function edit(ConsultResponse $consult_response)
     {
         //
     }
@@ -93,7 +93,7 @@ class ConsultResponseController extends Controller
      * @param  \App\Admin  $admin
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Admin $admin)
+    public function update(Request $request, ConsultResponse $consult_response)
     {
         //
     }
@@ -104,8 +104,12 @@ class ConsultResponseController extends Controller
      * @param  \App\Admin  $admin
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Admin $admin)
-    {
-        //
+    public function destroy(ConsultResponse $consult_response) {
+	    // Removed Consult Response
+	    if($consult_response->delete()) {
+		    return back()->with('status', 'Consult Response Removed and Archived Successfully');
+	    } else {
+		    return back()->with('bad_status', 'Unable To Remove Consult Response, Please Try Again');
+	    }
     }
 }

@@ -44,6 +44,13 @@ class ConsultContact extends Model
 	}
 
 	/**
+	 * Get the consult request record associated with the user.
+	 */
+	public function invoices() {
+		return $this->hasMany('App\Invoice');
+	}
+
+	/**
 	 * Get the contacts phone number.
 	 *
 	 * @param  string  $value

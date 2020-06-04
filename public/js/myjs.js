@@ -309,38 +309,8 @@ $(document).ready(function() {
     });
 
     // Call function for file preview when uploading
-    // new contact image
-    $('input#welcome_media').change(function () {
-        welcomeMediaPreview(this);
-        fileLoaded(this);
-    });
-
-    // Call function for removing current showing
-    $('body').on('click', '.removeShowing', function(e) {
-        removeShowing($(this).next());
-        $(this).parent().parent().parent().addClass('animated zoomOutLeft');
-    });
-
-    // Call function for updating current showing
-    $('body').on('click', '.updateShowing', function(e) {
-        updateShowing(
-            $(this).parents('div.card').find('#showing_id'),
-            $(this).parents('div.card').find('input[name="show_date_submit"]'),
-            $(this).parents('div.card').find('#show_time'),
-            $(this).parents('div.card').find('#show_instruc')
-        );
-    });
-
-    // Call function for file preview when uploading
     // new images to properties page
     $("#upload_photo_input").change(function () {
-        filePreview(this);
-        fileLoaded(this);
-    });
-
-    // Call function for file preview when uploading
-    // new images to settings page
-    $("#carousel_images_upload").change(function () {
         filePreview(this);
         fileLoaded(this);
     });
@@ -493,6 +463,48 @@ function contactImgPreview(input) {
         $('.contactImg img').attr('src', e.target.result).addClass('imgPreview');
     }
     reader.readAsDataURL(input.files[0]);
+}
+
+// Fill delete modal
+function deleteModalUpdate(button) {
+    var new_info = $(button).parents('div.modal-row');
+    var form_info = $(button).attr('id').split('_');
+    var form_controller = form_info[0] == 'consultResponses' ? 'consult_responses' : form_info[0];
+    var form_edit_id = form_info[1];
+
+    // Remove any previous information
+    $('#delete_modal').find('.newModalContent').remove();
+
+    // Update Delete Modal Form
+    $('#delete_modal').find('.modal-body-form').attr('action', location.origin + '/' + form_controller + '/' + form_edit_id);
+
+    // Update Delete Modal Info
+    $('#delete_modal').find('.modal-body-text').append(new_info.find('.newModalContent').clone());
+
+    // Show Delete Modal
+    // $('#delete_modal').modal('show');
+}
+
+// Fill co modal
+function confirmModalUpdate(button) {
+    var new_info = $(button).parents('div.modal-row');
+    var form_info = $(button).attr('id').split('_');
+    var form_controller = form_info[0];
+    var form_edit_id = form_info[1];
+
+    console.log(form_info[0]);
+    console.log(form_info[1]);
+    // Remove any previous information
+    $('#confirm_modal').find('.newModalContent').remove();
+
+    // Update Confirm Modal Form
+    $('#confirm_modal').find('.modal-body-form').attr('action', location.origin + '/' + form_controller + '/' + form_edit_id);
+
+    // Update Confirm Modal Info
+    $('#confirm_modal').find('.modal-body-text').append(new_info.find('.newModalContent').clone());
+
+    // Show Confirm Modal
+    // $('#delete_modal').modal('show');
 }
 
 // Filter members with search input
