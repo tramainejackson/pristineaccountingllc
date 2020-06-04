@@ -200,8 +200,8 @@ class ConsultRequestController extends Controller
 		$template = Storage::disk('public')->exists('documents/Invoice_Template.docx');
 
 		if($template) {
-//			$template = '/var/www/pristineaccountingllc.com/public/storage/documents/Invoice_Template.docx';
-			$template = '/Applications/XAMPP/xamppfiles/htdocs/pristineaccountingllc/public/storage/documents/Invoice_Template.docx';
+			$template = '/var/www/pristineaccountingllc.com/public/storage/documents/Invoice_Template.docx';
+//			$template = '/Applications/XAMPP/xamppfiles/htdocs/pristineaccountingllc/public/storage/documents/Invoice_Template.docx';
 			$templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor($template);
 
 			$values = [
@@ -247,8 +247,8 @@ class ConsultRequestController extends Controller
 
 			$templateProcessor->setValue($placeholders, $values);
 
-//			$templateProcessor->saveAs('/var/www/pristineaccountingllc.com/public/storage/documents/'. strtolower($consult->first_name . '_' . $consult->last_name) . '_' .$request->invoice_number . '.docx');
-			$templateProcessor->saveAs('/Applications/XAMPP/xamppfiles/htdocs/pristineaccountingllc/public/storage/documents/'. strtolower($consult->first_name . '_' . $consult->last_name) . '_' .$request->invoice_number . '.docx');
+			$templateProcessor->saveAs('/var/www/pristineaccountingllc.com/public/storage/documents/'. strtolower($consult->first_name . '_' . $consult->last_name) . '_' .$request->invoice_number . '.docx');
+//			$templateProcessor->saveAs('/Applications/XAMPP/xamppfiles/htdocs/pristineaccountingllc/public/storage/documents/'. strtolower($consult->first_name . '_' . $consult->last_name) . '_' .$request->invoice_number . '.docx');
 
 			if($template = Storage::disk('public')->exists('documents/'. strtolower($consult->first_name . '_' . $consult->last_name) . '_' .$request->invoice_number . '.docx')) {
 				$invoice = new Invoice();
