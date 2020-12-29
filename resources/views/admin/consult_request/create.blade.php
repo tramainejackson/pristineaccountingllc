@@ -32,7 +32,7 @@
                                     <div class="col-md-6 mb-4">
 
                                         <!-- Name -->
-                                        <input type="text" id="first_name" class="form-control" placeholder="Enter First Name">
+                                        <input type="text" name="first_name" class="form-control" placeholder="Enter First Name">
 
                                         @if ($errors->has('first_name'))
                                             <span class="text-danger">First Name cannot be empty</span>
@@ -42,7 +42,7 @@
                                     <div class="col-md-6 mb-4">
 
                                         <!-- Name -->
-                                        <input type="email" id="last_name" class="form-control" placeholder="Enter Last Name">
+                                        <input type="text" name="last_name" class="form-control" placeholder="Enter Last Name">
 
                                         @if ($errors->has('last_name'))
                                             <span class="text-danger">Last Name cannot be empty</span>
@@ -55,7 +55,7 @@
                                     <div class="col-md-12 mb-4">
 
                                         <!-- Email -->
-                                        <input type="email" id="email" class="form-control" placeholder="Enter Email Address">
+                                        <input type="email" name="email" class="form-control" placeholder="Enter Email Address">
 
                                         @if ($errors->has('email'))
                                             <span class="text-danger">Email Address cannot be empty</span>
@@ -68,7 +68,7 @@
                                     <div class="col-md-12 mb-4">
 
                                         <!-- Phone -->
-                                        <input type="text" id="phone" class="form-control" placeholder="Enter Phone Number">
+                                        <input type="text" name="phone" class="form-control" placeholder="Enter Phone Number">
 
                                     </div>
                                 </div>
@@ -86,7 +86,7 @@
                                             <option value="consulting">Consulting</option>
                                         </select>
 
-                                        @if ($errors->has('email'))
+                                        @if ($errors->has('service'))
                                             <span class="text-danger">Select A Type of Service</span>
                                         @endif
                                     </div>
@@ -100,7 +100,7 @@
                                             <option value="P">Personal</option>
                                         </select>
 
-                                        @if ($errors->has('email'))
+                                        @if ($errors->has('type'))
                                             <span class="text-danger">Select A Type of Consultation</span>
                                         @endif
                                     </div>

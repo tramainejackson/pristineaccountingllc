@@ -63,8 +63,8 @@ class ConsultRequestController extends Controller
 		    'email'      => 'required|email|max:50',
 		    'first_name' => 'required|max:50',
 		    'last_name'  => 'required|max:50',
-		    'service'  => 'required',
-		    'type'  => 'required',
+		    'service'    => 'required',
+		    'type'       => 'required',
 	    ]);
 
 	    // Create a new consultation request
@@ -77,29 +77,35 @@ class ConsultRequestController extends Controller
 
 	    // Create a new contact
 	    $contact = new ConsultContact();
-	    $contact->consult_request_id = $consult->id;
 	    $contact->email = $consult->email;
 	    $contact->last_name = $consult->last_name;
 	    $contact->first_name = $consult->first_name;
 
-	    // Save contact
-	    if($contact->save()) {
+	    // Save consultation
+	    if($consult->save()) {
 
-	    	// Add contact id to the consultation request
-		    $consult->consult_contact_id = $contact->id;
+	    	// Add request id to the contact
+		    $contact->consult_request_id = $consult->id;
 
-		    // Save consultation
-		    if($consult->save()) {
+		    // Save contact
+		    if($contact->save()) {
 
-//		        \Mail::to($consult->email)->send(new Update($consult));
-			    \Mail::to($consult->email)->send(new NewConsultContact($contact));
+		        // Add contact id to the consultation request
+			    $consult->consult_contact_id = $contact->id;
 
-			    return back()->with('status', 'Thank you for your request ' . $consult->first_name . '. We will contact you at ' . $consult->email . ' soon!');
+			    // Save consultation
+			    if($consult->save()) {
+
+	//		        \Mail::to($consult->email)->send(new Update($consult));
+				    \Mail::to($consult->email)->send(new NewConsultContact($contact));
+
+				    return back()->with('status', 'Thank you for your request ' . $consult->first_name . '. We will contact you at ' . $consult->email . ' soon!');
+			    } else {
+
+			    }
 		    } else {
 
 		    }
-	    } else {
-
 	    }
     }
 
@@ -200,8 +206,8 @@ class ConsultRequestController extends Controller
 		$template = Storage::disk('public')->exists('documents/Invoice_Template.docx');
 
 		if($template) {
-			$template = '/var/www/pristineaccountingllc.com/public/storage/documents/Invoice_Template.docx';
-//			$template = '/Applications/XAMPP/xamppfiles/htdocs/pristineaccountingllc/public/storage/documents/Invoice_Template.docx';
+//			$template = '/var/www/pristineaccountingllc.com/public/storage/documents/Invoice_Template.docx';
+			$template = '/Applications/XAMPP/xamppfiles/htdocs/pristineaccountingllc/public/storage/documents/Invoice_Template.docx';
 			$templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor($template);
 
 			$values = [
@@ -247,8 +253,8 @@ class ConsultRequestController extends Controller
 
 			$templateProcessor->setValue($placeholders, $values);
 
-			$templateProcessor->saveAs('/var/www/pristineaccountingllc.com/public/storage/documents/'. strtolower($consult->first_name . '_' . $consult->last_name) . '_' .$request->invoice_number . '.docx');
-//			$templateProcessor->saveAs('/Applications/XAMPP/xamppfiles/htdocs/pristineaccountingllc/public/storage/documents/'. strtolower($consult->first_name . '_' . $consult->last_name) . '_' .$request->invoice_number . '.docx');
+//			$templateProcessor->saveAs('/var/www/pristineaccountingllc.com/public/storage/documents/'. strtolower($consult->first_name . '_' . $consult->last_name) . '_' .$request->invoice_number . '.docx');
+			$templateProcessor->saveAs('/Applications/XAMPP/xamppfiles/htdocs/pristineaccountingllc/public/storage/documents/'. strtolower($consult->first_name . '_' . $consult->last_name) . '_' .$request->invoice_number . '.docx');
 
 			if($template = Storage::disk('public')->exists('documents/'. strtolower($consult->first_name . '_' . $consult->last_name) . '_' .$request->invoice_number . '.docx')) {
 				$invoice = new Invoice();

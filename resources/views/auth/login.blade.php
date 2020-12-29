@@ -8,10 +8,10 @@
 
             <div class="rgba-white-strong py-3">
 
-                <h2 class="card-title h1-responsive pt-3 mb-5 font-bold"><strong><span class="d-block d-sm-inline-block">Pristing</span><span class="d-block d-sm-inline-block">Accounting</span><span class="d-block d-sm-inline-block dark-grey-text">LLC</span></strong></h2>
+                <h1 class="card-title h1 pt-3 mb-5 font-bold coolText6 display-3"><strong><span class="d-block d-sm-inline-block">Pristine</span><span class="d-block d-sm-inline-block">Accounting</span><span class="d-block d-sm-inline-block dark-grey-text">LLC</span></strong></h1>
 
-                <p class="mx-5 mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat fugiat, laboriosam, voluptatem,
-                    optio vero odio nam sit officia accusamus minus error nisi architecto nulla ipsum dignissimos. Odit sed qui, dolorum!
+                <p class="mx-5 mb-5">The vision at Pristine Accounting is to enrich its client’s one person at a time to help
+                    build up a financially savvy community, while striving to be the best financial company.
                 </p>
             </div>
         </div>

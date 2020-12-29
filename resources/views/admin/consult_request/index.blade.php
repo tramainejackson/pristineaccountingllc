@@ -6,7 +6,7 @@
 
         <div class="row" id="">
             <div class="col-12 mb-3" id="">
-                <button class='btn btn-light-green ml-0' type='button'><a href="{{ route('consults.create') }}" class="white-text">Create New Request</a></button>
+                <a href="{{ route('consults.create') }}" class="btn btn-light-green white-text">Create New Request</a>
             </div>
         </div>
 

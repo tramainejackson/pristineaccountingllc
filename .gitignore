@@ -4,6 +4,7 @@
 /public/images/*
 /public/files/*
 /public/uploads/*
+/public/storage
 /public/storage/*
 /public/music/*
 /public/js/modules

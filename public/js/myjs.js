@@ -492,8 +492,6 @@ function confirmModalUpdate(button) {
     var form_controller = form_info[0];
     var form_edit_id = form_info[1];
 
-    console.log(form_info[0]);
-    console.log(form_info[1]);
     // Remove any previous information
     $('#confirm_modal').find('.newModalContent').remove();
 
