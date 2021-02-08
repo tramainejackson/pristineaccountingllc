@@ -111,7 +111,7 @@ class ConsultRequestController extends Controller
 				    //\Mail::to($consult->email)->send(new Update($consult));
 //				    \Mail::to($contact->email)->send(new NewConsultContact($contact));
 
-				    return redirect()->action('ConsultRequestController@index')->with('status', 'Thank you for your request ' . $contact->first_name . '. We will contact you at ' . $contact->email . ' soon!');
+				    return redirect()->action('HomeController@index')->with('status', 'Thank you for your request ' . $contact->first_name . '. We will contact you at ' . $contact->email . ' soon!');
 			    } else {}
 		    }
 	    } else {
