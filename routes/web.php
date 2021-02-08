@@ -24,6 +24,16 @@ Auth::routes();
 //	return view('emails.new_contact', compact('consult_contact', 'contact', 'amount', 'body', 'subject', 'setting', 'token', 'showingDate'));
 //})->name('test');
 
+Route::resource('administrator', 'AdminController');
+
+Route::resource('recommendations', 'RecommendationController');
+
+Route::resource('consults', 'ConsultRequestController');
+
+Route::resource('consult_responses', 'ConsultResponseController');
+
+Route::resource('consult_contacts', 'ConsultContactController');
+
 Route::get('/', 'HomeController@index')->name('home_index');
 
 Route::get('/about', 'HomeController@about')->name('about');
@@ -37,13 +47,3 @@ Route::get('/send_survey/{consult_contact}', 'RecommendationController@send_surv
 Route::delete('/consult_survey/{recommendation}', 'RecommendationController@destroy');
 
 Route::post('/create_invoice/{consult}', 'ConsultRequestController@create_invoice');
-
-Route::resource('administrator', 'AdminController');
-
-Route::resource('recommendations', 'RecommendationController');
-
-Route::resource('consults', 'ConsultRequestController');
-
-Route::resource('consult_responses', 'ConsultResponseController');
-
-Route::resource('consult_contacts', 'ConsultContactController');
