@@ -88,12 +88,12 @@
             <div class="md-form">
                 <input name="rating" type="number" class="form-control" id="" step="0.5" min="0" max="5" placeholder="Enter a Number" {{ $errors->has('rating') ? 'autofocus' : '' }} />
 
-                <label for="rating">How would you rate us from 1-5? 5 being the best</label>
-            </div>
+                <label for="rating" class="mdb-main-label">How would you rate us from 1-5? 5 being the best</label>
 
-            @if ($errors->has('rating'))
-                <span class="text-danger">{{ $errors->first('rating') }}</span>
-            @endif
+                @if ($errors->has('rating'))
+                    <span class="text-danger">{{ $errors->first('rating') }}</span>
+                @endif
+            </div>
         </div>
         <!-- Grid column -->
 
@@ -102,12 +102,13 @@
             <!--Material textarea-->
             <div class="md-form">
                 <textarea name="suggestions" id="" class="md-textarea form-control" rows="5">{{ old('suggestions') ? old('suggestions') : '' }}</textarea>
-                <label for="suggestions">Is there anything we could have done differently?</label>
-            </div>
 
-            @if ($errors->has('suggestions'))
-                <span class="text-danger">{{ $errors->first('suggestions') }}</span>
-            @endif
+                <label for="suggestions">Is there anything we could have done differently?</label>
+
+                @if ($errors->has('suggestions'))
+                    <span class="text-danger">{{ $errors->first('suggestions') }}</span>
+                @endif
+            </div>
         </div>
         <!-- Grid column -->
 

@@ -63,15 +63,15 @@
 
     <!-- Scripts -->
     <!-- JQuery -->
-    <script type="text/javascript" src="{{ asset('js/jquery.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/js/jquery.min.js') }}"></script>
     <!-- Bootstrap tooltips -->
-    <script type="text/javascript" src="{{ asset('js/popper.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/js/popper.min.js') }}"></script>
     <!-- Bootstrap core JavaScript -->
-    <script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/js/bootstrap.min.js') }}"></script>
     <!-- MDB core JavaScript -->
-    <script type="text/javascript" src="{{ asset('js/mdb.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/js/mdb.min.js') }}"></script>
     <!-- Custom JavaScript -->
-    <script type="text/javascript" src="{{ asset('js/myjs.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/js/myjs.js') }}"></script>
 
     @yield('additional_scripts')
 
