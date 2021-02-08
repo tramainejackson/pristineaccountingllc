@@ -48,8 +48,9 @@ class ConsultRequestController extends Controller
      */
     public function create() {
 	    $admin = Auth::user();
+	    $contacts = ConsultContact::all();
 
-	    return view('admin.consult_request.create', compact('admin'));
+	    return view('admin.consult_request.create', compact('admin', 'contacts'));
     }
 
     /**
@@ -59,53 +60,69 @@ class ConsultRequestController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request) {
-	    $this->validate($request, [
-		    'email'      => 'required|email|max:50',
-		    'first_name' => 'required|max:50',
-		    'last_name'  => 'required|max:50',
-		    'service'    => 'required',
-		    'type'       => 'required',
-	    ]);
+    	if(Auth::check()) {
+			$this->validate($request, [
+			    'service'    => 'required',
+			    'type'       => 'required',
+			    'message'    => 'required',
+			    'contact_id' => 'required|integer',
+		    ]);
+	    } else {
+			$this->validate($request, [
+			    'email'      => 'required|email|max:100',
+			    'first_name' => 'required|max:50',
+			    'last_name'  => 'required|max:50',
+			    'service'    => 'required',
+			    'type'       => 'required',
+			    'message'    => 'required',
+		    ]);
+	    }
+
+		// Get contact by the email address
+	    $contact_check = isset($request->contact_id) ? ConsultContact::find($request->contact_id) : ConsultContact::emailId($request->email);
 
 	    // Create a new consultation request
 	    $consult = new ConsultRequest();
-	    $consult->email = $request->email;
-	    $consult->last_name = $request->last_name;
-	    $consult->first_name = $request->first_name;
-	    $consult->service = $request->service;
-	    $consult->type = $request->type;
+	    $consult->service            = $request->service;
+	    $consult->type               = $request->type;
+	    $consult->message            = $request->message;
+	    $consult->consult_contact_id = isset($request->contact_id) ? $contact_check->id : null;
 
-	    // Create a new contact
-	    $contact = new ConsultContact();
-	    $contact->email = $consult->email;
-	    $contact->last_name = $consult->last_name;
-	    $contact->first_name = $consult->first_name;
-
-	    // Save consultation
-	    if($consult->save()) {
-
-	    	// Add request id to the contact
-		    $contact->consult_request_id = $consult->id;
+	    if(isset($request->email)) {
+	    	if($contact_check->isEmpty()) {
+			    // Create a new contact
+			    $contact = new ConsultContact();
+			    $contact->email = $request->email;
+			    $contact->last_name = $request->last_name;
+			    $contact->first_name = $request->first_name;
+		    } else {
+	    		$contact = $contact_check->first();
+		    }
 
 		    // Save contact
 		    if($contact->save()) {
 
-		        // Add contact id to the consultation request
+			    // Add contact id to the consultation request
 			    $consult->consult_contact_id = $contact->id;
 
 			    // Save consultation
 			    if($consult->save()) {
 
-	//		        \Mail::to($consult->email)->send(new Update($consult));
-				    \Mail::to($consult->email)->send(new NewConsultContact($contact));
+				    //\Mail::to($consult->email)->send(new Update($consult));
+//				    \Mail::to($contact->email)->send(new NewConsultContact($contact));
 
-				    return back()->with('status', 'Thank you for your request ' . $consult->first_name . '. We will contact you at ' . $consult->email . ' soon!');
-			    } else {
-
-			    }
-		    } else {
-
+				    return redirect()->action('ConsultRequestController@index')->with('status', 'Thank you for your request ' . $contact->first_name . '. We will contact you at ' . $contact->email . ' soon!');
+			    } else {}
 		    }
+	    } else {
+		    // Save consultation
+		    if($consult->save()) {
+
+//			    \Mail::to($consult->email)->send(new Update($consult));
+//			    \Mail::to($consult->email)->send(new NewConsultContact($consult->consultContact->email));
+
+			    return redirect()->action('ConsultRequestController@index')->with('status', 'You have added a new consult request for ' . $consult->consultContact->first_name . '.');
+		    } else {}
 	    }
     }
 
@@ -115,8 +132,7 @@ class ConsultRequestController extends Controller
      * @param  \App\ConsultRequest $consult
      * @return \Illuminate\Http\Response
      */
-    public function show(Admin $admin)
-    {
+    public function show(Admin $admin) {
         //
     }
 
@@ -127,8 +143,9 @@ class ConsultRequestController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(ConsultRequest $consult) {
+//    	dd($consult->invoice);
 
-    	$invoice_number = $consult->invoice->isNotEmpty() ? $consult->invoice->last()->NewInvoiceNumber($consult->invoice->last()->invoice_number) : '';
+    	$invoice_number = $consult->invoice != null ? $consult->invoice->NewInvoiceNumber($consult->invoice->invoice_number) : '';
 
 	    return view('admin.consult_request.edit', compact('consult', 'invoice_number'));
     }
@@ -146,7 +163,7 @@ class ConsultRequestController extends Controller
 	    if($consult->save()) {
 	    	$consult_response = new ConsultResponse();
 		    $consult_response->consult_request_id = $consult->id;
-		    $consult_response->response = $request->addt_info;
+		    $consult_response->response = $request->addt_info == null ? 'No additional information added.' : $request->addt_info;
 
 		    if($consult_response->save()) {
 		    	return back()->with('status', 'Consult Request Completed Successfully and Response Created');

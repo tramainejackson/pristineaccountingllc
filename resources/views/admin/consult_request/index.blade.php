@@ -51,7 +51,7 @@
                                                         <img src="{{ asset('storage/images/' . $consult->consultContact->avatar) }}" class="img-fluid img-thumbnail rounded-circle" width="200" alt="Contact Avatar" />
 
                                                         {{-- Contact Link--}}
-                                                        <a href="{{ route('consult_contacts.edit', $consult->consultContact->id) }}">{{ $consult->full_name() }}</a>
+                                                        <a href="{{ route('consult_contacts.edit', $consult->consultContact->id) }}">{{ $consult->consultContact->full_name() }}</a>
                                                     </p>
                                                 </div>
 
@@ -67,15 +67,17 @@
                                                             <th class="th-sm">Type<i class="" aria-hidden="true"></i></th>
                                                             <th class="th-sm">Service<i class="" aria-hidden="true"></i></th>
                                                             <th class="th-sm">Email<i class="" aria-hidden="true"></i></th>
+                                                            <th class="th-sm">Message<i class="" aria-hidden="true"></i></th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
                                                         <tr>
                                                             <td>{{ $consult->created_at->format('m/d/Y') }}</td>
-                                                            <td>{{ $consult->full_name() }}</td>
+                                                            <td>{{ $consult->consultContact->full_name() }}</td>
                                                             <td>{{ $consult->type == 'B' ? 'Business' : 'Personal' }}</td>
                                                             <td>{{ ucwords(str_ireplace("_", " ", $consult->service)) }}</td>
-                                                            <td>{{ $consult->email }}</td>
+                                                            <td>{{ $consult->consultContact->email }}</td>
+                                                            <td>{{ $consult->message != null ? $consult->message : 'No Message Received' }}</td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
@@ -131,7 +133,7 @@
                                                     <img src="{{ asset('storage/images/' . $response->consultRequest->consultContact->avatar) }}" class="img-fluid img-thumbnail rounded-circle" width="200" alt="Contact Avatar" />
 
                                                     {{-- Contact Link --}}
-                                                    <a href="{{ route('consult_contacts.edit', $response->consultRequest->consultContact->id) }}">{{ $response->consultRequest->full_name() }}</a>
+                                                    <a href="{{ route('consult_contacts.edit', $response->consultRequest->consultContact->id) }}">{{ $response->consultRequest->consultContact->full_name() }}</a>
                                                 </p>
                                             </div>
 
@@ -154,10 +156,10 @@
                                                 <tbody>
                                                     <tr>
                                                         <td>{{ $response->consultRequest->created_at->format('m/d/Y') }}</td>
-                                                        <td>{{ $response->consultRequest->full_name() }}</td>
+                                                        <td>{{ $response->consultRequest->consultContact->full_name() }}</td>
                                                         <td>{{ $response->consultRequest->type == 'B' ? 'Business' : 'Personal' }}</td>
                                                         <td>{{ ucwords(str_ireplace("_", " ", $response->consultRequest->service)) }}</td>
-                                                        <td>{{ $response->consultRequest->email }}</td>
+                                                        <td>{{ $response->consultRequest->consultContact->email }}</td>
                                                     </tr>
                                                 </tbody>
 

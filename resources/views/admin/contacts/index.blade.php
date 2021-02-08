@@ -17,32 +17,29 @@
         </div>
 
         @if($contacts->isNotEmpty())
-            <div class="row" id="">
-    
-                <div class="col-12" id="">
+
+            <div class="row mb-5" id="">
+
+                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3{{ $contacts->count() < 4 ? '' : ' row-cols-xl-4' }} mx-auto" id="">
     
                     @foreach($contacts as $contact)
-    
-                        @if($loop->first || $loop->iteration % 5 == 1)
-                        <!-- Card deck -->
-                        <div class="card-deck flex-column flex-lg-row">
-                        @endif
+
+                        <!-- Card col -->
+                        <div class="col text-center">
     
                             <!-- Card -->
                             <div class="card mb-4">
     
                                 <div class="card-body">
     
-                                    <h5 class="card-title d-flex align-items-center justify-content-between">{{ $contact->full_name()  }} <a href="{{ route('consult_contacts.edit', ['consult_contact' => $contact->id]) }}" class="btn-floating btn-sm btn-warning"><i class="fas fa-edit"></i></a></h5>
+                                    <h5 class="card-title d-flex align-items-center justify-content-between{{ $contacts->count() < 4 ? '' : ' flex-xl-column-reverse' }}">{{ $contact->full_name()  }} <a href="{{ route('consult_contacts.edit', ['consult_contact' => $contact->id]) }}" class="btn-floating btn-sm btn-warning"><i class="fas fa-edit"></i></a></h5>
                                     <p class="card-text">{{ $contact->email }}</p>
                                     <p class="card-text">{{ $contact->phone }}</p>
     
                                 </div>
                             </div>
-    
-                        @if($loop->last || $loop->iteration % 5 == 0)
+
                         </div>
-                        @endif
                     @endforeach
                 </div>
             </div>

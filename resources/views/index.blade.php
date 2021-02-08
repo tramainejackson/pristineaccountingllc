@@ -69,7 +69,7 @@
                             <!-- Grid column -->
                             <div class="col-10">
                                 <h2 class="font-weight-bold mb-3 h2 coolText6">Consulting</h2>
-                                <p class="grey-text">We can provides clients, such as companies and individuals, with services that help them analyze financial information so that they can make important business decisions.</p>
+                                <p class="grey-text">We can provide clients, such as companies and individuals, with services that help them analyze financial information so that they can make important business decisions.</p>
                             </div>
                             <!-- Grid column -->
 
@@ -192,153 +192,12 @@
             </div>
         </div>
 
-        <div class="row">
+        @include('content_parts.mission_statement')
 
-            <div class="col-12 mb-4">
+        @include('content_parts.consult_form')
 
-                <div class="d-flex flex-row align-items-center">
-                    <h1 class="section-title text-center coolText6"><span>Mission</span></h1>
-                </div>
+        @include('content_parts.contact_info')
 
-            </div>
-
-            <!--Grid column-->
-            <div class="col-8 text-center z-depth-1 mx-auto mb-4">
-
-                <p class="p-5">The mission at Pristine Accounting is to provide affordable professional financial services
-                    to the community. While doing so we also focus on educating and enriching those about
-                    financial decisions so that they can achieve their financial potential; not just short term,
-                    but long term.
-                </p>
-
-            </div>
-            <!--Grid column-->
-
-        </div>
-
-        <div class="row">
-
-            <div class="col-12" id="">
-
-                <!-- Jumbotron -->
-                <div class="separtator jumbotron card card-image m-0  mt-3" style="background-image: url({{ asset('images/accounting_image4.jpg') }});">
-                </div>
-                <!-- Jumbotron -->
-            </div>
-        </div>
-
-        <div class="row" id="consultation">
-
-            <!-- Jumbotron -->
-            <div class="jumbotron card card-image p-0 rounded-0" style="background-image: url({{ asset('images/accounting_image.jpg') }});">
-
-                <div class="mask waves-effect waves-light rgba-indigo-light white-text text-center d-flex align-items-center flex-column justify-content-center px-2">
-
-                    <div class="pt-3" id="">
-                        <h1 class="h1 coolText6">Consultation</h1>
-                    </div>
-
-                    <div class="" id="">
-                        <p>Send me your contact information and I will reach out to you to discuss a free consultation</p>
-                    </div>
-
-                    <div class="" id="">
-
-                        {!! Form::open(['action' => 'ConsultRequestController@store', 'method' => 'POST', 'class' => 'consult_request_form']) !!}
-
-                            <div class="form-row">
-
-                                <div class="form-group col-6">
-                                    {{ Form::text('first_name', '', ['class' => 'form-control', 'placeholder' => 'Enter A Fistname']) }}
-
-                                    @if ($errors->has('first_name'))
-                                        <span class="text-danger">First Name cannot be empty</span>
-                                    @endif
-                                </div>
-
-                                <div class="form-group col-6">
-                                    {{ Form::text('last_name', '', ['class' => 'form-control', 'placeholder' => 'Enter A Lastname']) }}
-
-                                    @if ($errors->has('last_name'))
-                                        <span class="text-danger">Last Name cannot be empty</span>
-                                    @endif
-                                </div>
-
-                                <div class="form-group col-12">
-                                    {{ Form::text('email', '', ['class' => 'form-control', 'placeholder' => 'Enter An Email']) }}
-
-                                    @if ($errors->has('email'))
-                                        <span class="text-danger">Email Address cannot be empty</span>
-                                    @endif
-                                </div>
-
-                                <div class="form-group col-12">
-                                    <select name="service" class="form-control browser-default custom-select" style="font-family:inherit;">
-                                        <option value="" selected disabled>Select A Service</option>
-                                        <option value="bookkeeping">Bookkeeping</option>
-                                        <option value="tax_prep">Tax Preparation</option>
-                                        <option value="financial_ananlysis">Financial Analysis</option>
-                                        <option value="budget">Budgeting/Forecasting</option>
-                                        <option value="budget">Personal Budgeting/Money Management</option>
-                                        <option value="invoicing">Invoice/Contract Management</option>
-                                        <option value="consulting">Consulting</option>
-                                    </select>
-
-                                    @if ($errors->has('email'))
-                                        <span class="text-danger">Select A Type of Service</span>
-                                    @endif
-                                </div>
-
-                                <div class="form-group col-12">
-                                    <select name="type" class="form-control browser-default custom-select" style="font-family:inherit;">
-                                        <option value="" selected>Select A Type</option>
-                                        <option value="B">Business</option>
-                                        <option value="P">Personal</option>
-                                    </select>
-
-                                    @if ($errors->has('email'))
-                                        <span class="text-danger">Select A Type of Consultation</span>
-                                    @endif
-                                </div>
-
-                                <div class="form-group col-12">
-                                    {{ Form::submit('Send Consult Request', ['class' => 'btn btn-primary btn-rounded']) }}
-                                </div>
-                            </div>
-                        {!! Form::close() !!}
-                    </div>
-                </div>
-            </div>
-            <!-- Jumbotron -->
-        </div>
-
-        <div class="row mb-5">
-
-            <div class="col-12 mb-4" id="contact">
-
-                <div class="d-flex flex-row align-items-center">
-                    <h1 class="section-title text-center coolText6"><span>Contact</span></h1>
-                </div>
-
-            </div>
-
-            <!-- Grid column -->
-            <div class="col-12 col-sm-auto mx-auto">
-                <ul class="contact-icons">
-                    <li><i class="fa fa-map-marker fa-2x"></i>
-                        <p>Philadelphia, PA 19102, USA</p>
-                    </li>
-
-                    <li><i class="fa fa-phone fa-2x"></i>
-                        <p>+ Coming Soon</p>
-                    </li>
-
-                    <li><i class="fa fa-envelope fa-2x"></i>
-                        <p>pristineaccting@gmail.com</p>
-                    </li>
-                </ul>
-            </div>
-            <!-- Grid column -->
-        </div>
     </div>
+
 @endsection

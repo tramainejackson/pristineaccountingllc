@@ -24,52 +24,26 @@
                             <!-- Section heading -->
                             <h3 class="font-weight-bold my-4">Create New Consult Request</h3>
                             <!-- Section description -->
-                            <p class="font-weight-light mx-auto mb-4 pb-2">This will also add the user as a contact for your records.</p>
+                            <p class="font-weight-light mx-auto mb-4 pb-2">You can only add new consult request to existing contacts. To add a new contact select <a href="{{ route('consult_contacts.create') }}">here</a>.</p>
 
-                            {!! Form::open(['action' => 'ConsultRequestController@store', 'method' => 'POST', 'class' => 'consult_request_form']) !!}
+                            <form class="consult_request_form" action="{{ action('ConsultRequestController@store') }}" method="POST">
 
-                                <div class="row">
-                                    <div class="col-md-6 mb-4">
-
-                                        <!-- Name -->
-                                        <input type="text" name="first_name" class="form-control" placeholder="Enter First Name">
-
-                                        @if ($errors->has('first_name'))
-                                            <span class="text-danger">First Name cannot be empty</span>
-                                        @endif
-
-                                    </div>
-                                    <div class="col-md-6 mb-4">
-
-                                        <!-- Name -->
-                                        <input type="text" name="last_name" class="form-control" placeholder="Enter Last Name">
-
-                                        @if ($errors->has('last_name'))
-                                            <span class="text-danger">Last Name cannot be empty</span>
-                                        @endif
-
-                                    </div>
-                                </div>
+                                {{ method_field('POST') }}
+                                {{ csrf_field() }}
 
                                 <div class="row">
-                                    <div class="col-md-12 mb-4">
+                                    <div class="col-12 mb-4">
+                                        <select name="contact_id" class="form-control browser-default custom-select" style="font-family:inherit;">
+                                            <option value="" selected disabled>Select A Contact</option>
 
-                                        <!-- Email -->
-                                        <input type="email" name="email" class="form-control" placeholder="Enter Email Address">
+                                            @foreach($contacts as $contact)
+                                                <option value="{{ $contact->id }}">{{ $contact->full_name() }}</option>
+                                            @endforeach
+                                        </select>
 
-                                        @if ($errors->has('email'))
-                                            <span class="text-danger">Email Address cannot be empty</span>
+                                        @if ($errors->has('contact_id'))
+                                            <span class="text-danger">{{ $errors->first('contact_id') }}</span>
                                         @endif
-
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-md-12 mb-4">
-
-                                        <!-- Phone -->
-                                        <input type="text" name="phone" class="form-control" placeholder="Enter Phone Number">
-
                                     </div>
                                 </div>
 
@@ -87,7 +61,7 @@
                                         </select>
 
                                         @if ($errors->has('service'))
-                                            <span class="text-danger">Select A Type of Service</span>
+                                            <span class="text-danger">{{ $errors->first('service') }}</span>
                                         @endif
                                     </div>
                                 </div>
@@ -101,7 +75,17 @@
                                         </select>
 
                                         @if ($errors->has('type'))
-                                            <span class="text-danger">Select A Type of Consultation</span>
+                                            <span class="text-danger">{{ $errors->first('type') }}</span>
+                                        @endif
+                                    </div>
+                                </div>
+
+                                <div class="row" id="">
+                                    <div class="form-group col-12">
+                                        <textarea name="message" class="form-control md-textarea" cols="30" rows="5" placeholder="Enter A Brief Description of the Service Needed">{{ old('message') }}</textarea>
+
+                                        @if ($errors->has('message'))
+                                            <span class="text-danger">{{ $errors->first('message') }}</span>
                                         @endif
                                     </div>
                                 </div>
@@ -112,11 +96,9 @@
                                         <div class="text-center">
                                             <button type="submit" class="btn btn-info btn-rounded">Create Request</button>
                                         </div>
-
                                     </div>
                                 </div>
-
-                            {!! Form::close() !!}
+                            </form>
                         </div>
                     </div>
                 </section>

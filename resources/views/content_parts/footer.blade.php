@@ -40,8 +40,8 @@
     <!-- Footer Text -->
 
     <!-- Copyright -->
-    <div class="footer-copyright text-center py-3">© 2019 Copyright:
-        <span class=""> Pristine Accounting LLC</span>
+    <div class="footer-copyright text-center py-3">© 2021 Copyright:
+        <span class=""> Tramaine Jackson Tech LLC</span>
     </div>
     <!-- Copyright -->
 

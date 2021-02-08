@@ -47,36 +47,25 @@ class ConsultContactController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request){
-
+    public function store(Request $request) {
 	    $this->validate($request, [
-		    'email'      => 'required|email|max:50',
+		    'email'      => 'required|email|max:100|unique:consult_contacts,email',
 		    'first_name' => 'required|max:50',
 		    'last_name'  => 'required|max:50',
-		    'service'  => 'required',
-		    'type'  => 'required',
+		    'phone'      => 'nullable',
 	    ]);
 
-	    $consult = new ConsultRequest();
-	    $consult->email = $request->email;
-	    $consult->last_name = $request->last_name;
-	    $consult->first_name = $request->first_name;
-	    $consult->service = $request->service;
-	    $consult->type = $request->type;
+	    $contact = new ConsultContact();
+	    $contact->email      = $request->email;
+	    $contact->last_name  = $request->last_name;
+	    $contact->first_name = $request->first_name;
+	    $contact->phone      = $request->phone;
 
-	    if($consult->save()) {
-		    $contact = new ConsultContact();
-		    $contact->consult_request_id = $consult->id;
-		    $contact->email = $consult->email;
-		    $contact->last_name = $consult->last_name;
-		    $contact->first_name = $consult->first_name;
-
-		    if($contact->save()) {}
-
+	    if($contact->save()) {
 //		    \Mail::to($consult->email)->send(new Update($consult));
-		    \Mail::to($consult->email)->send(new NewConsultContact($contact));
+//		    \Mail::to($contact->email)->send(new NewConsultContact($contact));
 
-		    return back()->with('status', 'Thank you for your request ' . $consult->first_name . '. We will contact you at ' . $consult->email . ' soon!');
+		    return back()->with('status', 'Thank you for your request ' . $contact->first_name . '. We will contact you at ' . $contact->email . ' soon!');
 	    }
     }
 
@@ -86,8 +75,7 @@ class ConsultContactController extends Controller
      * @param  \App\Admin  $admin
      * @return \Illuminate\Http\Response
      */
-    public function show(Admin $admin)
-    {
+    public function show(Admin $admin) {
         //
     }
 
@@ -100,8 +88,9 @@ class ConsultContactController extends Controller
     public function edit(ConsultContact $consult_contact) {
     	$invoices = $consult_contact->invoices;
     	$recommendations = $consult_contact->recommendation;
+    	$requests = $consult_contact->consultRequest;
 
-	    return view('admin.contacts.edit', compact('consult_contact', 'invoices', 'recommendations'));
+	    return view('admin.contacts.edit', compact('consult_contact', 'invoices', 'recommendations', 'requests'));
     }
 
     /**
@@ -112,9 +101,8 @@ class ConsultContactController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, ConsultContact $consult_contact) {
-
 	    $this->validate($request, [
-		    'email'      => 'required|email|max:50',
+		    'email'      => 'required|email|max:100|unique:consult_contacts,email',
 		    'first_name' => 'required|max:50',
 		    'last_name'  => 'required|max:50',
 		    'phone'      => 'nullable|numeric|integer',
@@ -163,11 +151,14 @@ class ConsultContactController extends Controller
 		        }
 
 				//Remove any consults if any exist
-		        if($consult_request != null) {
-		        	if($consult_request->delete()){
-				        if($consult_request->consultResponse != null) {
-					        if($consult_request->consultResponse->delete()) {}
+		        if($consult_request->isNotEmpty()) {
+			        foreach ($consult_request as $request) {
+				        //Remove request response if one available
+				        if($request->consultResponse != null) {
+					        if($request->consultResponse->delete()) {}
 				        }
+
+				        if($request->delete()) {}
 			        }
 		        }
 

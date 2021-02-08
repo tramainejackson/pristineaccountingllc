@@ -19,7 +19,7 @@ class Recommendation extends Model
 	/**
 	 * Get the consult contact record associated with the recommendation.
 	 */
-	public function consultContact()	{
+	public function consultContact() {
 		return $this->belongsTo('App\ConsultContact');
 	}
 
@@ -30,7 +30,7 @@ class Recommendation extends Model
 	 * @param \Illuminate\Database\Eloquent\Builder $query
 	 * @return \Illuminate\Database\Eloquent\Builder
 	 */
-	public function scopeShowTestimonials($query)	{
+	public function scopeShowTestimonials($query) {
 		return $query->where('show_testimonial', '=', 1)
 			->orderBy('created_at', 'asc')
 			->get();

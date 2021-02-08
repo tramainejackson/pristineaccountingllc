@@ -30,7 +30,7 @@ class ConsultRequest extends Model
 	 * Get the consult request record associated with the user.
 	 */
 	public function consultContact()	{
-		return $this->hasOne('App\ConsultContact');
+		return $this->belongsTo('App\ConsultContact');
 	}
 
 	/**
@@ -44,7 +44,7 @@ class ConsultRequest extends Model
 	 * Get the consult request record associated with the user.
 	 */
 	public function invoice()	{
-		return $this->hasMany('App\Invoice');
+		return $this->hasOne('App\Invoice');
 	}
 
 	/**

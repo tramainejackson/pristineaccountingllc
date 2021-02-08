@@ -48,21 +48,6 @@ class HomeController extends Controller
     }
 
     /**
-     * Show the testimonials web page.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function testimonials() {
-    	$recommendations = Recommendation::showTestimonials();
-
-    	if($recommendations->count() >= 1) {
-    		return view('testimonials', compact('recommendations'));
-	    } else {
-    		abort(404);
-	    }
-    }
-
-    /**
      * Show the application dashboard.
      *
      * @return \Illuminate\Http\Response

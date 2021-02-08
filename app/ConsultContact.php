@@ -33,7 +33,7 @@ class ConsultContact extends Model
 	 * Get the consult request record associated with the user.
 	 */
 	public function consultRequest() {
-		return $this->belongsTo('App\ConsultRequest');
+		return $this->hasMany('App\ConsultRequest');
 	}
 
 	/**
@@ -152,6 +152,18 @@ class ConsultContact extends Model
 	 */
 	public function scopeSurveyId($query, $survey_id)	{
 		return $query->where('survey_id', '=', $survey_id)
+			->get();
+	}
+
+	/**
+	 * Scope a query to only include most recent consult request
+	 * that hasn't been responded to yet.
+	 *
+	 * @param \Illuminate\Database\Eloquent\Builder $query
+	 * @return \Illuminate\Database\Eloquent\Builder
+	 */
+	public function scopeEmailId($query, $email=null)	{
+		return $query->where('email', '=', $email)
 			->get();
 	}
 

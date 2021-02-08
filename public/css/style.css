@@ -50,6 +50,28 @@ html, body {
 .right {right:0px;}
 .middle {top:45% !important;}
 
+.divider-short {
+    width: 50%;
+    border: solid black 1.5px;
+    margin: 15px auto;
+}
+
+.divider-long {
+    width: 80%;
+    border: solid black 1.5px;
+    margin: 15px auto;
+}
+
+.divider-image {
+    background: url('/images/divider_image.png');
+    background-attachment: initial;
+    background-size: contain;
+    background-position: center center;
+    width: 100%;
+    height: 50px;
+    margin: 15px auto;
+}
+
 .flashMessage {
     background: darkcyan;
     color: wheat;
@@ -194,7 +216,7 @@ img.navbar-brand {
 }
 
 a.navbar-brand, a.brand-logo {
-    background: url(/images/jrh_logo.png);
+    /*background: url(/images/jrh_logo.png);*/
     /* background-attachment: fixed; */
     background-size: cover;
     background-position: center center;

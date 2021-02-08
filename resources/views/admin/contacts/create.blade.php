@@ -31,20 +31,20 @@
                                     <div class="col-md-6 mb-4">
 
                                         <!-- Name -->
-                                        <input type="text" id="first_name" class="form-control" placeholder="Enter First Name">
+                                        <input type="text" name="first_name" id="first_name" class="form-control" value="{{ old('first_name') }}" placeholder="Enter First Name">
 
-                                        @if ($errors->has('first_name'))
-                                            <span class="text-danger">First Name cannot be empty</span>
+                                        @if($errors->has('first_name'))
+                                            <span class="text-danger">{{ $errors->first('first_name') }}</span>
                                         @endif
 
                                     </div>
                                     <div class="col-md-6 mb-4">
 
                                         <!-- Name -->
-                                        <input type="email" id="last_name" class="form-control" placeholder="Enter Last Name">
+                                        <input type="text" name="last_name" id="last_name" class="form-control" value="{{ old('last_name') }}" placeholder="Enter Last Name">
 
-                                        @if ($errors->has('last_name'))
-                                            <span class="text-danger">Last Name cannot be empty</span>
+                                        @if($errors->has('last_name'))
+                                            <span class="text-danger">{{ $errors->first('last_name') }}</span>
                                         @endif
 
                                     </div>
@@ -54,10 +54,10 @@
                                     <div class="col-md-12 mb-4">
 
                                         <!-- Email -->
-                                        <input type="email" id="email" class="form-control" placeholder="Enter Email Address">
+                                        <input type="email" name="email" id="email" class="form-control" value="{{ old('email') }}" placeholder="Enter Email Address">
 
-                                        @if ($errors->has('email'))
-                                            <span class="text-danger">Email Address cannot be empty</span>
+                                        @if($errors->has('email'))
+                                            <span class="text-danger">{{ $errors->first('email') }}</span>
                                         @endif
 
                                     </div>
@@ -67,7 +67,7 @@
                                     <div class="col-md-12 mb-4">
 
                                         <!-- Phone -->
-                                        <input type="text" id="phone" class="form-control" placeholder="Enter Phone Number">
+                                        <input type="text" id="phone" class="form-control" value="{{ old('phone') }}" placeholder="Enter Phone Number">
 
                                     </div>
                                 </div>

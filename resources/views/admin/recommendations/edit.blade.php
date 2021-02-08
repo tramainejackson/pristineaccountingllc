@@ -8,7 +8,7 @@
         <!-- Grid row -->
         <div class="row">
             <div class="col" id="">
-                <a href="{{ route('recommendations.index') }}" class="btn btn-warning">All Testimonials</a>
+                <a href="{{ route('recommendations.index') }}" class="btn btn-warning">All Reviews</a>
             </div>
         </div>
 
@@ -23,7 +23,7 @@
 
                 <div class="card mb-5" id="">
 
-                    <div class="card-body" id="">
+                    <div class="card-body mt-5" id="">
 
                         <!-- Testimonial Form -->
                         <form method="POST" action="{{ action('RecommendationController@update', $recommendation->id) }}" class="form">
@@ -133,6 +133,12 @@
                             </div>
                         </form>
                         <!-- Testimonial Form -->
+
+                        <div class="row position-absolute top right">
+                            <div class="col" id="">
+                                <button class="btn btn-danger d-block mt-2 deleteBtn" id="consultSurvey_{{ $recommendation->id }}" type="button" data-toggle="modal" data-target="#delete_modal" onclick="event.preventDefault(); deleteModalUpdate(this);">DELETE SURVEY</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -142,4 +148,7 @@
     </div>
     <!-- Testimonial -->
 
+    @component('modals.delete_modal', ['title' => 'Delete Survey'])
+        Contact name - {{ $recommendation->consultContact->full_name() }}
+    @endcomponent
 @endsection

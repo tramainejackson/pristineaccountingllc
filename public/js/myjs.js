@@ -469,8 +469,13 @@ function contactImgPreview(input) {
 function deleteModalUpdate(button) {
     var new_info = $(button).parents('div.modal-row');
     var form_info = $(button).attr('id').split('_');
-    var form_controller = form_info[0] == 'consultResponses' || form_info[0] == 'consultContacts' ? form_info[0] == 'consultResponses' ? 'consult_responses' : 'consult_contacts' : form_info[0];
+    var form_controller = form_info[0]  === 'consults' ? 'consults' : form_info[0].replace('consult', 'consult_').toLocaleLowerCase();
     var form_edit_id = form_info[1];
+
+    console.log(new_info);
+    console.log(form_info);
+    console.log(form_controller);
+    console.log(form_edit_id);
 
     // Remove any previous information
     $('#delete_modal').find('.newModalContent').remove();
@@ -485,7 +490,7 @@ function deleteModalUpdate(button) {
     // $('#delete_modal').modal('show');
 }
 
-// Fill co modal
+// Fill confirm modal
 function confirmModalUpdate(button) {
     var new_info = $(button).parents('div.modal-row');
     var form_info = $(button).attr('id').split('_');

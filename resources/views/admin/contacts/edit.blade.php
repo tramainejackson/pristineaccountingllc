@@ -75,7 +75,7 @@
                                         <input type="email" id="email" class="form-control" name='email' value='{{ $consult_contact->email }}' placeholder="Enter Email Address">
 
                                         @if ($errors->has('email'))
-                                            <span class="text-danger">Email Address cannot be empty</span>
+                                            <span class="text-danger">{{ $errors->first('email') }}</span>
                                         @endif
 
                                     </div>
@@ -139,6 +139,38 @@
 
                                     </div>
                                 @endif
+                            </div>
+
+                            <div class="row my-5">
+
+                                @if($requests->isNotEmpty())
+
+                                    <div class="col-12" id="">
+                                        <h3 class="h3">This contact has {{ $requests->count() }} consult requests.</h3>
+                                    </div>
+
+                                    <div class="col-12 text-left">
+                                        @foreach($requests as $request)
+                                            <button class='btn btn-outline-blue-grey p-0' type='button'>
+                                                <div class="d-flex flex-column" id="">
+                                                    <a class="blue-grey-text p-2" href="{{ route('consults.edit', $request->id) }}">View Consult Request <br>{{ $request->created_at->format('m/d/Y') }}</a>
+                                                </div>
+                                            </button>
+                                        @endforeach
+                                    </div>
+                                @else
+                                    <div class="col-12" id="">
+                                        <h3 class="h3">This contact doesn't have any consult request</h3>
+                                    </div>
+                                @endif
+
+                                <div class="col-12">
+
+                                    <div class="text-center">
+                                        <a href="{{ action('ConsultRequestController@create') }}" class="btn btn-green btn-rounded">Create New Consult Request</a>
+                                    </div>
+
+                                </div>
                             </div>
 
                             {{-- Show invoices --}}

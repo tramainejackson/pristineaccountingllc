@@ -17,7 +17,7 @@ use Carbon\Carbon;
 class RecommendationController extends Controller
 {
 	public function __construct() {
-		$this->middleware(['auth'])->except(['store', 'survey']);
+		$this->middleware(['auth'])->except(['index', 'store', 'survey']);
 	}
 
     /**
@@ -27,8 +27,9 @@ class RecommendationController extends Controller
      */
     public function index() {
     	$recommendations = Recommendation::all();
+	    $get_show_recommendations = Recommendation::showTestimonials();
 
-        return view('admin.recommendations.index', compact('recommendations'));
+        return view('admin.recommendations.index', compact('recommendations', 'get_show_recommendations'));
     }
 
     /**
@@ -47,25 +48,48 @@ class RecommendationController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request) {
-	    $this->validate($request, [
-		    'meet_needs'    => 'required|integer',
-		    'recommend'     => 'required|integer',
-		    'rating'        => 'required|numeric',
-		    'suggestions'   => 'nullable',
-		    'tell_someone'  => 'nullable',
-	    ]);
-	    
-	    $recommendation                 = new Recommendation();
-	    $recommendation->meet_needs     = $request->meet_needs;
-	    $recommendation->recommend      = $request->recommend;
-	    $recommendation->rating         = $request->rating;
-	    $recommendation->suggestions    = $request->suggestions;
-	    $recommendation->tell_someone   = $request->tell_someone;
+    	if($request->survey_id == null) {
+		    $this->validate($request, [
+			    'first_name'    => 'required|max:50',
+			    'last_name'     => 'required|max:50',
+			    'email'         => 'required|email|max:100',
+			    'meet_needs'    => 'required|integer',
+			    'recommend'     => 'required|integer',
+			    'rating'        => 'required|numeric',
+			    'suggestions'   => 'nullable',
+			    'tell_someone'  => 'nullable',
+		    ]);
 
-	    // Get contact by the survey ID
-	    $survey_contact = ConsultContact::surveyId($request->survey_id);
+		    $recommendation                 = new Recommendation();
+		    $recommendation->meet_needs     = $request->meet_needs;
+		    $recommendation->recommend      = $request->recommend;
+		    $recommendation->rating         = $request->rating;
+		    $recommendation->suggestions    = $request->suggestions;
+		    $recommendation->tell_someone   = $request->tell_someone;
 
-		if($survey_contact->isNotEmpty()){
+		    // Get contact by the email address
+		    $survey_contact = ConsultContact::emailId($request->email);
+	    } else {
+		    $this->validate($request, [
+			    'meet_needs'    => 'required|integer',
+			    'recommend'     => 'required|integer',
+			    'rating'        => 'required|numeric',
+			    'suggestions'   => 'nullable',
+			    'tell_someone'  => 'nullable',
+		    ]);
+
+		    $recommendation                 = new Recommendation();
+		    $recommendation->meet_needs     = $request->meet_needs;
+		    $recommendation->recommend      = $request->recommend;
+		    $recommendation->rating         = $request->rating;
+		    $recommendation->suggestions    = $request->suggestions;
+		    $recommendation->tell_someone   = $request->tell_someone;
+
+		    // Get contact by the survey ID
+		    $survey_contact = ConsultContact::surveyId($request->survey_id);
+	    }
+
+		if($survey_contact->isNotEmpty()) {
 			$recommendation->consult_contact_id = $survey_contact->first()->id;
 
 		    if($recommendation->save()) {
@@ -74,7 +98,23 @@ class RecommendationController extends Controller
 			    return redirect()->action('HomeController@index')->with('bad_status', 'Unable to process the survey. Please try taking the survey again!');
 		    }
         } else {
-			return redirect()->action('HomeController@index')->with('bad_status', 'Unable to process the survey. Please try taking the survey again!');
+
+			$contact = new ConsultContact();
+			$contact->email         = $request->email;
+			$contact->last_name     = $request->last_name;
+			$contact->first_name    = $request->first_name;
+
+			if($contact->save()) {
+				$recommendation->consult_contact_id = $contact->id;
+
+				if($recommendation->save()) {
+					return redirect()->action('HomeController@index')->with('status', 'Thanks for taking our quick survey. As a small start up company, your feedback is a tremendous asset!');
+				} else {
+					return redirect()->action('HomeController@index')->with('bad_status', 'Unable to process the survey. Please try taking the survey again!');
+				}
+			} else {
+				return redirect()->action('HomeController@index')->with('bad_status', 'Unable to process the survey. Please try taking the survey again!');
+			}
 		}
     }
 
@@ -138,9 +178,10 @@ class RecommendationController extends Controller
      * @param  \App\Recommendation  $recommendation
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Recommendation $recommendation)
-    {
-        //
+    public function destroy(Recommendation $recommendation) {
+        if($recommendation->delete()) {
+	        return redirect()->action('RecommendationController@index')->with('status', 'Review removed successfully!');
+        }
     }
 
     /**
