@@ -73,6 +73,7 @@
                 <option value="1">Yes</option>
                 <option value="0">No</option>
             </select>
+
             <label class="mdb-main-label" for="recommend">Would you recommend our service to others?</label>
             <!--/Blue select-->
 
@@ -101,9 +102,9 @@
         <div class="col-12 mb-3">
             <!--Material textarea-->
             <div class="md-form">
-                <textarea name="suggestions" id="" class="md-textarea form-control" rows="5">{{ old('suggestions') ? old('suggestions') : '' }}</textarea>
+                <textarea name="suggestions" id="" class="md-textarea form-control" rows="5" placeholder="Is there anything we could have done differently?">{{ old('suggestions') ? old('suggestions') : '' }}</textarea>
 
-                <label for="suggestions">Is there anything we could have done differently?</label>
+                <label for="suggestions" class="mdb-main-label">Is there anything we could have done differently?</label>
 
                 @if ($errors->has('suggestions'))
                     <span class="text-danger">{{ $errors->first('suggestions') }}</span>
@@ -116,13 +117,14 @@
         <div class="col-12 mb-3">
             <!--Material textarea-->
             <div class="md-form">
-                <textarea name="tell_someone" id="" class="md-textarea form-control" rows="5">{{ old('tell_someone') ? old('tell_someone') : '' }}</textarea>
-                <label for="tell_someone">In the below section please provide a review or comment.</label>
-            </div>
+                <textarea name="tell_someone" id="" class="md-textarea form-control" rows="5" placeholder="Please provide a review or comment.">{{ old('tell_someone') ? old('tell_someone') : '' }}</textarea>
 
-            @if ($errors->has('tell_someone'))
-                <span class="text-danger">{{ $errors->first('tell_someone') }}</span>
-            @endif
+                <label for="tell_someone" class="mdb-main-label">Please provide a review or comment.</label>
+
+                @if ($errors->has('tell_someone'))
+                    <span class="text-danger">{{ $errors->first('tell_someone') }}</span>
+                @endif
+            </div>
         </div>
         <!-- Grid column -->
 
