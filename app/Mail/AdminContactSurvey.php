@@ -36,6 +36,6 @@ class AdminContactSurvey extends Mailable
 	 * @return $this
 	 */
 	public function build() {
-		return $this->subject('New Survey Requested')->view('emails.new_survey', compact('consult_contact'));
+		return $this->subject('New Survey Requested')->view('emails.admin_new_survey', compact('consult_contact'));
 	}
 }

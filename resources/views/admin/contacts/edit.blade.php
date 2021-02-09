@@ -122,7 +122,7 @@
                                     <div class="col-12">
 
                                         <div class="text-center">
-                                            <a class="btn btn-info btn-rounded">Send Another Survey Email</a>
+                                            <a href="{{ action('RecommendationController@send_survey', $consult_contact) }}" class="btn btn-info btn-rounded">Send Another Survey Email</a>
                                         </div>
 
                                     </div>

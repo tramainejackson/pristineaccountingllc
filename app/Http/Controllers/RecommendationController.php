@@ -93,6 +93,9 @@ class RecommendationController extends Controller
 			$recommendation->consult_contact_id = $survey_contact->first()->id;
 
 		    if($recommendation->save()) {
+			    \Mail::to($survey_contact->first()->email)->send(new NewContactSurvey($survey_contact->first()));
+			    \Mail::to('pristineaccting@gmail.com')->send(new AdminContactSurvey($survey_contact->first()));
+
 		        return redirect()->action('HomeController@index')->with('status', 'Thanks for taking our quick survey. As a small start up company, your feedback is a tremendous asset!');
 		    } else {
 			    return redirect()->action('HomeController@index')->with('bad_status', 'Unable to process the survey. Please try taking the survey again!');
@@ -108,6 +111,9 @@ class RecommendationController extends Controller
 				$recommendation->consult_contact_id = $contact->id;
 
 				if($recommendation->save()) {
+					\Mail::to($contact->email)->send(new NewContactSurvey($contact));
+					\Mail::to('pristineaccting@gmail.com')->send(new AdminContactSurvey($contact));
+
 					return redirect()->action('HomeController@index')->with('status', 'Thanks for taking our quick survey. As a small start up company, your feedback is a tremendous asset!');
 				} else {
 					return redirect()->action('HomeController@index')->with('bad_status', 'Unable to process the survey. Please try taking the survey again!');
@@ -124,8 +130,7 @@ class RecommendationController extends Controller
      * @param  \App\Recommendation  $recommendation
      * @return \Illuminate\Http\Response
      */
-    public function show(Recommendation $recommendation)
-    {
+    public function show(Recommendation $recommendation) {
 	    //
     }
 
@@ -215,7 +220,7 @@ class RecommendationController extends Controller
 		    if($consult_contact->save()) {
 			    // Send survey in an email
 			    \Mail::to($consult_contact->email)->send(new NewContactSurvey($consult_contact));
-			    \Mail::to('pristineaccting@gmail')->send(new AdminContactSurvey($consult_contact));
+			    \Mail::to('pristineaccting@gmail.com')->send(new AdminContactSurvey($consult_contact));
 			    return back()->with('status', 'Email Sent Successfully To Contact');
 		    } else {
 			    return back()->with('status', 'Survey ID unable to be saved to contact. Please try again');
