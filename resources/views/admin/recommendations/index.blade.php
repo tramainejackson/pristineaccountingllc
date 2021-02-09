@@ -19,19 +19,15 @@
 
         <div class="row my-5" id="">
 
-            @if($get_show_recommendations->count() < 1)
-                @if(Auth::check())
+
+            @if(Auth::check())
+                @if($recommendations->count() == 0)
+
                     <div class="col-12 text-center my-5" id="">
                         <h1 class="h1">You Do Not Currently Have Any Testimonials Yet. Click <a href="{{ route('consult_contacts.index') }}">here</a> to go to your contacts to send someone a testimonial to fill out</h1>
                     </div>
+
                 @else
-                    <div class="col-12 text-center dark-grey-text" id="">
-                        <!-- Section heading -->
-                        <h4 class="font-weight-bold mb-4 pb-2 h4">We do not currently have any reviews to display. If you would like to leave a review, please fill out the form below.</h4>
-                    </div>
-                @endif
-            @else
-                @if(Auth::check())
 
                     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3{{ $recommendations->count() < 4 ? '' : ' row-cols-xl-4' }} mx-auto" id="">
 
@@ -54,9 +50,16 @@
 
                                     </div>
                                 </div>
-
                             </div>
                         @endforeach
+                    </div>
+                @endif
+            @else
+                @if($get_show_recommendations->count() == 0)
+
+                    <div class="col-12 text-center dark-grey-text" id="">
+                        <!-- Section heading -->
+                        <h4 class="font-weight-bold mb-4 pb-2 h4">We do not currently have any reviews to display. If you would like to leave a review, please fill out the form below.</h4>
                     </div>
 
                 @else
