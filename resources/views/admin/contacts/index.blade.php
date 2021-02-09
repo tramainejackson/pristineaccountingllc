@@ -20,7 +20,7 @@
 
             <div class="row mb-5" id="">
 
-                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3{{ $contacts->count() < 4 ? '' : ' row-cols-xl-4' }} mx-auto" id="">
+                <div class="row row-cols-1{{ $contacts->count() < 2 ? '' : ' row-cols-md-2' }}{{ $contacts->count() <= 2 ? '' : ' row-cols-lg-3' }}{{ $contacts->count() < 4 ? '' : ' row-cols-xl-4' }} mx-auto mb-4" id="">
     
                     @foreach($contacts as $contact)
 

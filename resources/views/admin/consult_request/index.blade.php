@@ -43,7 +43,7 @@
 
                                         <div class="row justify-content-between flex-column py-4" id="">
 
-                                            <div class="col modal-row" id="">
+                                            <div class="col modal-row" id="request{{ $consult->id }}">
 
                                                 <div class="text-center">
                                                     <p class="d-flex align-items-center justify-content-center flex-column">

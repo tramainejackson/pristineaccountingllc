@@ -29,7 +29,7 @@
 
                 @else
 
-                    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3{{ $recommendations->count() < 4 ? '' : ' row-cols-xl-4' }} mx-auto" id="">
+                    <div class="row row-cols-1{{ $recommendations->count() < 2 ? '' : ' row-cols-md-2' }}{{ $recommendations->count() <= 2 ? '' : ' row-cols-lg-3' }}{{ $recommendations->count() < 4 ? '' : ' row-cols-xl-4' }} mx-auto" id="">
 
                         @foreach($recommendations as $recommendation)
 

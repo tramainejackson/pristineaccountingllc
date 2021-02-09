@@ -153,7 +153,11 @@
                                         @foreach($requests as $request)
                                             <button class='btn btn-outline-blue-grey p-0' type='button'>
                                                 <div class="d-flex flex-column" id="">
-                                                    <a class="blue-grey-text p-2" href="{{ route('consults.edit', $request->id) }}">View Consult Request <br>{{ $request->created_at->format('m/d/Y') }}</a>
+                                                    @if($request->invoice !== null)
+                                                        <a class="blue-grey-text p-2" href="{{ route('consults.edit', $request->id) }}">View Consult Request <br>{{ $request->created_at->format('m/d/Y') }}</a>
+                                                    @else
+                                                        <a class="blue-grey-text p-2" href="{{ route('consults.index') . '#request' . $request->id }}">View Consult Request <br>{{ $request->created_at->format('m/d/Y') }}</a>
+                                                    @endif
                                                 </div>
                                             </button>
                                         @endforeach

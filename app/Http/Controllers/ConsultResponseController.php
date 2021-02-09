@@ -105,11 +105,22 @@ class ConsultResponseController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy(ConsultResponse $consult_response) {
-	    // Removed Consult Response
-	    if($consult_response->delete()) {
-		    return back()->with('status', 'Consult Response Removed and Archived Successfully');
+    	if($consult_response->consultRequest !== null) {
+    	    if($consult_response->consultRequest->delete()) {
+		        // Removed Consult Response
+		        if ($consult_response->delete()) {
+			        return back()->with('status', 'Consult Response Removed and Archived Successfully');
+		        } else {
+			        return back()->with('bad_status', 'Unable To Remove Consult Response, Please Try Again');
+		        }
+	        }
 	    } else {
-		    return back()->with('bad_status', 'Unable To Remove Consult Response, Please Try Again');
+		    // Removed Consult Response
+		    if ($consult_response->delete()) {
+			    return back()->with('status', 'Consult Response Removed and Archived Successfully');
+		    } else {
+			    return back()->with('bad_status', 'Unable To Remove Consult Response, Please Try Again');
+		    }
 	    }
     }
 }
