@@ -20,7 +20,7 @@
     <!-- Bootstrap core CSS -->
     <link href="{{ asset('/css/bootstrap.min.css') }}" rel="stylesheet">
     <!-- Material Design Bootstrap -->
-    <link href="{{ asset('/css/mdb.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/mdb.min.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/style.css') }}" rel="stylesheet">
 </head>
 <body class="hidden-sn deep-purple-skin">

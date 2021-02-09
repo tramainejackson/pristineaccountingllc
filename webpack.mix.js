@@ -11,4 +11,4 @@ let mix = require('laravel-mix');
  |
  */
 
-mix.sass('public/scss/mdb-pro.scss', 'public/css/mdb.css');
+mix.sass('public/scss/mdb-pro.scss', 'public/css/mdb.min.css');
