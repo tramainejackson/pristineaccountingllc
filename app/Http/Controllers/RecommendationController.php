@@ -10,6 +10,8 @@ use App\ConsultResponse;
 use App\Mail\NewConsultContact;
 use App\Mail\NewContactSurvey;
 use App\Mail\AdminContactSurvey;
+use App\Mail\NewCompletedSurvey;
+use App\Mail\AdminCompletedSurvey;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
