@@ -93,8 +93,8 @@ class RecommendationController extends Controller
 			$recommendation->consult_contact_id = $survey_contact->first()->id;
 
 		    if($recommendation->save()) {
-			    \Mail::to($survey_contact->first()->email)->send(new NewContactSurvey($survey_contact->first()));
-			    \Mail::to('pristineaccting@gmail.com')->send(new AdminContactSurvey($survey_contact->first()));
+			    \Mail::to($survey_contact->first()->email)->send(new NewCompletedSurvey($survey_contact->first()));
+			    \Mail::to('pristineaccting@gmail.com')->send(new AdminCompletedSurvey($survey_contact->first()));
 
 		        return redirect()->action('HomeController@index')->with('status', 'Thanks for taking our quick survey. As a small start up company, your feedback is a tremendous asset!');
 		    } else {
@@ -111,8 +111,8 @@ class RecommendationController extends Controller
 				$recommendation->consult_contact_id = $contact->id;
 
 				if($recommendation->save()) {
-					\Mail::to($contact->email)->send(new NewContactSurvey($contact));
-					\Mail::to('pristineaccting@gmail.com')->send(new AdminContactSurvey($contact));
+					\Mail::to($contact->email)->send(new NewCompletedSurvey($contact));
+					\Mail::to('pristineaccting@gmail.com')->send(new AdminCompletedSurvey($contact));
 
 					return redirect()->action('HomeController@index')->with('status', 'Thanks for taking our quick survey. As a small start up company, your feedback is a tremendous asset!');
 				} else {
