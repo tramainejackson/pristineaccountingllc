@@ -51,7 +51,7 @@
 
     <div class="form-row" id="">
         <!-- Grid column -->
-        <div class="col-4">
+        <div class="col-12 col-md-6 col-xl-4">
             <!--Blue select-->
             <select name="meet_needs" class="mdb-select md-form">
                 <option value="1">Yes</option>
@@ -67,7 +67,7 @@
         <!-- Grid column -->
 
         <!-- Grid column -->
-        <div class="col-4">
+        <div class="col-12 col-md-6 col-xl-4">
             <!--Blue select-->
             <select name="recommend" class="mdb-select md-form">
                 <option value="1">Yes</option>
@@ -83,12 +83,12 @@
         <!-- Grid column -->
 
         <!-- Grid column -->
-        <div class="col-4">
+        <div class="col-12 col-xl-4">
             <!-- Material input -->
             <div class="md-form">
                 <input name="rating" type="number" class="form-control" id="" step="0.5" min="0" max="5" placeholder="Enter a Number" {{ $errors->has('rating') ? 'autofocus' : '' }} />
 
-                <label for="rating" class="mdb-main-label">How would you rate us from 1-5? 5 being the best</label>
+                <label for="rating" class="mdb-main-label">Rate us from 1-5? 5 being the best</label>
 
                 @if ($errors->has('rating'))
                     <span class="text-danger">{{ $errors->first('rating') }}</span>
