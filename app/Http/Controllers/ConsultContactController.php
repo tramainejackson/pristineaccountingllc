@@ -9,6 +9,7 @@ use App\ConsultResponse;
 use App\Invoice;
 use App\Recommendation;
 use App\Mail\NewConsultContact;
+use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
@@ -102,7 +103,12 @@ class ConsultContactController extends Controller
      */
     public function update(Request $request, ConsultContact $consult_contact) {
 	    $this->validate($request, [
-		    'email'      => 'required|email|max:100|unique:consult_contacts,email',
+		    'email'      => [
+                    'required',
+                    'email',
+                    'max:100',
+                    Rule::unique('consult_contacts')->ignore($consult_contact->id),
+                ],
 		    'first_name' => 'required|max:50',
 		    'last_name'  => 'required|max:50',
 		    'phone'      => 'nullable|numeric|integer',
