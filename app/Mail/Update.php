@@ -34,8 +34,7 @@ class Update extends Mailable
      *
      * @return $this
      */
-    public function build()
-    {
+    public function build() {
 		
         return $this->subject('Pristine Accounting Consult Request')->view('emails.new_message', compact('consult'));
     }

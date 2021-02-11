@@ -108,8 +108,8 @@ class ConsultRequestController extends Controller
 			    // Save consultation
 			    if($consult->save()) {
 
-				    //\Mail::to($consult->email)->send(new Update($consult));
-//				    \Mail::to($contact->email)->send(new NewConsultContact($contact));
+				    \Mail::to($consult->email)->send(new Update($consult));
+				    \Mail::to($contact->email)->send(new NewConsultContact($contact));
 
 				    return redirect()->action('HomeController@index')->with('status', 'Thank you for your request ' . $contact->first_name . '. We will contact you at ' . $contact->email . ' soon!');
 			    } else {}
@@ -118,8 +118,7 @@ class ConsultRequestController extends Controller
 		    // Save consultation
 		    if($consult->save()) {
 
-//			    \Mail::to($consult->email)->send(new Update($consult));
-//			    \Mail::to($consult->email)->send(new NewConsultContact($consult->consultContact->email));
+			    \Mail::to($consult->email)->send(new Update($consult));
 
 			    return redirect()->action('ConsultRequestController@index')->with('status', 'You have added a new consult request for ' . $consult->consultContact->first_name . '.');
 		    } else {}

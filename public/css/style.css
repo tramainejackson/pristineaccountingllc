@@ -16,6 +16,18 @@ html, body {
     max-height: initial;
 }
 
+.purple-lighter-hover {
+    color: #b843d7;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.purple-lighter-hover:hover {
+    -webkit-transition: .4s;
+    transition: .4s;
+    color: #e171ff;
+}
+
 .coolText1 {
     font-family: 'Fredericka the Great', cursive;
 }

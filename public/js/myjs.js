@@ -472,11 +472,6 @@ function deleteModalUpdate(button) {
     var form_controller = form_info[0]  === 'consults' ? 'consults' : form_info[0].replace('consult', 'consult_').toLocaleLowerCase();
     var form_edit_id = form_info[1];
 
-    console.log(new_info);
-    console.log(form_info);
-    console.log(form_controller);
-    console.log(form_edit_id);
-
     // Remove any previous information
     $('#delete_modal').find('.newModalContent').remove();
 
@@ -484,7 +479,7 @@ function deleteModalUpdate(button) {
     $('#delete_modal').find('.modal-body-form').attr('action', location.origin + '/' + form_controller + '/' + form_edit_id);
 
     // Update Delete Modal Info
-    $('#delete_modal').find('.modal-body-text').append(new_info.find('.newModalContent').clone());
+    $('#delete_modal').find('.modal-body-text').append(new_info.find('.newModalContent').clone().addClass('table-responsive'));
 
     // Show Delete Modal
     // $('#delete_modal').modal('show');

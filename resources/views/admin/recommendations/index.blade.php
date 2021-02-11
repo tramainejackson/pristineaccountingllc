@@ -83,32 +83,43 @@
 
                                                 <div class="testimonial">
 
-                                                    <!--Avatar-->
-                                                    <div class="avatar mx-auto mb-4">
-                                                        <img src="{{ asset('storage/images/' . $recommendation->consultContact->avatar) }}" class="rounded-circle img-fluid" alt="First sample avatar image">
-                                                    </div>
-                                                    <!--Content-->
-                                                    <p>
-                                                        <i class="fas fa-quote-left"></i> {{ $recommendation->tell_someone }}.
-                                                    </p>
-                                                    <h4 class="font-weight-bold">{{ $recommendation->consultContact->full_name() }}</h4>
+                                                    <div class="row" id="">
 
-                                                    <!--Ratings-->
-                                                    <div class="" id="">
-
-                                                        @for($x=0; $x < floor((int)$recommendation->rating); $x++)
-                                                            <i class="fas fa-star blue-text"> </i>
-                                                        @endfor
-
-                                                        @if(strlen($recommendation->rating) > 1)
-                                                            <i class="fas fa-star-half-alt blue-text"> </i>
+                                                        @if($recommendation->consultContact->avatar != 'default.png')
+                                                            <!--Avatar-->
+                                                            <div class="avatar mx-auto mb-4 col-12">
+                                                                <img src="{{ asset('storage/images/' . $recommendation->consultContact->avatar) }}" class="rounded-circle img-fluid" alt="First sample avatar image">
+                                                            </div>
                                                         @endif
-                                                    </div>
 
-                                                    <!-- Loop Count -->
-                                                    <div class="pt-5" id="">
-                                                        <p class="text-muted">{{ $loop->iteration }} / {{ $loop->count }}</p>
+                                                        <!--Content-->
+                                                        <div class="col-12{{ $recommendation->consultContact->avatar != 'default.png' ? '' : ' order-2' }}" id="">
+                                                            <p class="">
+                                                                <i class="fas fa-quote-left"></i> {{ $recommendation->tell_someone }}.
+                                                            </p>
+                                                        </div>
+
+                                                        <div class="col-12{{ $recommendation->consultContact->avatar != 'default.png' ? '' : ' order-0' }}" id="">
+                                                            <h4 class="font-weight-bold">{{ $recommendation->consultContact->full_name() }}</h4>
+                                                        </div>
+
+                                                        <!--Ratings-->
+                                                        <div class="col-12{{ $recommendation->consultContact->avatar != 'default.png' ? '' : ' order-1 mb-3' }}" id="">
+
+                                                            @for($x=0; $x < floor((int)$recommendation->rating); $x++)
+                                                                <i class="fas fa-star purple-lighter-hover"> </i>
+                                                            @endfor
+
+                                                            @if(strlen($recommendation->rating) > 1)
+                                                                <i class="fas fa-star-half-alt purple-lighter-hover"> </i>
+                                                            @endif
+                                                        </div>
                                                     </div>
+                                                </div>
+
+                                                <!-- Loop Count -->
+                                                <div class="pt-5" id="">
+                                                    <p class="text-muted">{{ $loop->iteration }} / {{ $loop->count }}</p>
                                                 </div>
                                             </div>
                                             <!--Slide-->
