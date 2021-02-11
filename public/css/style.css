@@ -28,6 +28,54 @@ html, body {
     color: #e171ff;
 }
 
+.gold-lighter-hover {
+    color: #F4D228;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.gold-lighter-hover:hover {
+    -webkit-transition: .4s;
+    transition: .4s;
+    color: #fff09f;
+}
+
+.green-lighter-hover {
+    color: #92b885;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.green-lighter-hover:hover {
+    -webkit-transition: .4s;
+    transition: .4s;
+    color: #ECF2EA;
+}
+
+.blue-lighter-hover {
+    color: #6bb0f0;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.blue-lighter-hover:hover {
+    -webkit-transition: .4s;
+    transition: .4s;
+    color: #c8dff4;
+}
+
+.orange-lighter-hover {
+    color: #d79843;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.orange-lighter-hover:hover {
+    -webkit-transition: .4s;
+    transition: .4s;
+    color: #ffca82;
+}
+
 .coolText1 {
     font-family: 'Fredericka the Great', cursive;
 }

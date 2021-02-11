@@ -95,7 +95,7 @@
                                                         <!--Content-->
                                                         <div class="col-12{{ $recommendation->consultContact->avatar != 'default.png' ? '' : ' order-2' }}" id="">
                                                             <p class="">
-                                                                <i class="fas fa-quote-left"></i> {{ $recommendation->tell_someone }}.
+                                                                <i class="fas fa-quote-left"></i> {{ $recommendation->tell_someone }} <i class="fas fa-quote-right"></i>.
                                                             </p>
                                                         </div>
 
@@ -107,11 +107,21 @@
                                                         <div class="col-12{{ $recommendation->consultContact->avatar != 'default.png' ? '' : ' order-1 mb-3' }}" id="">
 
                                                             @for($x=0; $x < floor((int)$recommendation->rating); $x++)
-                                                                <i class="fas fa-star purple-lighter-hover"> </i>
+                                                                @if($x == 0)
+                                                                    <i class="fas fa-star orange-lighter-hover"></i>
+                                                                @elseif($x == 1)
+                                                                    <i class="fas fa-star purple-lighter-hover"></i>
+                                                                @elseif($x == 2)
+                                                                    <i class="fas fa-star green-lighter-hover"></i>
+                                                                @elseif($x == 3)
+                                                                    <i class="fas fa-star blue-lighter-hover"></i>
+                                                                @elseif($x == 4)
+                                                                    <i class="fas fa-star gold-lighter-hover"></i>
+                                                                @endif
                                                             @endfor
 
                                                             @if(strlen($recommendation->rating) > 1)
-                                                                <i class="fas fa-star-half-alt purple-lighter-hover"> </i>
+                                                                <i class="fas fa-star-half-alt blue-lighter-hover"></i>
                                                             @endif
                                                         </div>
                                                     </div>

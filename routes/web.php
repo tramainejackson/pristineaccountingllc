@@ -13,16 +13,16 @@
 
 Auth::routes();
 
-//Route::get('/test', function() {
-//	$consult_contact = \App\ConsultContact::find(1);
-//
-//	$consult_contact->first_name = "Bigalo";
-//	$consult_contact->last_name = "Jiggalo";
-//	$consult_contact->email = "Bigalo.Jiggalo@test.com";
-//	$consult_contact->phone = "215-Phone-Home";
-//
-//	return view('emails.new_contact', compact('consult_contact', 'contact', 'amount', 'body', 'subject', 'setting', 'token', 'showingDate'));
-//})->name('test');
+Route::get('/test', function() {
+	$consult_contact = \App\ConsultContact::find(1);
+
+	$consult_contact->first_name = "Bigalo";
+	$consult_contact->last_name = "Jiggalo";
+	$consult_contact->email = "Bigalo.Jiggalo@test.com";
+	$consult_contact->phone = "215-Phone-Home";
+
+	return view('emails.new_contact', compact('consult_contact', 'contact', 'amount', 'body', 'subject', 'setting', 'token', 'showingDate'));
+})->name('test');
 
 Route::resource('administrator', 'AdminController');
 
