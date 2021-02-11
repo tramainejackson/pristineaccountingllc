@@ -22,7 +22,122 @@
 	<!-- Font Awesome -->
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 	<style type="text/css">
-		@media only screen and (max-width:600px) {p, ul li, ol li, a { font-size:14px!important; line-height:150%!important } h1 { font-size:28px!important; text-align:left; line-height:120% } h2 { font-size:20px!important; text-align:left; line-height:120% } h3 { font-size:14px!important; text-align:left; line-height:120% } h1 a { font-size:28px!important; text-align:left } h2 a { font-size:20px!important; text-align:left } h3 a { font-size:14px!important; text-align:left } .es-menu td a { font-size:14px!important } .es-header-body p, .es-header-body ul li, .es-header-body ol li, .es-header-body a { font-size:14px!important } .es-footer-body p, .es-footer-body ul li, .es-footer-body ol li, .es-footer-body a { font-size:14px!important } .es-infoblock p, .es-infoblock ul li, .es-infoblock ol li, .es-infoblock a { font-size:14px!important } *[class="gmail-fix"] { display:none!important } .es-m-txt-c, .es-m-txt-c h1, .es-m-txt-c h2, .es-m-txt-c h3 { text-align:center!important } .es-m-txt-r, .es-m-txt-r h1, .es-m-txt-r h2, .es-m-txt-r h3 { text-align:right!important } .es-m-txt-l, .es-m-txt-l h1, .es-m-txt-l h2, .es-m-txt-l h3 { text-align:left!important } .es-m-txt-r img, .es-m-txt-c img, .es-m-txt-l img { display:inline!important } .es-button-border { display:block!important } a.es-button { font-size:14px!important; display:block!important; border-bottom-width:20px!important; border-right-width:0px!important; border-left-width:0px!important; border-top-width:20px!important } .es-btn-fw { border-width:10px 0px!important; text-align:center!important } .es-adaptive table, .es-btn-fw, .es-btn-fw-brdr, .es-left, .es-right { width:100%!important } .es-content table, .es-header table, .es-footer table, .es-content, .es-footer, .es-header { width:100%!important; max-width:600px!important } .es-adapt-td { display:block!important; width:100%!important } .adapt-img { width:100%!important; height:auto!important } .es-m-p0 { padding:0px!important } .es-m-p0r { padding-right:0px!important } .es-m-p0l { padding-left:0px!important } .es-m-p0t { padding-top:0px!important } .es-m-p0b { padding-bottom:0!important } .es-m-p20b { padding-bottom:20px!important } .es-mobile-hidden, .es-hidden { display:none!important } .es-desk-hidden { display:table-row!important; width:auto!important; overflow:visible!important; float:none!important; max-height:inherit!important; line-height:inherit!important } .es-desk-menu-hidden { display:table-cell!important } table.es-table-not-adapt, .esd-block-html table { width:auto!important } table.es-social { display:inline-block!important } table.es-social td { display:inline-block!important } }
+		body {
+			width: 100%;
+			background-color: #ffffff;
+			margin: 0;
+			padding: 0;
+			-webkit-font-smoothing: antialiased;
+			mso-margin-top-alt: 0px;
+			mso-margin-bottom-alt: 0px;
+			mso-padding-alt: 0px 0px 0px 0px;
+		}
+
+		p,
+		h1,
+		h2,
+		h3,
+		h4 {
+			margin-top: 0;
+			margin-bottom: 0;
+			padding-top: 0;
+			padding-bottom: 0;
+		}
+
+		span.preheader {
+			display: none;
+			font-size: 1px;
+		}
+
+		html {
+			width: 100%;
+		}
+
+		table {
+			font-size: 14px;
+			border: 0;
+		}
+		/* ----------- responsivity ----------- */
+
+		@media only screen and (max-width: 640px) {
+			/*------ top header ------ */
+			.main-header {
+				font-size: 20px !important;
+			}
+			.main-section-header {
+				font-size: 28px !important;
+			}
+			.show {
+				display: block !important;
+			}
+			.hide {
+				display: none !important;
+			}
+			.align-center {
+				text-align: center !important;
+			}
+			.no-bg {
+				background: none !important;
+			}
+			/*----- main image -------*/
+			.main-image img {
+				width: 440px !important;
+				height: auto !important;
+			}
+			/* ====== divider ====== */
+			.divider img {
+				width: 440px !important;
+			}
+			/*-------- container --------*/
+			.container590 {
+				width: 440px !important;
+			}
+			.container580 {
+				width: 400px !important;
+			}
+			.main-button {
+				width: 220px !important;
+			}
+			/*-------- secions ----------*/
+			.section-img img {
+				width: 320px !important;
+				height: auto !important;
+			}
+			.team-img img {
+				width: 100% !important;
+				height: auto !important;
+			}
+		}
+
+		@media only screen and (max-width: 479px) {
+			/*------ top header ------ */
+			.main-header {
+				font-size: 18px !important;
+			}
+			.main-section-header {
+				font-size: 26px !important;
+			}
+			/* ====== divider ====== */
+			.divider img {
+				width: 280px !important;
+			}
+			/*-------- container --------*/
+			.container590 {
+				width: 280px !important;
+			}
+			.container590 {
+				width: 280px !important;
+			}
+			.container580 {
+				width: 260px !important;
+			}
+			/*-------- secions ----------*/
+			.section-img img {
+				width: 280px !important;
+				height: auto !important;
+			}
+		}
+
 		#outlook a {
 			padding:0;
 		}

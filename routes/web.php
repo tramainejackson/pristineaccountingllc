@@ -13,12 +13,12 @@
 
 Auth::routes();
 
-//Route::get('/test', function() {
-//	$consult_request = \App\ConsultRequest::find(3);
-//	$consult_contact = $consult_request->consultContact;
-//
-//	return view('emails.admin_new_consult', compact('consult_contact', 'contact', 'consult_request', 'amount', 'body', 'subject', 'setting', 'token', 'showingDate'));
-//})->name('test');
+Route::get('/test', function() {
+	$consult_request = \App\ConsultRequest::find(3);
+	$consult_contact = $consult_request->consultContact;
+
+	return view('emails.new_consult', compact('consult_contact', 'contact', 'consult_request', 'amount', 'body', 'subject', 'setting', 'token', 'showingDate'));
+})->name('test');
 
 Route::resource('administrator', 'AdminController');
 
