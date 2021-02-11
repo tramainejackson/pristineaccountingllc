@@ -8,7 +8,6 @@ use App\ConsultContact;
 use App\ConsultResponse;
 use App\Invoice;
 use App\Recommendation;
-use App\Mail\NewConsultContact;
 use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -63,9 +62,6 @@ class ConsultContactController extends Controller
 	    $contact->phone      = $request->phone;
 
 	    if($contact->save()) {
-//		    \Mail::to($consult->email)->send(new Update($consult));
-//		    \Mail::to($contact->email)->send(new NewConsultContact($contact));
-
 		    return back()->with('status', 'Thank you for your request ' . $contact->first_name . '. We will contact you at ' . $contact->email . ' soon!');
 	    }
     }
