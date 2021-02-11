@@ -109,7 +109,7 @@ class ConsultRequestController extends Controller
 			    // Save consultation
 			    if($consult->save()) {
 
-				    \Mail::to($consult->email)->send(new NewConsultRequest($contact, $consult));
+				    \Mail::to($contact->email)->send(new NewConsultRequest($contact, $consult));
 				    \Mail::to('pristineaccting@gmail.com')->send(new NewAdminConsultRequest($contact, $consult));
 
 				    return redirect()->action('HomeController@index')->with('status', 'Thank you for your request ' . $contact->first_name . '. We will contact you at ' . $contact->email . ' soon!');
@@ -119,7 +119,7 @@ class ConsultRequestController extends Controller
 		    // Save consultation
 		    if($consult->save()) {
 
-			    \Mail::to($consult->email)->send(new NewConsultRequest($contact_check, $consult));
+			    \Mail::to($contact_check->email)->send(new NewConsultRequest($contact_check, $consult));
 			    \Mail::to('pristineaccting@gmail.com')->send(new NewAdminConsultRequest($contact_check, $consult));
 
 			    return redirect()->action('ConsultRequestController@index')->with('status', 'You have added a new consult request for ' . $consult->consultContact->first_name . '.');
