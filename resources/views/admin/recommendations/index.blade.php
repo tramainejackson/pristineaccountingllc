@@ -108,20 +108,32 @@
 
                                                             @for($x=0; $x < floor((int)$recommendation->rating); $x++)
                                                                 @if($x == 0)
-                                                                    <i class="fas fa-star orange-lighter-hover"></i>
+                                                                    <i class="fas fa-star gold-lighter-hover"></i>
                                                                 @elseif($x == 1)
                                                                     <i class="fas fa-star purple-lighter-hover"></i>
                                                                 @elseif($x == 2)
-                                                                    <i class="fas fa-star green-lighter-hover"></i>
+                                                                    <i class="fas fa-star dark-blue-lighter-hover"></i>
                                                                 @elseif($x == 3)
                                                                     <i class="fas fa-star blue-lighter-hover"></i>
                                                                 @elseif($x == 4)
-                                                                    <i class="fas fa-star gold-lighter-hover"></i>
+                                                                    <i class="fas fa-star green-lighter-hover"></i>
                                                                 @endif
                                                             @endfor
 
                                                             @if(strlen($recommendation->rating) > 1)
-                                                                <i class="fas fa-star-half-alt blue-lighter-hover"></i>
+                                                                @php $whole_rating = floor((int)$recommendation->rating); @endphp
+
+                                                                @if($whole_rating == 0)
+                                                                    <i class="fas fa-star-half-alt gold-lighter-hover"></i>
+                                                                @elseif($whole_rating == 1)
+                                                                    <i class="fas fa-star-half-alt purple-lighter-hover"></i>
+                                                                @elseif($whole_rating == 2)
+                                                                    <i class="fas fa-star-half-alt dark-blue-lighter-hover"></i>
+                                                                @elseif($whole_rating == 3)
+                                                                    <i class="fas fa-star-half-alt blue-lighter-hover"></i>
+                                                                @elseif($whole_rating == 4)
+                                                                    <i class="fas fa-star-half-alt green-lighter-hover"></i>
+                                                                @endif
                                                             @endif
                                                         </div>
                                                     </div>

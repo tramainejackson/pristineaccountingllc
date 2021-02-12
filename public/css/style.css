@@ -17,7 +17,7 @@ html, body {
 }
 
 .purple-lighter-hover {
-    color: #b843d7;
+    color: #f9bced;
     -webkit-transition: .4s;
     transition: .4s;
 }
@@ -25,11 +25,11 @@ html, body {
 .purple-lighter-hover:hover {
     -webkit-transition: .4s;
     transition: .4s;
-    color: #e171ff;
+    color: #f9bced;
 }
 
 .gold-lighter-hover {
-    color: #F4D228;
+    color: #f8f9bc;
     -webkit-transition: .4s;
     transition: .4s;
 }
@@ -37,11 +37,11 @@ html, body {
 .gold-lighter-hover:hover {
     -webkit-transition: .4s;
     transition: .4s;
-    color: #fff09f;
+    color: #f8f9bc;
 }
 
 .green-lighter-hover {
-    color: #92b885;
+    color: #daf7a6;
     -webkit-transition: .4s;
     transition: .4s;
 }
@@ -49,11 +49,11 @@ html, body {
 .green-lighter-hover:hover {
     -webkit-transition: .4s;
     transition: .4s;
-    color: #ECF2EA;
+    color: #daf7a6;
 }
 
 .blue-lighter-hover {
-    color: #6bb0f0;
+    color: #bcf9f2;
     -webkit-transition: .4s;
     transition: .4s;
 }
@@ -61,19 +61,19 @@ html, body {
 .blue-lighter-hover:hover {
     -webkit-transition: .4s;
     transition: .4s;
-    color: #c8dff4;
+    color: #bcf9f2;
 }
 
-.orange-lighter-hover {
-    color: #d79843;
+.dark-blue-lighter-hover {
+    color: #bcd1f9;
     -webkit-transition: .4s;
     transition: .4s;
 }
 
-.orange-lighter-hover:hover {
+.dark-blue-lighter-hover:hover {
     -webkit-transition: .4s;
     transition: .4s;
-    color: #ffca82;
+    color: #bcd1f9;
 }
 
 .coolText1 {
