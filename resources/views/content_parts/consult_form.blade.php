@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row" id="consultation">
 
     <div class="col-12" id="">
 
@@ -9,7 +9,7 @@
     </div>
 </div>
 
-<div class="row" id="consultation">
+<div class="row">
 
     <!-- Jumbotron -->
     <div class="jumbotron card card-image p-0 rounded-0" style="background-image: url({{ asset('images/accounting_image.jpg') }});">
